@@ -1,0 +1,99 @@
+{
+  "type": "module",
+  "appVersion": "1.6.0",
+  "properties": {
+    "meta": {
+      "showingComment": true,
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "##### Info\nThis module contains configuration valid for all sample flow.",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 160
+          },
+          "view": "edit"
+        },
+        "editor": {
+          "collapsed": false
+        }
+      },
+      "role": "config"
+    },
+    "variables": {
+      "variables": {
+        "list": [
+          {
+            "name": "folder_data",
+            "type": "string",
+            "value": {
+              "widgetType": "expression/string",
+              "widgetData": {
+                "interpolation": true,
+                "text": "../data"
+              },
+              "code": "'../data'"
+            }
+          },
+          {
+            "name": "filename_airports",
+            "type": "string",
+            "value": {
+              "widgetType": "expression/string",
+              "widgetData": {
+                "interpolation": true,
+                "text": "${folder_data}/airports.csv"
+              },
+              "code": "let {\n  string interpolation_0: folder_data;\n  string literal_1: '/airports.csv';\n}\ninterpolation_0 .. literal_1"
+            }
+          },
+          {
+            "name": "filename_countries",
+            "type": "string",
+            "value": {
+              "widgetType": "expression/string",
+              "widgetData": {
+                "interpolation": true,
+                "text": "${folder_data}/countries.csv"
+              },
+              "code": "let {\n  string interpolation_0: folder_data;\n  string literal_1: '/countries.csv';\n}\ninterpolation_0 .. literal_1"
+            }
+          }
+        ]
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "imports": {
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
+      "size": {
+        "width": 0,
+        "height": 102
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "editor": {
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "model": {}
+  }
+}

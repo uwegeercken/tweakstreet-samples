@@ -1,0 +1,240 @@
+1	PG	Papua New Guinea
+2	GL	Greenland
+3	IS	Iceland
+4	CA	Canada
+5	DZ	Algeria
+6	BJ	Benin
+7	BF	Burkina Faso
+8	GH	Ghana
+9		Cote d'Ivoire
+10	NG	Nigeria
+11	NE	Niger
+12	TN	Tunisia
+13	TG	Togo
+15	BE	Belgium
+16	DE	Germany
+17	US	United States
+18	EE	Estonia
+19	FI	Finland
+20	GB	United Kingdom
+21	GG	Guernsey
+22	JE	Jersey
+23	IM	Isle of Man
+24		Falkland Islands
+25	NL	Netherlands
+26	IE	Ireland
+27	DK	Denmark
+28	FO	Faroe Islands
+29	LU	Luxembourg
+30	NO	Norway
+31	PL	Poland
+32	SE	Sweden
+33	ZA	South Africa
+34	BW	Botswana
+35		Congo (Brazzaville)
+36		Congo (Kinshasa)
+37	SZ	Swaziland
+38	CF	Central African Republic
+39	GQ	Equatorial Guinea
+40		Saint Helena
+41	MU	Mauritius
+42	IO	British Indian Ocean Territory
+43	CM	Cameroon
+44	ZM	Zambia
+45	KM	Comoros
+46	YT	Mayotte
+47		Reunion
+48	MG	Madagascar
+49	AO	Angola
+50	PR	Puerto Rico
+51	GA	Gabon
+52	ST	Sao Tome and Principe
+53	MZ	Mozambique
+54	SC	Seychelles
+55	TD	Chad
+56	ZW	Zimbabwe
+57	MW	Malawi
+58	LS	Lesotho
+59	ML	Mali
+60	GM	Gambia
+61	ES	Spain
+62	SL	Sierra Leone
+63	GW	Guinea-Bissau
+64	LR	Liberia
+65	MA	Morocco
+66	SN	Senegal
+67	MR	Mauritania
+68	GN	Guinea
+69	CV	Cape Verde
+70	ET	Ethiopia
+71	MV	Maldives
+72	BI	Burundi
+73	SO	Somalia
+74	EG	Egypt
+75	KE	Kenya
+76	LY	Libya
+77	RW	Rwanda
+78	SD	Sudan
+79	SS	South Sudan
+80		Tanzania
+81	UG	Uganda
+82	AL	Albania
+83	BG	Bulgaria
+84	CY	Cyprus
+85	HR	Croatia
+86	GR	Greece
+87	FR	France
+88	PM	Saint Pierre and Miquelon
+89	HU	Hungary
+90	IT	Italy
+91	SI	Slovenia
+92	CZ	Czech Republic
+93	IL	Israel
+94	MT	Malta
+95	AT	Austria
+96	PT	Portugal
+97	BA	Bosnia and Herzegovina
+98	RO	Romania
+99	CH	Switzerland
+100	TR	Turkey
+101		Moldova
+102		Macedonia
+103	GI	Gibraltar
+104	RS	Serbia
+105	ME	Montenegro
+106	SK	Slovakia
+107	TC	Turks and Caicos Islands
+108	DO	Dominican Republic
+109	GT	Guatemala
+110	HN	Honduras
+111	JM	Jamaica
+112	MX	Mexico
+113	NI	Nicaragua
+114	PA	Panama
+115	CR	Costa Rica
+116	SV	El Salvador
+117	HT	Haiti
+118	CU	Cuba
+119	KY	Cayman Islands
+120	BS	Bahamas
+121	BZ	Belize
+122	CK	Cook Islands
+123	FJ	Fiji
+124	TO	Tonga
+125	KI	Kiribati
+126	AU	Australia
+127	WF	Wallis and Futuna
+128	WS	Samoa
+129	AS	American Samoa
+130	PF	French Polynesia
+131	VU	Vanuatu
+132	NC	New Caledonia
+133	NZ	New Zealand
+134	AQ	Antarctica
+135	AF	Afghanistan
+136	BH	Bahrain
+137	SA	Saudi Arabia
+138		Iran
+139	AR	Argentina
+140	JO	Jordan
+141		West Bank
+142	KW	Kuwait
+143	LB	Lebanon
+144	AE	United Arab Emirates
+145	OM	Oman
+146	PK	Pakistan
+147	IQ	Iraq
+148		Syria
+149	QA	Qatar
+150	MP	Northern Mariana Islands
+151	GU	Guam
+152	MH	Marshall Islands
+153		Midway Islands
+154		Micronesia
+155	PW	Palau
+156		Taiwan
+157	JP	Japan
+158		South Korea
+159	PH	Philippines
+160	TM	Turkmenistan
+161	BR	Brazil
+162	CL	Chile
+163	EC	Ecuador
+164	PY	Paraguay
+165	CO	Colombia
+166		Bolivia
+167	SR	Suriname
+168	GF	French Guiana
+169	PE	Peru
+170	UY	Uruguay
+171		Venezuela
+172	GY	Guyana
+173	AG	Antigua and Barbuda
+174	BB	Barbados
+175	DM	Dominica
+176	MQ	Martinique
+177	GP	Guadeloupe
+178	GD	Grenada
+179		Virgin Islands
+180	KN	Saint Kitts and Nevis
+181	LC	Saint Lucia
+182	AW	Aruba
+183		Netherlands Antilles
+184	AI	Anguilla
+185	TT	Trinidad and Tobago
+186		British Virgin Islands
+187	VC	Saint Vincent and the Grenadines
+188	KZ	Kazakhstan
+189	KG	Kyrgyzstan
+190	AZ	Azerbaijan
+191		Russia
+192	UA	Ukraine
+193	BY	Belarus
+194	TJ	Tajikistan
+195	UZ	Uzbekistan
+196	IN	India
+197	LK	Sri Lanka
+198	KH	Cambodia
+199	BD	Bangladesh
+200	HK	Hong Kong
+201		Laos
+202		Macau
+203	NP	Nepal
+204	BT	Bhutan
+205	TH	Thailand
+206	ID	Indonesia
+207		Vietnam
+208		Burma
+209	MY	Malaysia
+210		Brunei
+211		East Timor
+212	SG	Singapore
+213	CX	Christmas Island
+214	NF	Norfolk Island
+215	CN	China
+216		Korea
+217	MN	Mongolia
+218	LV	Latvia
+219	LT	Lithuania
+220	AM	Armenia
+221	ER	Eritrea
+222		Palestine
+223	YE	Yemen
+224	GE	Georgia
+225	BM	Bermuda
+226	SB	Solomon Islands
+227	NR	Nauru
+228	TV	Tuvalu
+229	NA	Namibia
+230	DJ	Djibouti
+231	MS	Montserrat
+232	MC	Monaco
+233		Johnston Atoll
+234	NU	Niue
+235	EH	Western Sahara
+236	CC	Cocos (Keeling) Islands
+237		South Georgia and the Islands
+238	MM	Myanmar
+239		Svalbard
+240		North Korea
+241		Wake Island
