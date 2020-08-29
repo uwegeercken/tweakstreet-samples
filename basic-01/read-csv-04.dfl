@@ -51,9 +51,9 @@
               },
               "size": {
                 "width": null,
-                "height": 160
+                "height": 102
               },
-              "view": "split"
+              "view": "preview"
             },
             "editor": {
               "collapsed": false
@@ -524,7 +524,7 @@
           "showEntryVariables": false,
           "showResultVariables": false,
           "showOutputFields": false,
-          "dialogWidth": "stretch"
+          "dialogWidth": "normal"
         },
         "model": {}
       },
@@ -588,7 +588,7 @@
           "comment": {
             "markdown": {
               "text": {
-                "text": "##### Info\n\ncombine the latitude and longitude fields into a list of key/value pairs",
+                "text": "##### Info\n\n* combine the _latitude_ and _longitude_ fields into a new field _position_ which is a list of key/value pairs\n* convert the elevation value (ft) to meters in a new field _elevation_meters_",
                 "syntax": "markdown",
                 "size": {
                   "width": "100%",
@@ -597,9 +597,9 @@
               },
               "size": {
                 "width": null,
-                "height": 160
+                "height": 151
               },
-              "view": "edit"
+              "view": "preview"
             },
             "editor": {
               "collapsed": false
@@ -632,6 +632,22 @@
                   },
                   "code": "{\n  :latitude in.latitude,\n  :longitude in.longitude\n}"
                 }
+              },
+              {
+                "name": "elevation_meters",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "in.elevation / 3.2808",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "in.elevation / 3.2808"
+                }
               }
             ]
           },
@@ -641,7 +657,8 @@
         },
         "editor": {
           "showEntryVariables": true,
-          "showOutputFields": true
+          "showOutputFields": true,
+          "dialogWidth": "normal"
         },
         "model": {}
       },

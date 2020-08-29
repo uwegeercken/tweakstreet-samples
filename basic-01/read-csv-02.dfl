@@ -94,9 +94,9 @@
               },
               "size": {
                 "width": null,
-                "height": 160
+                "height": 110
               },
-              "view": "split"
+              "view": "preview"
             },
             "editor": {
               "collapsed": false
@@ -567,7 +567,7 @@
           "showEntryVariables": false,
           "showResultVariables": false,
           "showOutputFields": false,
-          "dialogWidth": "stretch"
+          "dialogWidth": "normal"
         },
         "model": {}
       },
@@ -640,9 +640,9 @@
               },
               "size": {
                 "width": null,
-                "height": 160
+                "height": 151
               },
-              "view": "split"
+              "view": "preview"
             },
             "editor": {
               "collapsed": false
@@ -671,7 +671,7 @@
         },
         "editor": {
           "showEntryVariables": false,
-          "dialogWidth": "stretch"
+          "dialogWidth": "normal"
         },
         "model": {}
       },

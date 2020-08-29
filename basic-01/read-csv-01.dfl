@@ -94,9 +94,9 @@
               },
               "size": {
                 "width": null,
-                "height": 160
+                "height": 112
               },
-              "view": "split"
+              "view": "preview"
             },
             "editor": {
               "collapsed": false
@@ -567,7 +567,7 @@
           "showEntryVariables": false,
           "showResultVariables": false,
           "showOutputFields": false,
-          "dialogWidth": "stretch"
+          "dialogWidth": "normal"
         },
         "model": {}
       },
@@ -590,23 +590,30 @@
       "data": {
         "meta": {
           "name": "Dummy",
+          "showingComment": true,
           "comment": {
             "markdown": {
               "text": {
-                "text": ""
+                "text": "",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
               },
               "size": {
                 "width": null,
                 "height": 160
               },
-              "editor": {
-                "collapsed": true
-              }
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": true
             }
-          },
-          "showingComment": true
+          }
         },
-        "editor": {}
+        "editor": {},
+        "model": {}
       },
       "pos": {
         "x": 634,

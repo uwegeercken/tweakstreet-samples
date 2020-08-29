@@ -12,4 +12,4 @@ Folder: basic-01
 - read-csv-01.dfl: read a CSV file
 - read-csv-02.dfl: read and filter a CSV file
 - read-csv-03.dfl: read CSV file and remove some fields from the output
-- read-csv-04.dfl: read CSV file and add a calculated list field
+- read-csv-04.dfl: read CSV file, add a calculated list field and convert elevation value to meters
