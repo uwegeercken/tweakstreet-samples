@@ -7,7 +7,7 @@
       "comment": {
         "markdown": {
           "text": {
-            "text": "##### Info\nThis module contains configuration valid for all sample flows.\n\nAdd this file as a config module to the Tweakstreet UI by selecting: _File >> Choose Config Module..._ from the menu.",
+            "text": "##### Info\nThis module contains configuration valid for all sample flows.\n\nAdd this file as a config module to the Tweakstreet UI by selecting: _File >> Choose Config Module..._ from the menu. Or right-click in the lower right hand corner of the UI, which displays: _$none_",
             "syntax": "markdown",
             "size": {
               "width": "100%",
@@ -16,7 +16,7 @@
           },
           "size": {
             "width": null,
-            "height": 122
+            "height": 168
           },
           "view": "edit"
         },
