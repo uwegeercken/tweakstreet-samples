@@ -6,7 +6,9 @@ The base components of the Tweakstreet GUI application are: control flows, data 
 
 The samples in this repository are self contained. You do not need anything else except of the Tweakstreet application which can be downloaded from the above site. The repository also contains a folder: _data_. The data files in this folder are used for the samples.
 
-Below is a list of available samples, listing the name of the folder, the name of the flow file and a short description what the flow does.
+Clone this repository, install the Tewakstreet Data Integration Tool and run it. Once running, select _File_ from the menue and then _Choose Config Module..._ and select the file _conf-module-samples.tsm_ which is located in the root folder of the cloned repository. This module contains variables required by the data flows.
+
+Below is the list of available samples, listing the name of the folder, the name of the flow file and a short description what the flow does.
 
 | Folder             | Filename                     | Description                      |
 | :--                | :---                         | :--                              |
