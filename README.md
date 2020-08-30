@@ -4,7 +4,7 @@ Various examples for the Tweakstreet Data Integration Tool. The idea is to provi
 
 The base components of the Tweakstreet GUI application are: control flows, data flows, steps, hops and modules. Control flows allow serial processing of tasks; they typically contain - amongst other components - one or multiple data flows. Data flows execute certain processing tasks in parallel. The core components in a data flow are steps - which encapsulate certain functionality - and the hops which connect steps to each other. Modules allow to define variables or additional functionality (functions) in a file and config modules can be used to define configuration e.g. for development and production environments. Besides handling flat records, Tweakstreet represents all data natively as nestable data structures
 
-The samples in this repository are self contained. You do not need anything else except of the Tweakstreet application which can be downloaded from the above site. The repository also contains a folder: _data_. The data files in this folder are used for the samples.
+The samples in this repository are self contained. You do not need anything else except of the Tweakstreet application which can be downloaded from the above site. The repository also contains a folder: _data_. The data files in this folder are used for the samples. For each sample there is also a screenshot available.
 
 Clone this repository, install the Tewakstreet Data Integration Tool and run it. Once running, select _File_ from the menue and then _Choose Config Module..._ and select the file _conf-module-samples.tsm_ which is located in the root folder of the cloned repository. This module contains variables required by the data flows.
 
