@@ -8,6 +8,8 @@ The samples in this repository are self contained. You do not need anything else
 
 Clone this repository, install the Tewakstreet Data Integration Tool and run it. Once running, select _File_ from the menue and then _Choose Config Module..._ and select the file _conf-module-samples.tsm_ which is located in the root folder of the cloned repository. This module contains variables required by the data flows.
 
+I recommend to also check the Tweakstreet forum at: https://forum.tweakstreet.io/ which contains tutorials, data challenges and more.
+
 Below is the list of available samples, listing the name of the folder, the name of the flow file and a short description what the flow does.
 
 | Folder             | Filename                     | Description                      |
