@@ -8,15 +8,11 @@ The samples in this repository are self contained. You do not need anything else
 
 Below is a list of available samples, listing the name of the folder, the name of the flow file and a short description what the flow does.
 
-Folder: basic-01
-- read-csv-01.dfl: read a CSV file
-- read-csv-02.dfl: read and filter a CSV file
-- read-csv-03.dfl: read CSV file and remove some fields from the output
-- read-csv-04.dfl: read CSV file, add a calculated list field and convert elevation value to meters
-- read-csv-05.dfl: read CSV file, group by country and sort by highest number of airports
-- read-csv-06.dfl: read CSV file, lookup country details, group by country and sort by highest number of airports
-
-| Name             |  Occupation                  | Date of Birth     |
-| :--              |             :-:              |               --: |
-| Sherlock Holmes  | Consulting Detective         | January 6th, 1854 |
-| John Watson      | Military Surgeon, Physician  | August 7th, 1852  |
+| Folder             | Filename                     | Description                      |
+| :--                | :---                         | :--                              |
+| basic-01           | read-csv-01.dfl              | read a CSV file |
+| basic-01           | read-csv-02.dfl              | read and filter a CSV file |
+| basic-01           | read-csv-03.dfl              | read CSV file and remove some fields from the output |
+| basic-01           | read-csv-04.dfl              | read CSV file, add a calculated list field and convert elevation value to meters |
+| basic-01           | read-csv-05.dfl              | read CSV file, group by country and sort by highest number of airports |
+| basic-01           | read-csv-06.dfl              | read CSV file, lookup country details, group by country and sort by highest number of airports |
