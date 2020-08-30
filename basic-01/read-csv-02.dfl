@@ -631,7 +631,7 @@
           "comment": {
             "markdown": {
               "text": {
-                "text": "##### Info\n\nfilter all rows where the elevation of the airport is greater or equal 12000.\n\nRows that pass \nare sent to the `yes` output stream, all others to the `no` output stream.",
+                "text": "##### Info\n\nfilter all rows where the elevation of the airport is greater or equal 12000 ft.\n\nRows that pass \nare sent to the `yes` output stream, all others to the `no` output stream.",
                 "syntax": "markdown",
                 "size": {
                   "width": "100%",

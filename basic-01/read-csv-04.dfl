@@ -609,7 +609,7 @@
         "editor": {}
       },
       "pos": {
-        "x": 890,
+        "x": 1050,
         "y": 186
       }
     },
@@ -709,6 +709,162 @@
         "x": 602,
         "y": 186
       }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.logger_666c911c-0b6b-4ced-93e6-e93a3471600d",
+      "name": "Logger",
+      "type": "com.twineworks.tweakstreet.library.steps.map.logger",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Logger",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nWrite a line to the log containing the name of the airport\n\n",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 109
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "message": {
+          "widgetType": "expression/code",
+          "widgetData": {
+            "text": "'Airport elevation greater 13000ft: ' .. row[:name]",
+            "size": {
+              "width": 0,
+              "height": 68
+            },
+            "syntax": "tweakflow"
+          },
+          "code": "'Airport elevation greater 13000ft: ' .. row[:name]"
+        },
+        "logValues": {
+          "widgetType": "expression/data-grid",
+          "widgetData": {
+            "fields": [
+              {
+                "id": "name",
+                "name": "name"
+              },
+              {
+                "id": "value",
+                "name": "value"
+              }
+            ],
+            "gen": {
+              "as": "rows",
+              "of": "dict",
+              "meta": false
+            },
+            "table": {
+              "list": []
+            }
+          },
+          "code": "[]"
+        },
+        "editor": {
+          "showEntryVariables": false
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 826,
+        "y": 378
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.bool.filter_d010b90a-faa4-463c-a49d-b2b27d619c76",
+      "name": "Filter",
+      "type": "com.twineworks.tweakstreet.library.steps.bool.filter",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Filter",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nfilter all rows where the elevation of the airport is greater or equal 13000 ft.\n\nRows that pass \nare sent to the `yes` output stream, all others to the `no` output stream.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "condition": {
+          "widgetType": "expression/code",
+          "widgetData": {
+            "text": "in.elevation >= 13000",
+            "size": {
+              "width": 0,
+              "height": 36
+            },
+            "syntax": "tweakflow"
+          },
+          "code": "in.elevation >= 13000"
+        },
+        "editor": {
+          "showEntryVariables": false
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 826,
+        "y": 186
+      }
     }
   ],
   "hops": [
@@ -728,10 +884,40 @@
       }
     },
     {
-      "id": "b6fcfc90-71e5-4b80-9d96-667b14261e72",
+      "id": "050601d6-ae03-4acc-a065-5623cf1a6635",
       "fromStep": "com.twineworks.tweakstreet.library.steps.map.calculator_da069a6f-a681-49e6-976b-05d527548a7b",
-      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_f66e7c6d-b36e-440e-b049-e7b2923ad632",
+      "toStep": "com.twineworks.tweakstreet.library.steps.bool.filter_d010b90a-faa4-463c-a49d-b2b27d619c76",
       "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "23b63ac6-5c61-4ba6-b48e-8be4987be09b",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.bool.filter_d010b90a-faa4-463c-a49d-b2b27d619c76",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.logger_666c911c-0b6b-4ced-93e6-e93a3471600d",
+      "fromGate": "yes",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "bb6f8f01-1d03-483a-b98d-799d3f2f5393",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.bool.filter_d010b90a-faa4-463c-a49d-b2b27d619c76",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_f66e7c6d-b36e-440e-b049-e7b2923ad632",
+      "fromGate": "no",
       "toGate": "in",
       "disabled": false,
       "partitioner": {
