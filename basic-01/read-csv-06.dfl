@@ -6,7 +6,7 @@
       "comment": {
         "markdown": {
           "text": {
-            "text": "##### Info\n\nFlow demonstrates:\n* reading data from a CSV file containing airport information.\n* filter the data by elevation of the airport\n* output to a dummy step (do nothing)\n\nFlow uses variables from the global module: _conf-module-samples.tsm_\n",
+            "text": "##### Info\n\nFlow demonstrates:\n* reading data from a CSV file containing airport information.\n* lookup the country name and IATA code from a separate CSV file\n* group the data by country name and count the number of airports\n* sort the data by highest number of airports descending\n* output to a dummy step (do nothing)\n\nFlow uses variables from the global module: _conf-module-samples.tsm_\n",
             "syntax": "markdown",
             "size": {
               "width": "100%",
@@ -15,7 +15,7 @@
           },
           "size": {
             "width": null,
-            "height": 287
+            "height": 291
           },
           "view": "preview"
         },
@@ -68,7 +68,7 @@
   },
   "steps": [
     {
-      "id": "com.twineworks.tweakstreet.library.steps.input.csvinput_7d1594fc-42bb-46e8-9936-46fea9c6b184",
+      "id": "com.twineworks.tweakstreet.library.steps.input.csvinput_d6bb8778-c057-47f6-9f25-405e10404eb6",
       "name": "CSV Input: airports",
       "type": "com.twineworks.tweakstreet.library.steps.input.csvinput",
       "instanceCount": {
@@ -94,7 +94,7 @@
               },
               "size": {
                 "width": null,
-                "height": 92
+                "height": 102
               },
               "view": "preview"
             },
@@ -572,12 +572,12 @@
         "model": {}
       },
       "pos": {
-        "x": 314,
+        "x": 154,
         "y": 186
       }
     },
     {
-      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_766b0bf2-1b2f-43c6-ba7d-5164aa31e046",
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_f66e7c6d-b36e-440e-b049-e7b2923ad632",
       "name": "Dummy",
       "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
       "instanceCount": {
@@ -609,14 +609,14 @@
         "editor": {}
       },
       "pos": {
-        "x": 826,
+        "x": 986,
         "y": 186
       }
     },
     {
-      "id": "com.twineworks.tweakstreet.library.steps.map.pickfields_76dfe1a6-a20a-499a-b919-b299c600f1f6",
-      "name": "Pick Fields",
-      "type": "com.twineworks.tweakstreet.library.steps.map.pickfields",
+      "id": "com.twineworks.tweakstreet.library.steps.group.groupby_42e6e229-26cc-4f6b-b854-5a55c5fc6769",
+      "name": "Group By",
+      "type": "com.twineworks.tweakstreet.library.steps.group.groupby",
       "instanceCount": {
         "widgetType": "expression/number",
         "widgetData": {
@@ -626,12 +626,12 @@
       },
       "data": {
         "meta": {
-          "name": "Pick Fields",
+          "name": "Group By",
           "showingComment": true,
           "comment": {
             "markdown": {
               "text": {
-                "text": "##### Info\n\nfields _id_, _latitude_ and _longitude_ have been removed from the output",
+                "text": "##### Info\n\nGroup the data by _country_name_ and count on the _id_ of the row",
                 "syntax": "markdown",
                 "size": {
                   "width": "100%",
@@ -640,7 +640,7 @@
               },
               "size": {
                 "width": null,
-                "height": 99
+                "height": 103
               },
               "view": "preview"
             },
@@ -649,57 +649,302 @@
             }
           }
         },
-        "mode": {
-          "value": "whitelist"
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
         },
-        "fieldRefs": {
-          "fieldRefs": {
+        "groupFields": {
+          "groupFields": {
             "list": [
               {
-                "field": {
-                  "value": {
-                    "gate": "in",
-                    "name": "name"
-                  }
+                "name": "country_name",
+                "type": "string",
+                "value": {
+                  "widgetType": "expression/field-value-ref",
+                  "widgetData": {
+                    "fieldSelect": {
+                      "value": {
+                        "gate": "in",
+                        "name": "country_name"
+                      }
+                    }
+                  },
+                  "code": "::in.country_name"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "collatedGroups": {
+          "widgetType": "expression/checkbox-boolean",
+          "widgetData": {
+            "value": false
+          },
+          "code": "false"
+        },
+        "aggregationFields": {
+          "aggregationFields": {
+            "list": [
+              {
+                "name": "number_of_airports",
+                "type": "any",
+                "aggregation": {
+                  "widgetType": "expression/aggregate-count",
+                  "widgetData": {
+                    "nilHandling": {
+                      "widgetType": "expression/select",
+                      "widgetData": {
+                        "family": "expression/select/nilHandling",
+                        "value": "ignore"
+                      },
+                      "code": "'ignore'"
+                    },
+                    "nanHandling": {
+                      "widgetType": "expression/select",
+                      "widgetData": {
+                        "family": "expression/select/NaNHandling",
+                        "value": "ignore"
+                      },
+                      "code": "'ignore'"
+                    },
+                    "editor": {
+                      "collapsed": true
+                    },
+                    "model": {}
+                  },
+                  "code": "let {\n  make_aggregator: (string nilHandling, string nanHandling) -> via {:class 'com.twineworks.tweakstreet.library.aggregation.Aggregators$count_aggregator'};\n}\nmake_aggregator('ignore', 'ignore')\n"
+                },
+                "subject": {
+                  "widgetType": "expression/field-value-ref",
+                  "widgetData": {
+                    "fieldSelect": {
+                      "value": {
+                        "gate": "in",
+                        "name": "id"
+                      }
+                    }
+                  },
+                  "code": "::in.id"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showGroupFields": true,
+          "showResultVariables": false,
+          "showOutputFields": false
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 554,
+        "y": 186
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.sort.sort_b0f49205-7343-4313-b093-d3cc320c2164",
+      "name": "Sort",
+      "type": "com.twineworks.tweakstreet.library.steps.sort.sort",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Sort",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nsort the rows descending by the field we aggregated on. In the _comparator_ column we specify that we sort on a numeric field.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
                 }
               },
+              "size": {
+                "width": null,
+                "height": 121
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "inMemoryCapacity": {
+          "widgetType": "expression/number",
+          "widgetData": {
+            "text": "1_000_000"
+          },
+          "code": "1_000_000"
+        },
+        "tmpFolder": {
+          "widgetType": "expression/local-folder",
+          "widgetData": {
+            "interpolation": true,
+            "text": ""
+          },
+          "code": "''"
+        },
+        "sortOrders": {
+          "sortOrders": {
+            "list": [
               {
-                "field": {
-                  "value": {
-                    "gate": "in",
-                    "name": "description"
-                  }
+                "subject": {
+                  "widgetType": "expression/field-value-ref",
+                  "widgetData": {
+                    "fieldSelect": {
+                      "value": {
+                        "gate": "in",
+                        "name": "number_of_airports"
+                      }
+                    }
+                  },
+                  "code": "::in.number_of_airports"
+                },
+                "comparator": {
+                  "widgetType": "expression/compare-number",
+                  "widgetData": {
+                    "nonNumeric": {
+                      "widgetType": "expression/select",
+                      "widgetData": {
+                        "family": "expression/select/orderNonNumeric",
+                        "value": "num_NaN_nil"
+                      },
+                      "code": "'num_NaN_nil'"
+                    },
+                    "editor": {
+                      "collapsed": true
+                    },
+                    "model": {}
+                  },
+                  "code": "let {\n  make_comparator: (string nonNumeric) -> function via {:class 'com.twineworks.tweakstreet.library.sorting.Comparators$number_comparator'};\n}\nmake_comparator('num_NaN_nil')\n"
+                },
+                "direction": {
+                  "widgetType": "expression/select",
+                  "widgetData": {
+                    "family": "expression/select/orderDirection",
+                    "value": "descending"
+                  },
+                  "code": "'descending'"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 762,
+        "y": 186
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.streamlookup.streamlookup_3137d36b-b704-471c-ae96-5646bc4166a6",
+      "name": "Stream Lookup",
+      "type": "com.twineworks.tweakstreet.library.steps.streamlookup.streamlookup",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Stream Lookup",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nLookup the country name and IATA code from the countries file. Match the records by the countries id.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
                 }
               },
+              "size": {
+                "width": null,
+                "height": 127
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "keyFields": {
+          "fieldPairs": {
+            "list": [
               {
-                "field": {
+                "left": {
                   "value": {
                     "gate": "in",
                     "name": "country_id"
                   }
-                }
-              },
-              {
-                "field": {
+                },
+                "right": {
                   "value": {
-                    "gate": "in",
-                    "name": "iata_code"
-                  }
-                }
-              },
-              {
-                "field": {
-                  "value": {
-                    "gate": "in",
-                    "name": "icao_code"
-                  }
-                }
-              },
-              {
-                "field": {
-                  "value": {
-                    "gate": "in",
-                    "name": "elevation"
+                    "gate": "lookup",
+                    "name": "id"
                   }
                 }
               }
@@ -709,20 +954,318 @@
             "collapsed": false
           }
         },
-        "editor": {},
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "country_iata_code",
+                "type": "string",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.lookup[:iata_code] default nil",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.lookup[:iata_code] default nil"
+                }
+              },
+              {
+                "name": "country_name",
+                "type": "string",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.lookup[:name] default nil",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.lookup[:name] default nil"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "fetchFields": {
+          "value": "lookup_"
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
         "model": {}
       },
       "pos": {
-        "x": 570,
+        "x": 362,
         "y": 186
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.input.csvinput_8a16abc3-8266-4105-9b96-e014f67d4070",
+      "name": "CSV Input: countries",
+      "type": "com.twineworks.tweakstreet.library.steps.input.csvinput",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "CSV Input: countries",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nthe variable `$config.vars.filename_countries` for the _File_ comes from the config module ",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 105
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "tabs": {},
+        "fs": {
+          "widgetType": "expression/storage-ref",
+          "widgetData": {
+            "name": ""
+          },
+          "code": "nil"
+        },
+        "file": {
+          "widgetType": "expression/code",
+          "widgetData": {
+            "text": "$config.vars.filename_countries",
+            "size": {
+              "width": 0,
+              "height": 36
+            },
+            "syntax": "tweakflow"
+          },
+          "code": "$config.vars.filename_countries"
+        },
+        "compression": {
+          "widgetType": "expression/select",
+          "widgetData": {
+            "family": "expression/select/compression",
+            "value": "none"
+          },
+          "code": "'none'"
+        },
+        "charset": {
+          "widgetType": "expression/charset",
+          "widgetData": {
+            "value": "UTF-8"
+          },
+          "code": "'UTF-8'"
+        },
+        "skipLines": {
+          "widgetType": "expression/number",
+          "widgetData": {
+            "text": "0"
+          },
+          "code": "0"
+        },
+        "rowLimit": {
+          "widgetType": "expression/nil",
+          "widgetData": {},
+          "code": "nil"
+        },
+        "fieldSeparator": {
+          "widgetType": "expression/separator",
+          "widgetData": {
+            "value": "tab"
+          },
+          "code": "\"\\t\""
+        },
+        "fieldEncloser": {
+          "widgetType": "expression/string",
+          "widgetData": {
+            "interpolation": true,
+            "text": "\""
+          },
+          "code": "'\"'"
+        },
+        "hasHeaderLine": {
+          "widgetType": "expression/checkbox-boolean",
+          "widgetData": {
+            "value": true
+          },
+          "code": "true"
+        },
+        "readFields": {
+          "readFields": {
+            "list": [
+              {
+                "name": "id",
+                "type": "long",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "id"
+                  },
+                  "code": "'id'"
+                },
+                "conversion": {
+                  "widgetType": "expression/parse-number",
+                  "widgetData": {
+                    "pattern": {
+                      "widgetType": "expression/number-pattern",
+                      "widgetData": {
+                        "value": "0"
+                      },
+                      "code": "'0'"
+                    },
+                    "locale": {
+                      "widgetType": "expression/locale",
+                      "widgetData": {
+                        "value": "en-US"
+                      },
+                      "code": "'en-US'"
+                    },
+                    "trim": {
+                      "widgetType": "expression/checkbox-boolean",
+                      "widgetData": {
+                        "value": true
+                      },
+                      "code": "true"
+                    },
+                    "nilValue": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": ""
+                      },
+                      "code": "''"
+                    },
+                    "parseDecimal": {
+                      "widgetType": "expression/checkbox-boolean",
+                      "widgetData": {
+                        "value": false
+                      },
+                      "code": "false"
+                    },
+                    "editor": {
+                      "collapsed": true
+                    },
+                    "model": {}
+                  },
+                  "code": "let {\n  make_parser: (string pattern, string locale, boolean trim, string nilValue, boolean parseDecimal) -> function via {:class 'com.twineworks.tweakstreet.library.conversion.Parsers$number_parser'};\n}\nmake_parser('0', 'en-US', true, '', false)\n"
+                }
+              },
+              {
+                "name": "iata_code",
+                "type": "string",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "iata_code"
+                  },
+                  "code": "'iata_code'"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "name"
+                  },
+                  "code": "'name'"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": false
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 362,
+        "y": 378
       }
     }
   ],
   "hops": [
     {
-      "id": "829f13b9-1cb9-4660-a6a2-e777019b83c0",
-      "fromStep": "com.twineworks.tweakstreet.library.steps.map.pickfields_76dfe1a6-a20a-499a-b919-b299c600f1f6",
-      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_766b0bf2-1b2f-43c6-ba7d-5164aa31e046",
+      "id": "e68abde1-4f30-4c48-a23c-f806c2a4b6a3",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.sort.sort_b0f49205-7343-4313-b093-d3cc320c2164",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_f66e7c6d-b36e-440e-b049-e7b2923ad632",
       "fromGate": "out",
       "toGate": "in",
       "disabled": false,
@@ -735,9 +1278,54 @@
       }
     },
     {
-      "id": "8e631a06-5e47-43d9-92e2-678e166b3267",
-      "fromStep": "com.twineworks.tweakstreet.library.steps.input.csvinput_7d1594fc-42bb-46e8-9936-46fea9c6b184",
-      "toStep": "com.twineworks.tweakstreet.library.steps.map.pickfields_76dfe1a6-a20a-499a-b919-b299c600f1f6",
+      "id": "e9f954a6-01d0-4e13-9cf4-2c95c531dd3b",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.input.csvinput_8a16abc3-8266-4105-9b96-e014f67d4070",
+      "toStep": "com.twineworks.tweakstreet.library.steps.streamlookup.streamlookup_3137d36b-b704-471c-ae96-5646bc4166a6",
+      "fromGate": "out",
+      "toGate": "lookup",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "758fed74-1aa2-4838-81f4-9e3939dbfd41",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.input.csvinput_d6bb8778-c057-47f6-9f25-405e10404eb6",
+      "toStep": "com.twineworks.tweakstreet.library.steps.streamlookup.streamlookup_3137d36b-b704-471c-ae96-5646bc4166a6",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "5d69a5e7-c656-4425-a870-662ebc6a0f66",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.streamlookup.streamlookup_3137d36b-b704-471c-ae96-5646bc4166a6",
+      "toStep": "com.twineworks.tweakstreet.library.steps.group.groupby_42e6e229-26cc-4f6b-b854-5a55c5fc6769",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "67aeba70-ffcd-4526-9c37-fc22e663d12d",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.group.groupby_42e6e229-26cc-4f6b-b854-5a55c5fc6769",
+      "toStep": "com.twineworks.tweakstreet.library.steps.sort.sort_b0f49205-7343-4313-b093-d3cc320c2164",
       "fromGate": "out",
       "toGate": "in",
       "disabled": false,
