@@ -14,3 +14,9 @@ Folder: basic-01
 - read-csv-03.dfl: read CSV file and remove some fields from the output
 - read-csv-04.dfl: read CSV file, add a calculated list field and convert elevation value to meters
 - read-csv-05.dfl: read CSV file, group by country and sort by highest number of airports
+- read-csv-06.dfl: read CSV file, lookup country details, group by country and sort by highest number of airports
+
+| Name             |  Occupation                  | Date of Birth     |
+| :--              |             :-:              |               --: |
+| Sherlock Holmes  | Consulting Detective         | January 6th, 1854 |
+| John Watson      | Military Surgeon, Physician  | August 7th, 1852  |
