@@ -1,0 +1,90 @@
+{
+  "type": "module",
+  "appVersion": "1.6.0",
+  "properties": {
+    "meta": {
+      "showingComment": true,
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 160
+          },
+          "view": "edit"
+        },
+        "editor": {
+          "collapsed": true
+        }
+      },
+      "role": "normal"
+    },
+    "variables": {
+      "variables": {
+        "list": [
+          {
+            "name": "toMeters",
+            "type": "function",
+            "value": {
+              "widgetType": "expression/code",
+              "widgetData": {
+                "text": "(x) -> x/3.028",
+                "size": {
+                  "width": 0,
+                  "height": 36
+                },
+                "syntax": "tweakflow"
+              },
+              "code": "(x) -> x/3.028"
+            }
+          },
+          {
+            "name": "pi",
+            "type": "double",
+            "value": {
+              "widgetType": "expression/number",
+              "widgetData": {
+                "text": "3.1415926"
+              },
+              "code": "3.1415926"
+            }
+          }
+        ]
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "imports": {
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
+      "size": {
+        "width": 0,
+        "height": 102
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "editor": {
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "model": {}
+  }
+}

@@ -15,9 +15,9 @@
           },
           "size": {
             "width": null,
-            "height": 160
+            "height": 213
           },
-          "view": "split"
+          "view": "preview"
         },
         "editor": {
           "collapsed": false
@@ -616,14 +616,14 @@
         "model": {}
       },
       "pos": {
-        "x": 634,
+        "x": 650,
         "y": 186
       }
     }
   ],
   "hops": [
     {
-      "id": "9b17f727-707c-4d4d-8665-f4a5edf9809d",
+      "id": "fb211979-bba7-4556-a71c-3d42e6ff7216",
       "fromStep": "com.twineworks.tweakstreet.library.steps.input.csvinput_7d1594fc-42bb-46e8-9936-46fea9c6b184",
       "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_766b0bf2-1b2f-43c6-ba7d-5164aa31e046",
       "fromGate": "out",
