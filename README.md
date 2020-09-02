@@ -6,7 +6,7 @@ The base components of the Tweakstreet GUI application are: control flows, data 
 
 The samples in this repository are self contained. You do not need anything else except of the Tweakstreet application which can be downloaded from the above site. The repository also contains a folder: _data_. The data files in this folder are used for the samples. For each sample there is also a screenshot available.
 
-Clone this repository, install the Tewakstreet Data Integration Tool and run it. Once running, select _File_ from the menue and then _Choose Config Module..._ and select the file _conf-module-samples.tsm_ which is located in the root folder of the cloned repository. This module contains variables required by the data flows.
+Clone this repository, install the Tewakstreet Data Integration Tool and run it. Once running, select _File_ from the menue and then _Choose Config Module..._ and select the file _conf-module-samples.tsm_ which is located in the root folder of the cloned repository. This module contains variables required by the data flow samples.
 
 I recommend to also check the Tweakstreet forum at: https://forum.tweakstreet.io/ which contains tutorials, data challenges and more.
 
@@ -20,6 +20,7 @@ Below is the list of available samples, listing the name of the folder, the name
 | basic-01           | read-csv-04.dfl              | read CSV file, add a calculated list field, convert elevationto meters and write to log |
 | basic-01           | read-csv-05.dfl              | read CSV file, group by country and sort by highest number of airports |
 | basic-01           | read-csv-06.dfl              | read CSV file, lookup country details, group by country and sort by highest number of airports |
+| basic-02           | modules-csv-06.dfl           | output variables from a config module to the log |
 
 
-last update: 2020-08-30
+last update: 2020-09-02

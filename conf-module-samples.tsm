@@ -64,6 +64,30 @@
               },
               "code": "let {\n  string interpolation_0: folder_data;\n  string literal_1: '/countries.csv';\n}\ninterpolation_0 .. literal_1"
             }
+          },
+          {
+            "name": "filename_continent_names_lookup",
+            "type": "string",
+            "value": {
+              "widgetType": "expression/string",
+              "widgetData": {
+                "interpolation": true,
+                "text": "${folder_data}/continent_names_lookup.csv"
+              },
+              "code": "let {\n  string interpolation_0: folder_data;\n  string literal_1: '/continent_names_lookup.csv';\n}\ninterpolation_0 .. literal_1"
+            }
+          },
+          {
+            "name": "filename_country_continent_lookup",
+            "type": "string",
+            "value": {
+              "widgetType": "expression/string",
+              "widgetData": {
+                "interpolation": true,
+                "text": "${folder_data}/country_continent_lookup.csv"
+              },
+              "code": "let {\n  string interpolation_0: folder_data;\n  string literal_1: '/country_continent_lookup.csv';\n}\ninterpolation_0 .. literal_1"
+            }
           }
         ]
       },
