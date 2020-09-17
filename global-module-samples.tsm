@@ -1,13 +1,13 @@
 {
   "type": "module",
-  "appVersion": "1.6.0",
+  "appVersion": "1.7.1",
   "properties": {
     "meta": {
       "showingComment": true,
       "comment": {
         "markdown": {
           "text": {
-            "text": "",
+            "text": "##### Info\n\nglobal module which holds services, variables and functions for possible re-use across multiple flows.",
             "syntax": "markdown",
             "size": {
               "width": "100%",
@@ -21,7 +21,7 @@
           "view": "edit"
         },
         "editor": {
-          "collapsed": true
+          "collapsed": false
         }
       },
       "role": "normal"
@@ -30,30 +30,58 @@
       "variables": {
         "list": [
           {
+            "name": "theNumber",
+            "type": "any",
+            "value": {
+              "widgetType": "expression/number",
+              "widgetData": {
+                "text": "42"
+              },
+              "code": "42"
+            }
+          },
+          {
+            "name": "day",
+            "type": "string",
+            "value": {
+              "widgetType": "expression/string",
+              "widgetData": {
+                "interpolation": true,
+                "text": "It is a beautiful day"
+              },
+              "code": "'It is a beautiful day'"
+            }
+          },
+          {
             "name": "toMeters",
             "type": "function",
             "value": {
               "widgetType": "expression/code",
               "widgetData": {
-                "text": "(x) -> x/3.028",
+                "text": "# convert feet to meters. using 0.0 as the default.\n(double x=0.0) -> x/3.028",
                 "size": {
                   "width": 0,
-                  "height": 36
+                  "height": 59
                 },
                 "syntax": "tweakflow"
               },
-              "code": "(x) -> x/3.028"
+              "code": "# convert feet to meters. using 0.0 as the default.\n(double x=0.0) -> x/3.028"
             }
           },
           {
-            "name": "pi",
-            "type": "double",
+            "name": "pythagoras",
+            "type": "function",
             "value": {
-              "widgetType": "expression/number",
+              "widgetType": "expression/code",
               "widgetData": {
-                "text": "3.1415926"
+                "text": "# returns 'c' from the Pythagorean theorem: a*a + b*b = c*c\n(a, b) -> (a*a + b*b)**0.5",
+                "size": {
+                  "width": 0,
+                  "height": 66
+                },
+                "syntax": "tweakflow"
               },
-              "code": "3.1415926"
+              "code": "# returns 'c' from the Pythagorean theorem: a*a + b*b = c*c\n(a, b) -> (a*a + b*b)**0.5"
             }
           }
         ]
@@ -71,7 +99,7 @@
       }
     },
     "imports": {
-      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\nimport math from 'std';",
       "size": {
         "width": 0,
         "height": 102

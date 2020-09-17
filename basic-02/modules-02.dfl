@@ -6,7 +6,7 @@
       "comment": {
         "markdown": {
           "text": {
-            "text": "##### Info\n\nShows how to use variables from a config module and output them to the log. \n\n==Run the flow and look at the log output.==\n\nNote: The variables from the config module are explicitly **not** imported here in the data flow but in the logging step.",
+            "text": "##### Info\n\nShows how to use variables from a config module and output them to the log. The variables are imported from the config module here, but that is not\nmandatory.\n\n==Run the flow and look at the log output==.",
             "syntax": "markdown",
             "size": {
               "width": "100%",
@@ -17,7 +17,7 @@
             "width": null,
             "height": 145
           },
-          "view": "edit"
+          "view": "split"
         },
         "editor": {
           "collapsed": false
@@ -32,7 +32,7 @@
       "dialogWidth": "stretch"
     },
     "imports": {
-      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n\n",
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
       "size": {
         "width": 0,
         "height": 102
@@ -51,7 +51,88 @@
     },
     "variables": {
       "variables": {
-        "list": []
+        "list": [
+          {
+            "name": "folder_data",
+            "type": "string",
+            "value": {
+              "widgetType": "expression/code",
+              "widgetData": {
+                "text": "$config.vars.folder_data",
+                "size": {
+                  "width": 0,
+                  "height": 36
+                },
+                "syntax": "tweakflow"
+              },
+              "code": "$config.vars.folder_data"
+            }
+          },
+          {
+            "name": "filename_airports",
+            "type": "string",
+            "value": {
+              "widgetType": "expression/code",
+              "widgetData": {
+                "text": "$config.vars.filename_airports",
+                "size": {
+                  "width": 0,
+                  "height": 36
+                },
+                "syntax": "tweakflow"
+              },
+              "code": "$config.vars.filename_airports"
+            }
+          },
+          {
+            "name": "filename_countries",
+            "type": "string",
+            "value": {
+              "widgetType": "expression/code",
+              "widgetData": {
+                "text": "$config.vars.filename_countries",
+                "size": {
+                  "width": 0,
+                  "height": 36
+                },
+                "syntax": "tweakflow"
+              },
+              "code": "$config.vars.filename_countries"
+            }
+          },
+          {
+            "name": "filename_continent_names_lookup",
+            "type": "string",
+            "value": {
+              "widgetType": "expression/code",
+              "widgetData": {
+                "text": "$config.vars.filename_continent_names_lookup",
+                "size": {
+                  "width": 0,
+                  "height": 36
+                },
+                "syntax": "tweakflow"
+              },
+              "code": "$config.vars.filename_continent_names_lookup"
+            }
+          },
+          {
+            "name": "filename_country_continent_lookup",
+            "type": "string",
+            "value": {
+              "widgetType": "expression/code",
+              "widgetData": {
+                "text": "$config.vars.filename_country_continent_lookup",
+                "size": {
+                  "width": 0,
+                  "height": 36
+                },
+                "syntax": "tweakflow"
+              },
+              "code": "$config.vars.filename_country_continent_lookup"
+            }
+          }
+        ]
       },
       "editor": {
         "collapsed": false
@@ -115,9 +196,9 @@
           "widgetType": "expression/string",
           "widgetData": {
             "interpolation": true,
-            "text": "'Variables from the global module:'"
+            "text": "'Variables from the data flow:'"
           },
-          "code": "'''Variables from the global module:'''"
+          "code": "'''Variables from the data flow:'''"
         },
         "logValues": {
           "widgetType": "expression/data-grid",
@@ -152,14 +233,14 @@
                     "value": {
                       "widgetType": "expression/code",
                       "widgetData": {
-                        "text": "$config.vars.folder_data",
+                        "text": "flow.vars.folder_data",
                         "size": {
                           "width": 0,
                           "height": 36
                         },
                         "syntax": "tweakflow"
                       },
-                      "code": "$config.vars.folder_data"
+                      "code": "flow.vars.folder_data"
                     }
                   }
                 },
@@ -176,14 +257,14 @@
                     "value": {
                       "widgetType": "expression/code",
                       "widgetData": {
-                        "text": "$config.vars.filename_airports",
+                        "text": "flow.vars.filename_airports",
                         "size": {
                           "width": 0,
                           "height": 36
                         },
                         "syntax": "tweakflow"
                       },
-                      "code": "$config.vars.filename_airports"
+                      "code": "flow.vars.filename_airports"
                     }
                   }
                 },
@@ -200,14 +281,14 @@
                     "value": {
                       "widgetType": "expression/code",
                       "widgetData": {
-                        "text": "$config.vars.filename_countries",
+                        "text": "flow.vars.filename_countries",
                         "size": {
                           "width": 0,
                           "height": 36
                         },
                         "syntax": "tweakflow"
                       },
-                      "code": "$config.vars.filename_countries"
+                      "code": "flow.vars.filename_countries"
                     }
                   }
                 },
@@ -224,14 +305,14 @@
                     "value": {
                       "widgetType": "expression/code",
                       "widgetData": {
-                        "text": "$config.vars.filename_continent_names_lookup",
+                        "text": "flow.vars.filename_continent_names_lookup",
                         "size": {
                           "width": 0,
                           "height": 36
                         },
                         "syntax": "tweakflow"
                       },
-                      "code": "$config.vars.filename_continent_names_lookup"
+                      "code": "flow.vars.filename_continent_names_lookup"
                     }
                   }
                 },
@@ -248,21 +329,21 @@
                     "value": {
                       "widgetType": "expression/code",
                       "widgetData": {
-                        "text": "$config.vars.filename_country_continent_lookup",
+                        "text": "\nflow.vars.filename_country_continent_lookup",
                         "size": {
                           "width": 0,
                           "height": 36
                         },
                         "syntax": "tweakflow"
                       },
-                      "code": "$config.vars.filename_country_continent_lookup"
+                      "code": "\nflow.vars.filename_country_continent_lookup"
                     }
                   }
                 }
               ]
             }
           },
-          "code": "[{\n  :name 'folder_data',\n  :value $config.vars.folder_data\n}, {\n  :name 'filename_airports',\n  :value $config.vars.filename_airports\n}, {\n  :name 'filename_countries',\n  :value $config.vars.filename_countries\n}, {\n  :name 'filename_continent_names_lookup',\n  :value $config.vars.filename_continent_names_lookup\n}, {\n  :name 'filename_country_continent_lookup',\n  :value $config.vars.filename_country_continent_lookup\n}]"
+          "code": "[{\n  :name 'folder_data',\n  :value flow.vars.folder_data\n}, {\n  :name 'filename_airports',\n  :value flow.vars.filename_airports\n}, {\n  :name 'filename_countries',\n  :value flow.vars.filename_countries\n}, {\n  :name 'filename_continent_names_lookup',\n  :value flow.vars.filename_continent_names_lookup\n}, {\n  :name 'filename_country_continent_lookup',\n  :value \nflow.vars.filename_country_continent_lookup\n}]"
         },
         "editor": {
           "showEntryVariables": false

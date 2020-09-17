@@ -13,14 +13,15 @@ I recommend to also check the Tweakstreet forum at: https://forum.tweakstreet.io
 Below is the list of available samples, listing the name of the folder, the name of the flow file and a short description what the flow does.
 
 | Folder             | Filename                     | Description                      |
-| :--                | :--------------------------- | :--                              |
+| :--                | :--                          | :--                              |
 | basic-01           | read-csv-01.dfl              | read a CSV file |
 | basic-01           | read-csv-02.dfl              | read and filter a CSV file |
 | basic-01           | read-csv-03.dfl              | read CSV file and remove some fields from the output |
 | basic-01           | read-csv-04.dfl              | read CSV file, add a calculated list field, convert elevationto meters and write to log |
 | basic-01           | read-csv-05.dfl              | read CSV file, group by country and sort by highest number of airports |
 | basic-01           | read-csv-06.dfl              | read CSV file, lookup country details, group by country and sort by highest number of airports |
-| basic-02           | modules-csv-06.dfl           | output variables from a config module to the log |
+| basic-02           | modules-01.dfl               | simply output variables from a config module to the log |
+| basic-02           | modules-02.dfl               | import config variables to the data flow |
 
 
-last update: 2020-09-02
+last update: 2020-09-04
