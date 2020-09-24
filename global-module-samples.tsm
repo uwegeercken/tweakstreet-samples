@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "appVersion": "1.7.1",
+  "appVersion": "1.8.0",
   "properties": {
     "meta": {
       "showingComment": true,
@@ -90,25 +90,36 @@
             "value": {
               "widgetType": "expression/code",
               "widgetData": {
-                "text": "# returns 'c' from the Pythagorean theorem: a*a + b*b = c*c\n(a, b) -> (a*a + b*b)**0.5",
+                "text": "# given 'a' and 'b', returns 'c' \n# from the Pythagorean theorem: a*a + b*b = c*c\n(a, b) -> (a*a + b*b)**0.5",
                 "size": {
                   "width": 0,
-                  "height": 66
+                  "height": 83
                 },
                 "syntax": "tweakflow"
               },
-              "code": "# returns 'c' from the Pythagorean theorem: a*a + b*b = c*c\n(a, b) -> (a*a + b*b)**0.5"
+              "code": "# given 'a' and 'b', returns 'c' \n# from the Pythagorean theorem: a*a + b*b = c*c\n(a, b) -> (a*a + b*b)**0.5"
             }
           },
           {
-            "name": "name",
-            "type": "boolean",
+            "name": "operatingSystems",
+            "type": "list",
             "value": {
               "widgetType": "expression/number",
               "widgetData": {
-                "text": "0"
+                "text": "['Windows','Linux','Mac OS']"
               },
-              "code": "0"
+              "code": "['Windows','Linux','Mac OS']"
+            }
+          },
+          {
+            "name": "position",
+            "type": "dict",
+            "value": {
+              "widgetType": "expression/number",
+              "widgetData": {
+                "text": "{:latitude 54.293056, :longitude 507222}"
+              },
+              "code": "{:latitude 54.293056, :longitude 507222}"
             }
           }
         ]
@@ -126,7 +137,7 @@
       }
     },
     "imports": {
-      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\nimport math,time,data,strings from 'std';",
+      "code": "# import the standard library\nimport core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
       "size": {
         "width": 0,
         "height": 102
