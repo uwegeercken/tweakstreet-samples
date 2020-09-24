@@ -22,6 +22,7 @@ Below is the list of available samples, listing the name of the folder, the name
 | basic-01           | read-csv-06.dfl              | read CSV file, lookup country details, group by country and sort by highest number of airports |
 | basic-02           | modules-01.dfl               | simply output variables from a config module to the log |
 | basic-02           | modules-02.dfl               | import config variables to the data flow |
+| basic-03           | random-data-01.dfl           | generate random data using generators |
 
 Available modules:
 
