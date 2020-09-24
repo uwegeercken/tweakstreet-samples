@@ -12,6 +12,8 @@ I recommend to also check the Tweakstreet forum at: https://forum.tweakstreet.io
 
 Below is the list of available samples, listing the name of the folder, the name of the flow file and a short description what the flow does.
 
+Attention: After starting Tweakstreet, select the root folder where you unzipped this repository to as your workspace folder ('File' menu). And then please make sure that you use the config module: 'conf-module-samples.tsm'. It contains some variables which the samples rely on: in the sidebar on the left which shows the file and directory tree (Strg+B to activate if you don't see it), click on the file 'conf-module-samples.tsm' to open it. Then right-click on the tab which has the name of the file and select 'Set as config module'. Alternatively right-click on '$none' in the blue toolbar at the bottom, select 'Choose config module' and navigate to this file and select it.
+
 | Folder             | Filename                     | Description                      |
 | :--                | :--                          | :--                              |
 | basic-01           | read-csv-01.dfl              | read a CSV file |

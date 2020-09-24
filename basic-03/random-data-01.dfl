@@ -164,7 +164,7 @@
           "comment": {
             "markdown": {
               "text": {
-                "text": "##### Info\n\nthis step generates random data using some of the available generators.\nadditionally in vars some variables and functions are defined. \n\nthe output fields then use some of the fields generated to produce some output.",
+                "text": "##### Info\n\nthis step generates random data using some of the available generators. \nadditionally in vars some variables and functions are defined. the output fields then use some of the fields generated to produce some output.",
                 "syntax": "markdown",
                 "size": {
                   "width": "100%",
@@ -173,9 +173,9 @@
               },
               "size": {
                 "width": null,
-                "height": 160
+                "height": 108
               },
-              "view": "split"
+              "view": "preview"
             },
             "editor": {
               "collapsed": false
@@ -252,7 +252,7 @@
             ]
           },
           "editor": {
-            "collapsed": false
+            "collapsed": true
           }
         },
         "seed": {
@@ -706,7 +706,7 @@
           "showEntryVariables": true,
           "showResultVariables": false,
           "showOutputFields": true,
-          "dialogWidth": "stretch"
+          "dialogWidth": "wide"
         },
         "model": {}
       },

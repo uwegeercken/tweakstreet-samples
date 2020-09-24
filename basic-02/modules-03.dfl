@@ -1,6 +1,6 @@
 {
   "type": "data-flow",
-  "appVersion": "1.7.1",
+  "appVersion": "1.8.0",
   "properties": {
     "meta": {
       "comment": {

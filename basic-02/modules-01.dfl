@@ -1,6 +1,6 @@
 {
   "type": "data-flow",
-  "appVersion": "1.7.1",
+  "appVersion": "1.8.0",
   "properties": {
     "meta": {
       "comment": {
@@ -15,9 +15,9 @@
           },
           "size": {
             "width": null,
-            "height": 145
+            "height": 179
           },
-          "view": "edit"
+          "view": "preview"
         },
         "editor": {
           "collapsed": false
