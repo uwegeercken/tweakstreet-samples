@@ -1,0 +1,127 @@
+{
+  "type": "module",
+  "appVersion": "1.8.0",
+  "properties": {
+    "meta": {
+      "showingComment": true,
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 160
+          },
+          "view": "edit"
+        },
+        "editor": {
+          "collapsed": true
+        }
+      },
+      "role": "normal"
+    },
+    "variables": {
+      "variables": {
+        "list": [
+          {
+            "name": "airlines",
+            "type": "any",
+            "value": {
+              "widgetType": "expression/code",
+              "widgetData": {
+                "text": "['Swiss',\n'Lufthansa',\n'American',\n'Singapore Airlines',\n'Thai Airways',\n'Helvetica',\n'Thomas Cook',\n'Delta',\n'Alitalia',\n'Austrian',\n'Lauda Air',\n'Gulf Air',\n'Garuda',\n'KLM',\n'Iberia',\n'LOT Polish Airlines',\n'Aeroflot',\n'Air Portugal',\n'Ryanair',\n'Air France',\n'Easyjet',\n'Wizz Air',\n'TAP Air Portugal',\n'Finnair',\n'Air Baltic',\n'Air Malta',\n'Virgin Atlantic',\n'Air India',\n'Air China',\n'Austrian Airlines',\n'EgyptAir',\n'Croatia Airlines',\n'Scandinavian Airlines',\n'Iberia',\n'Japan Airlines',\n'Qatar Airways',\n'Royal Air Maroc',\n'Royal Jordanian',\n'Cathay Pacific']",
+                "size": {
+                  "width": 0,
+                  "height": 380
+                },
+                "syntax": "tweakflow"
+              },
+              "code": "['Swiss',\n'Lufthansa',\n'American',\n'Singapore Airlines',\n'Thai Airways',\n'Helvetica',\n'Thomas Cook',\n'Delta',\n'Alitalia',\n'Austrian',\n'Lauda Air',\n'Gulf Air',\n'Garuda',\n'KLM',\n'Iberia',\n'LOT Polish Airlines',\n'Aeroflot',\n'Air Portugal',\n'Ryanair',\n'Air France',\n'Easyjet',\n'Wizz Air',\n'TAP Air Portugal',\n'Finnair',\n'Air Baltic',\n'Air Malta',\n'Virgin Atlantic',\n'Air India',\n'Air China',\n'Austrian Airlines',\n'EgyptAir',\n'Croatia Airlines',\n'Scandinavian Airlines',\n'Iberia',\n'Japan Airlines',\n'Qatar Airways',\n'Royal Air Maroc',\n'Royal Jordanian',\n'Cathay Pacific']"
+            }
+          },
+          {
+            "name": "months",
+            "type": "any",
+            "value": {
+              "widgetType": "expression/code",
+              "widgetData": {
+                "text": "['january',\n'february',\n'march',\n'april',\n'may',\n'june',\n'july',\n'august',\n'september',\n'october',\n'november',\n'december']",
+                "size": {
+                  "width": 0,
+                  "height": 380
+                },
+                "syntax": "tweakflow"
+              },
+              "code": "['january',\n'february',\n'march',\n'april',\n'may',\n'june',\n'july',\n'august',\n'september',\n'october',\n'november',\n'december']"
+            }
+          },
+          {
+            "name": "top_100_words",
+            "type": "any",
+            "value": {
+              "widgetType": "expression/code",
+              "widgetData": {
+                "text": "# top 100 english used words\n['the',\n'and',\n'to',\n'of',\n'a',\n'I',\n'in',\n'was',\n'he',\n'that',\n'it',\n'his',\n'her',\n'you',\n'as',\n'had',\n'with',\n'for',\n'she',\n'not',\n'at',\n'but',\n'be',\n'my',\n'on',\n'have',\n'him',\n'is',\n'said',\n'me',\n'which',\n'by',\n'so',\n'this',\n'all',\n'from',\n'they',\n'no',\n'were',\n'if',\n'would',\n'or',\n'when',\n'what',\n'there',\n'been',\n'one',\n'could',\n'very',\n'an',\n'who',\n'them',\n'Mr',\n'we',\n'now',\n'more',\n'out',\n'do',\n'are',\n'up',\n'their',\n'your',\n'will',\n'little',\n'than',\n'then',\n'some',\n'into',\n'any',\n'well',\n'much',\n'about',\n'time',\n'know',\n'should',\n'man',\n'did',\n'like',\n'upon',\n'such',\n'never',\n'only',\n'good',\n'how',\n'before',\n'other',\n'see',\n'must',\n'am',\n'own',\n'come',\n'down',\n'say',\n'after',\n'think',\n'made',\n'might',\n'being',\n'Mrs',\n'again']",
+                "size": {
+                  "width": 0,
+                  "height": 380
+                },
+                "syntax": "tweakflow"
+              },
+              "code": "# top 100 english used words\n['the',\n'and',\n'to',\n'of',\n'a',\n'I',\n'in',\n'was',\n'he',\n'that',\n'it',\n'his',\n'her',\n'you',\n'as',\n'had',\n'with',\n'for',\n'she',\n'not',\n'at',\n'but',\n'be',\n'my',\n'on',\n'have',\n'him',\n'is',\n'said',\n'me',\n'which',\n'by',\n'so',\n'this',\n'all',\n'from',\n'they',\n'no',\n'were',\n'if',\n'would',\n'or',\n'when',\n'what',\n'there',\n'been',\n'one',\n'could',\n'very',\n'an',\n'who',\n'them',\n'Mr',\n'we',\n'now',\n'more',\n'out',\n'do',\n'are',\n'up',\n'their',\n'your',\n'will',\n'little',\n'than',\n'then',\n'some',\n'into',\n'any',\n'well',\n'much',\n'about',\n'time',\n'know',\n'should',\n'man',\n'did',\n'like',\n'upon',\n'such',\n'never',\n'only',\n'good',\n'how',\n'before',\n'other',\n'see',\n'must',\n'am',\n'own',\n'come',\n'down',\n'say',\n'after',\n'think',\n'made',\n'might',\n'being',\n'Mrs',\n'again']"
+            }
+          },
+          {
+            "name": "seasons",
+            "type": "any",
+            "value": {
+              "widgetType": "expression/code",
+              "widgetData": {
+                "text": "['spring',\n'autumn',\n'summer',\n'winter']",
+                "size": {
+                  "width": 0,
+                  "height": 117
+                },
+                "syntax": "tweakflow"
+              },
+              "code": "['spring',\n'autumn',\n'summer',\n'winter']"
+            }
+          }
+        ]
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "imports": {
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
+      "size": {
+        "width": 0,
+        "height": 102
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "editor": {
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "model": {}
+  }
+}

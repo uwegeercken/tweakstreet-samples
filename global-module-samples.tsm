@@ -31,7 +31,7 @@
         "list": [
           {
             "name": "theNumber",
-            "type": "any",
+            "type": "long",
             "value": {
               "widgetType": "expression/number",
               "widgetData": {
@@ -50,6 +50,22 @@
                 "text": "It is a beautiful day"
               },
               "code": "'It is a beautiful day'"
+            }
+          },
+          {
+            "name": "christmas_20:00",
+            "type": "datetime",
+            "value": {
+              "widgetType": "expression/code",
+              "widgetData": {
+                "text": "2020-12-25T20:00:00@Europe/Berlin",
+                "size": {
+                  "width": 0,
+                  "height": 36
+                },
+                "syntax": "tweakflow"
+              },
+              "code": "2020-12-25T20:00:00@Europe/Berlin"
             }
           },
           {
@@ -83,6 +99,17 @@
               },
               "code": "# returns 'c' from the Pythagorean theorem: a*a + b*b = c*c\n(a, b) -> (a*a + b*b)**0.5"
             }
+          },
+          {
+            "name": "name",
+            "type": "boolean",
+            "value": {
+              "widgetType": "expression/number",
+              "widgetData": {
+                "text": "0"
+              },
+              "code": "0"
+            }
           }
         ]
       },
@@ -99,7 +126,7 @@
       }
     },
     "imports": {
-      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\nimport math from 'std';",
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\nimport math,time,data,strings from 'std';",
       "size": {
         "width": 0,
         "height": 102
