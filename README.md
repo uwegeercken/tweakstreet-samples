@@ -6,13 +6,13 @@ The base components of the Tweakstreet GUI application are: control flows, data 
 
 The samples in this repository are self contained. You do not need anything else except of the Tweakstreet application which can be downloaded from the above site. The repository also contains a folder: _data_. The data files in this folder are used for the samples. For each sample there is also a screenshot available.
 
-Clone this repository, install the Tewakstreet Data Integration Tool and run it.
-
 I recommend to also check the Tweakstreet forum at: https://forum.tweakstreet.io/ which contains tutorials, data challenges and more.
 
-Below is the list of available samples, listing the name of the folder, the name of the flow file and a short description what the flow does.
+Clone this repository, install the Tweakstreet Data Integration Tool and run it. On the Tweakstreet homepage you find a link to the documentation. There is also an introduction tutorial video availlable onm youtube: https://www.youtube.com/watch?v=zjduMFtbmFM.
 
-**Attention**: After starting Tweakstreet, select the folder of the cloned repository as your workspace folder ('File' menu). And then please make sure that you use the config module: 'conf-module-samples.tsm'. It contains some variables which the samples rely on: in the sidebar on the left which shows the file and directory tree (Strg+B to activate if you don't see it), click on the file 'conf-module-samples.tsm' to open it. Then right-click on the tab which has the name of the file and select 'Set as config module'. Alternatively right-click on '$none' in the blue toolbar at the bottom, select 'Choose config module' and navigate to this file and select it.
+**Attention**: After starting Tweakstreet, select the folder of the cloned repository as your workspace folder ('File' menu). And then please make sure that you use the config module: 'conf-module-samples.tsm'. It contains some variables which the samples rely on: in the sidebar on the left which shows the file and directory tree (Strg+B to activate it if you don't see it), click on the file 'conf-module-samples.tsm' to open it. Then right-click on the tab which carries the name of the file and select 'Set as config module'. Alternatively right-click on '$none' in the blue toolbar at the bottom, select 'Choose config module' and navigate to this file and select it.
+
+Below is the list of available samples, listing the name of the folder, the name of the flow file and a short description what the flow does.
 
 | Folder             | Filename                     | Description                      |
 | :--                | :--                          | :--                              |
