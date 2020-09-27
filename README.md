@@ -25,6 +25,7 @@ Below is the list of available samples, listing the name of the folder, the name
 | basic-02           | modules-01.dfl               | simply output variables from a config module to the log |
 | basic-02           | modules-02.dfl               | import config variables to the data flow |
 | basic-03           | random-data-01.dfl           | generate random data using generators |
+| basic-03           | random-data-02.dfl           | generate random data using generators, merge results |
 
 Available modules:
 
@@ -35,4 +36,4 @@ Available modules:
 | random-data-lists.tsm        | various lists with random data. used with the "generate from list" generator |
 
 
-last update: 2020-09-24
+last update: 2020-09-27

@@ -6,7 +6,7 @@
       "comment": {
         "markdown": {
           "text": {
-            "text": "##### Info\n\nShows how to use the generators to produce random data\n\nFlow uses variables from the module: random-data-lists.tsm which contains several user defined lists",
+            "text": "##### Info\n\nShows how to use the generators to produce random data and merge the resulting dictionaries\n\n",
             "syntax": "markdown",
             "size": {
               "width": "100%",
@@ -32,7 +32,7 @@
       "dialogWidth": "wide"
     },
     "imports": {
-      "code": "# import the standard library\nimport core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n# import some variables/lists to generate random data from\nimport vars as lists from '../random-data-lists.tsm';",
+      "code": "# import the standard library\nimport core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
       "size": {
         "width": 0,
         "height": 102
@@ -85,7 +85,7 @@
           "comment": {
             "markdown": {
               "text": {
-                "text": "##### Info\n\ngenerate 100 rows, but no output fields are generated",
+                "text": "##### Info\n\ngenerate 100 rows, output only the generated row number",
                 "syntax": "markdown",
                 "size": {
                   "width": "100%",
@@ -94,7 +94,7 @@
               },
               "size": {
                 "width": null,
-                "height": 96
+                "height": 95
               },
               "view": "preview"
             },
@@ -128,7 +128,19 @@
         },
         "outputFields": {
           "outputFields": {
-            "list": []
+            "list": [
+              {
+                "name": "row_number",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.row_nr"
+                  },
+                  "code": "::results.row_nr"
+                }
+              }
+            ]
           },
           "editor": {
             "collapsed": false
@@ -252,7 +264,7 @@
             ]
           },
           "editor": {
-            "collapsed": false
+            "collapsed": true
           }
         },
         "seed": {
@@ -343,149 +355,6 @@
                   },
                   "code": "let {\n  make_generator: (double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$workplace'};\n}\nmake_generator(0)\n"
                 }
-              },
-              {
-                "type": "any",
-                "name": "countries",
-                "generator": {
-                  "widgetType": "expression/generate-from-list",
-                  "widgetData": {
-                    "items": {
-                      "widgetType": "expression/code",
-                      "widgetData": {
-                        "text": "# from the entry vars section\nvars.countries_selected",
-                        "size": {
-                          "width": 0,
-                          "height": 53
-                        },
-                        "syntax": "tweakflow"
-                      },
-                      "code": "# from the entry vars section\nvars.countries_selected"
-                    },
-                    "distribution": {
-                      "widgetType": "expression/select",
-                      "widgetData": {
-                        "family": "expression/select/distribution",
-                        "value": "uniform"
-                      },
-                      "code": "'uniform'"
-                    },
-                    "nilChance": {
-                      "widgetType": "expression/number",
-                      "widgetData": {
-                        "text": "0"
-                      },
-                      "code": "0"
-                    },
-                    "editor": {
-                      "collapsed": true
-                    },
-                    "model": {}
-                  },
-                  "code": "let {\n  make_generator: (list items, any distribution, double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$pick_one'};\n}\nmake_generator(# from the entry vars section\nvars.countries_selected, 'uniform', 0)\n"
-                }
-              },
-              {
-                "type": "any",
-                "name": "airlines",
-                "generator": {
-                  "widgetType": "expression/generate-from-list",
-                  "widgetData": {
-                    "items": {
-                      "widgetType": "expression/code",
-                      "widgetData": {
-                        "text": "# from the random-data-lists.tsm module imported in the data flow\nlists.airlines",
-                        "size": {
-                          "width": 0,
-                          "height": 53
-                        },
-                        "syntax": "tweakflow"
-                      },
-                      "code": "# from the random-data-lists.tsm module imported in the data flow\nlists.airlines"
-                    },
-                    "distribution": {
-                      "widgetType": "expression/select",
-                      "widgetData": {
-                        "family": "expression/select/distribution",
-                        "value": "uniform"
-                      },
-                      "code": "'uniform'"
-                    },
-                    "nilChance": {
-                      "widgetType": "expression/number",
-                      "widgetData": {
-                        "text": "0"
-                      },
-                      "code": "0"
-                    },
-                    "editor": {
-                      "collapsed": false
-                    },
-                    "model": {}
-                  },
-                  "code": "let {\n  make_generator: (list items, any distribution, double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$pick_one'};\n}\nmake_generator(# from the random-data-lists.tsm module imported in the data flow\nlists.airlines, 'uniform', 0)\n"
-                }
-              },
-              {
-                "type": "any",
-                "name": "birthdates",
-                "generator": {
-                  "widgetType": "expression/generate-datetime",
-                  "widgetData": {
-                    "start": {
-                      "widgetType": "expression/code",
-                      "widgetData": {
-                        "text": "vars.startdate",
-                        "size": {
-                          "width": 0,
-                          "height": 36
-                        },
-                        "syntax": "tweakflow"
-                      },
-                      "code": "vars.startdate"
-                    },
-                    "end": {
-                      "widgetType": "expression/code",
-                      "widgetData": {
-                        "text": "vars.enddate",
-                        "size": {
-                          "width": 0,
-                          "height": 36
-                        },
-                        "syntax": "tweakflow"
-                      },
-                      "code": "vars.enddate"
-                    },
-                    "resolution": {
-                      "widgetType": "expression/select",
-                      "widgetData": {
-                        "family": "expression/select/datetimeResolution",
-                        "value": "day"
-                      },
-                      "code": "'day'"
-                    },
-                    "distribution": {
-                      "widgetType": "expression/select",
-                      "widgetData": {
-                        "family": "expression/select/distribution",
-                        "value": "prefer_middle"
-                      },
-                      "code": "'prefer_middle'"
-                    },
-                    "nilChance": {
-                      "widgetType": "expression/number",
-                      "widgetData": {
-                        "text": "0"
-                      },
-                      "code": "0"
-                    },
-                    "editor": {
-                      "collapsed": true
-                    },
-                    "model": {}
-                  },
-                  "code": "let {\n  make_generator: (datetime start, datetime end, string resolution, any distribution, double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$datetime'};\n}\nmake_generator(vars.startdate, vars.enddate, 'day', 'prefer_middle', 0)\n"
-                }
               }
             ]
           },
@@ -505,195 +374,51 @@
           "outputFields": {
             "list": [
               {
-                "name": "salutation",
-                "type": "string",
+                "name": "person",
+                "type": "any",
                 "value": {
                   "widgetType": "expression/code",
                   "widgetData": {
-                    "text": "# calling the salutation function from the vars section\nvars.salutation(results.generated[:persons][:gender])",
-                    "size": {
-                      "width": 0,
-                      "height": 56
-                    },
-                    "syntax": "tweakflow"
-                  },
-                  "code": "# calling the salutation function from the vars section\nvars.salutation(results.generated[:persons][:gender])"
-                }
-              },
-              {
-                "name": "full_name",
-                "type": "string",
-                "value": {
-                  "widgetType": "expression/code",
-                  "widgetData": {
-                    "text": "# concatenating given and family name\nresults.generated[:persons][:given_name] .. ' ' .. results.generated[:persons][:family_name]",
-                    "size": {
-                      "width": 0,
-                      "height": 57
-                    },
-                    "syntax": "tweakflow"
-                  },
-                  "code": "# concatenating given and family name\nresults.generated[:persons][:given_name] .. ' ' .. results.generated[:persons][:family_name]"
-                }
-              },
-              {
-                "name": "street",
-                "type": "string",
-                "value": {
-                  "widgetType": "expression/code",
-                  "widgetData": {
-                    "text": "# concatenating street and house number\nresults.generated[:addresses][:house_number] .. ', ' .. results.generated[:addresses][:street]",
-                    "size": {
-                      "width": 0,
-                      "height": 58
-                    },
-                    "syntax": "tweakflow"
-                  },
-                  "code": "# concatenating street and house number\nresults.generated[:addresses][:house_number] .. ', ' .. results.generated[:addresses][:street]"
-                }
-              },
-              {
-                "name": "city",
-                "type": "string",
-                "value": {
-                  "widgetType": "expression/code",
-                  "widgetData": {
-                    "text": "results.generated[:addresses][:city]",
+                    "text": "results.generated[:persons]",
                     "size": {
                       "width": 0,
                       "height": 36
                     },
                     "syntax": "tweakflow"
                   },
-                  "code": "results.generated[:addresses][:city]"
+                  "code": "results.generated[:persons]"
                 }
               },
               {
-                "name": " postal_code",
-                "type": "string",
+                "name": "address",
+                "type": "any",
                 "value": {
                   "widgetType": "expression/code",
                   "widgetData": {
-                    "text": "results.generated[:addresses][:postal_code]",
+                    "text": "results.generated[:addresses]",
                     "size": {
                       "width": 0,
                       "height": 36
                     },
                     "syntax": "tweakflow"
                   },
-                  "code": "results.generated[:addresses][:postal_code]"
+                  "code": "results.generated[:addresses]"
                 }
               },
               {
-                "name": "email",
-                "type": "string",
+                "name": "place",
+                "type": "any",
                 "value": {
                   "widgetType": "expression/code",
                   "widgetData": {
-                    "text": "results.generated[:persons][:email]",
+                    "text": "results.generated[:places]",
                     "size": {
                       "width": 0,
                       "height": 36
                     },
                     "syntax": "tweakflow"
                   },
-                  "code": "results.generated[:persons][:email]"
-                }
-              },
-              {
-                "name": "birthdate",
-                "type": "datetime",
-                "value": {
-                  "widgetType": "expression/code",
-                  "widgetData": {
-                    "text": "results.generated[:birthdates]",
-                    "size": {
-                      "width": 0,
-                      "height": 36
-                    },
-                    "syntax": "tweakflow"
-                  },
-                  "code": "results.generated[:birthdates]"
-                }
-              },
-              {
-                "name": "age",
-                "type": "long",
-                "value": {
-                  "widgetType": "expression/code",
-                  "widgetData": {
-                    "text": "# using the time library from the standard module to calculate age\ntime.years_between(birthdate,flow.run.time_started)",
-                    "size": {
-                      "width": 0,
-                      "height": 55
-                    },
-                    "syntax": "tweakflow"
-                  },
-                  "code": "# using the time library from the standard module to calculate age\ntime.years_between(birthdate,flow.run.time_started)"
-                }
-              },
-              {
-                "name": "company",
-                "type": "string",
-                "value": {
-                  "widgetType": "expression/code",
-                  "widgetData": {
-                    "text": "results.generated[:places][:company]",
-                    "size": {
-                      "width": 0,
-                      "height": 36
-                    },
-                    "syntax": "tweakflow"
-                  },
-                  "code": "results.generated[:places][:company]"
-                }
-              },
-              {
-                "name": "department",
-                "type": "string",
-                "value": {
-                  "widgetType": "expression/code",
-                  "widgetData": {
-                    "text": "results.generated[:places][:department]",
-                    "size": {
-                      "width": 0,
-                      "height": 36
-                    },
-                    "syntax": "tweakflow"
-                  },
-                  "code": "results.generated[:places][:department]"
-                }
-              },
-              {
-                "name": "industry",
-                "type": "string",
-                "value": {
-                  "widgetType": "expression/code",
-                  "widgetData": {
-                    "text": "results.generated[:places][:industry]",
-                    "size": {
-                      "width": 0,
-                      "height": 36
-                    },
-                    "syntax": "tweakflow"
-                  },
-                  "code": "results.generated[:places][:industry]"
-                }
-              },
-              {
-                "name": "country",
-                "type": "string",
-                "value": {
-                  "widgetType": "expression/code",
-                  "widgetData": {
-                    "text": "# countries come from a list in the variable section\nresults.generated[:countries]",
-                    "size": {
-                      "width": 0,
-                      "height": 79
-                    },
-                    "syntax": "tweakflow"
-                  },
-                  "code": "# countries come from a list in the variable section\nresults.generated[:countries]"
+                  "code": "results.generated[:places]"
                 }
               }
             ]
@@ -711,7 +436,7 @@
         "model": {}
       },
       "pos": {
-        "x": 698,
+        "x": 666,
         "y": 154
       }
     },
@@ -748,7 +473,159 @@
         "editor": {}
       },
       "pos": {
-        "x": 938,
+        "x": 1322,
+        "y": 154
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.calculator_2e6ec32e-9914-4296-895d-f001ee588b07",
+      "name": "Calculator",
+      "type": "com.twineworks.tweakstreet.library.steps.map.calculator",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Calculator",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nmerge dictionaries together into one",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "merged_dicts",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "# three dictionaries merged\ndata.merge([in.person, in.place, in.address])",
+                    "size": {
+                      "width": 0,
+                      "height": 59
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "# three dictionaries merged\ndata.merge([in.person, in.place, in.address])"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": true,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 906,
+        "y": 154
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.pickfields_dad176f0-07b7-44c3-802f-364e64f6331b",
+      "name": "Pick Fields",
+      "type": "com.twineworks.tweakstreet.library.steps.map.pickfields",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Pick Fields",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nkeeping only the merged field and removing the dictionaries",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "mode": {
+          "value": "whitelist"
+        },
+        "fieldRefs": {
+          "fieldRefs": {
+            "list": [
+              {
+                "field": {
+                  "value": {
+                    "gate": "in",
+                    "name": "row_number"
+                  }
+                }
+              },
+              {
+                "field": {
+                  "value": {
+                    "gate": "in",
+                    "name": "merged_dicts"
+                  }
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {},
+        "model": {}
+      },
+      "pos": {
+        "x": 1114,
         "y": 154
       }
     }
@@ -770,8 +647,38 @@
       }
     },
     {
-      "id": "f3d82337-667e-4036-af2e-5af19de6d886",
+      "id": "50e26340-f866-4d61-b9bf-351b8dd14038",
       "fromStep": "com.twineworks.tweakstreet.library.steps.map.randomdata_191af502-ff21-40b2-9871-7cbabe71f15d",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.calculator_2e6ec32e-9914-4296-895d-f001ee588b07",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "f3a2e69d-c2f3-4553-9d11-f6308b268eba",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.calculator_2e6ec32e-9914-4296-895d-f001ee588b07",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.pickfields_dad176f0-07b7-44c3-802f-364e64f6331b",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "1fe5f813-14c3-44f9-b3bb-1ce0854c1788",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.pickfields_dad176f0-07b7-44c3-802f-364e64f6331b",
       "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_3f6c5207-313d-4e66-b6e7-337e896466a9",
       "fromGate": "out",
       "toGate": "in",
