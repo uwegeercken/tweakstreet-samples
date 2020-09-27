@@ -6,7 +6,7 @@
       "comment": {
         "markdown": {
           "text": {
-            "text": "##### Info\n\nShows how to use the generators to produce random data\n\nFlow uses variables from the global module: conf-module-samples.tsm",
+            "text": "##### Info\n\nShows how to use the generators to produce random data\n\nFlow uses variables from the module: random-data-lists.tsm which contains several user defined lists",
             "syntax": "markdown",
             "size": {
               "width": "100%",
@@ -17,7 +17,7 @@
             "width": null,
             "height": 129
           },
-          "view": "preview"
+          "view": "edit"
         },
         "editor": {
           "collapsed": false
@@ -32,7 +32,7 @@
       "dialogWidth": "wide"
     },
     "imports": {
-      "code": "# import the standard library\nimport core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\nimport vars as lists from '../random-data-lists.tsm';",
+      "code": "# import the standard library\nimport core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n# import some variables/lists to generate random data from\nimport vars as lists from '../random-data-lists.tsm';",
       "size": {
         "width": 0,
         "height": 102
@@ -252,7 +252,7 @@
             ]
           },
           "editor": {
-            "collapsed": true
+            "collapsed": false
           }
         },
         "seed": {
@@ -353,14 +353,14 @@
                     "items": {
                       "widgetType": "expression/code",
                       "widgetData": {
-                        "text": "vars.countries_selected",
+                        "text": "# from the entry vars section\nvars.countries_selected",
                         "size": {
                           "width": 0,
-                          "height": 36
+                          "height": 53
                         },
                         "syntax": "tweakflow"
                       },
-                      "code": "vars.countries_selected"
+                      "code": "# from the entry vars section\nvars.countries_selected"
                     },
                     "distribution": {
                       "widgetType": "expression/select",
@@ -382,7 +382,7 @@
                     },
                     "model": {}
                   },
-                  "code": "let {\n  make_generator: (list items, any distribution, double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$pick_one'};\n}\nmake_generator(vars.countries_selected, 'uniform', 0)\n"
+                  "code": "let {\n  make_generator: (list items, any distribution, double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$pick_one'};\n}\nmake_generator(# from the entry vars section\nvars.countries_selected, 'uniform', 0)\n"
                 }
               },
               {
@@ -394,14 +394,14 @@
                     "items": {
                       "widgetType": "expression/code",
                       "widgetData": {
-                        "text": "lists.top_100_words",
+                        "text": "# from the random-data-lists.tsm module imported in the data flow\nlists.top_100_words",
                         "size": {
                           "width": 0,
-                          "height": 36
+                          "height": 53
                         },
                         "syntax": "tweakflow"
                       },
-                      "code": "lists.top_100_words"
+                      "code": "# from the random-data-lists.tsm module imported in the data flow\nlists.top_100_words"
                     },
                     "distribution": {
                       "widgetType": "expression/select",
@@ -423,7 +423,7 @@
                     },
                     "model": {}
                   },
-                  "code": "let {\n  make_generator: (list items, any distribution, double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$pick_one'};\n}\nmake_generator(lists.top_100_words, 'uniform', 0)\n"
+                  "code": "let {\n  make_generator: (list items, any distribution, double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$pick_one'};\n}\nmake_generator(# from the random-data-lists.tsm module imported in the data flow\nlists.top_100_words, 'uniform', 0)\n"
                 }
               },
               {
@@ -686,14 +686,14 @@
                 "value": {
                   "widgetType": "expression/code",
                   "widgetData": {
-                    "text": "results.generated[:countries]",
+                    "text": "# countries come from a list in the variable section\nresults.generated[:countries]",
                     "size": {
                       "width": 0,
-                      "height": 36
+                      "height": 79
                     },
                     "syntax": "tweakflow"
                   },
-                  "code": "results.generated[:countries]"
+                  "code": "# countries come from a list in the variable section\nresults.generated[:countries]"
                 }
               }
             ]
