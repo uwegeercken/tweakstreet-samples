@@ -1,12 +1,12 @@
 {
   "type": "data-flow",
-  "appVersion": "1.8.0",
+  "appVersion": "1.8.1",
   "properties": {
     "meta": {
       "comment": {
         "markdown": {
           "text": {
-            "text": "##### Info\n\nShows how to use the generators to produce random data\n",
+            "text": "##### Info\n\nShows how to use the generators to produce random data\n\nFlow uses variables from the global module: conf-module-samples.tsm",
             "syntax": "markdown",
             "size": {
               "width": "100%",
@@ -15,9 +15,9 @@
           },
           "size": {
             "width": null,
-            "height": 96
+            "height": 129
           },
-          "view": "edit"
+          "view": "preview"
         },
         "editor": {
           "collapsed": false
