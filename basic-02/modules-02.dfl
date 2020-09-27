@@ -1,6 +1,6 @@
 {
   "type": "data-flow",
-  "appVersion": "1.8.0",
+  "appVersion": "1.8.1",
   "properties": {
     "meta": {
       "comment": {
@@ -175,9 +175,9 @@
               },
               "size": {
                 "width": null,
-                "height": 160
+                "height": 100
               },
-              "view": "edit"
+              "view": "preview"
             },
             "editor": {
               "collapsed": false
@@ -329,21 +329,21 @@
                     "value": {
                       "widgetType": "expression/code",
                       "widgetData": {
-                        "text": "\nflow.vars.filename_country_continent_lookup",
+                        "text": "flow.vars.filename_country_continent_lookup",
                         "size": {
                           "width": 0,
                           "height": 36
                         },
                         "syntax": "tweakflow"
                       },
-                      "code": "\nflow.vars.filename_country_continent_lookup"
+                      "code": "flow.vars.filename_country_continent_lookup"
                     }
                   }
                 }
               ]
             }
           },
-          "code": "[{\n  :name 'folder_data',\n  :value flow.vars.folder_data\n}, {\n  :name 'filename_airports',\n  :value flow.vars.filename_airports\n}, {\n  :name 'filename_countries',\n  :value flow.vars.filename_countries\n}, {\n  :name 'filename_continent_names_lookup',\n  :value flow.vars.filename_continent_names_lookup\n}, {\n  :name 'filename_country_continent_lookup',\n  :value \nflow.vars.filename_country_continent_lookup\n}]"
+          "code": "[{\n  :name 'folder_data',\n  :value flow.vars.folder_data\n}, {\n  :name 'filename_airports',\n  :value flow.vars.filename_airports\n}, {\n  :name 'filename_countries',\n  :value flow.vars.filename_countries\n}, {\n  :name 'filename_continent_names_lookup',\n  :value flow.vars.filename_continent_names_lookup\n}, {\n  :name 'filename_country_continent_lookup',\n  :value flow.vars.filename_country_continent_lookup\n}]"
         },
         "editor": {
           "showEntryVariables": false

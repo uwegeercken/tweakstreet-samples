@@ -1,6 +1,6 @@
 {
   "type": "data-flow",
-  "appVersion": "1.8.0",
+  "appVersion": "1.8.1",
   "properties": {
     "meta": {
       "comment": {
@@ -15,7 +15,7 @@
           },
           "size": {
             "width": null,
-            "height": 145
+            "height": 130
           },
           "view": "preview"
         },
@@ -35,7 +35,7 @@
       "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n\nimport vars as general from '../global-module-samples.tsm';",
       "size": {
         "width": 0,
-        "height": 133
+        "height": 100
       },
       "editor": {
         "collapsed": false
@@ -85,7 +85,7 @@
           "comment": {
             "markdown": {
               "text": {
-                "text": "##### Info\n\nUse variables from a generic module.",
+                "text": "##### Info\n\nUse function from a generic module.",
                 "syntax": "markdown",
                 "size": {
                   "width": "100%",
@@ -94,7 +94,7 @@
               },
               "size": {
                 "width": null,
-                "height": 160
+                "height": 97
               },
               "view": "edit"
             },
@@ -115,19 +115,19 @@
           "outputFields": {
             "list": [
               {
-                "name": "c-square",
+                "name": "c",
                 "type": "any",
                 "value": {
                   "widgetType": "expression/code",
                   "widgetData": {
-                    "text": "general.pythagoras(5,5)",
+                    "text": "# funtion imported in the dataflow \n# from global-module-samples.tsm\ngeneral.pythagoras(5,5)",
                     "size": {
                       "width": 0,
-                      "height": 36
+                      "height": 82
                     },
                     "syntax": "tweakflow"
                   },
-                  "code": "general.pythagoras(5,5)"
+                  "code": "# funtion imported in the dataflow \n# from global-module-samples.tsm\ngeneral.pythagoras(5,5)"
                 }
               }
             ]

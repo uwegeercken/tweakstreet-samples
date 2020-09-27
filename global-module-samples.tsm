@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "appVersion": "1.8.0",
+  "appVersion": "1.8.1",
   "properties": {
     "meta": {
       "showingComment": true,
@@ -16,9 +16,9 @@
           },
           "size": {
             "width": null,
-            "height": 160
+            "height": 90
           },
-          "view": "edit"
+          "view": "preview"
         },
         "editor": {
           "collapsed": false
@@ -140,7 +140,7 @@
       "code": "# import the standard library\nimport core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
       "size": {
         "width": 0,
-        "height": 102
+        "height": 68
       },
       "editor": {
         "collapsed": false
