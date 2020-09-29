@@ -28,6 +28,7 @@ Below is the list of available samples, listing the name of the folder, the name
 | basic-03           | random-data-01.dfl           | generate random data using generators |
 | basic-03           | random-data-02.dfl           | generate random data using generators, merge results |
 | basic-03           | random-data-03.dfl           | generate random data using generators, merge results directly in random data step |
+| basic-04           | split-01.dfl                 | split a string of multiple key/value pairs into its components and create a dictionary |
 
 Available modules:
 

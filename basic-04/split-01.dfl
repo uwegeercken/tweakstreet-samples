@@ -1,0 +1,585 @@
+{
+  "type": "data-flow",
+  "appVersion": "1.8.1",
+  "properties": {
+    "meta": {
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "##### Info\n\nSplit a string of multiple key/value pairs into its components and create a dictionary. Two different ways of achieving it.",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 98
+          },
+          "view": "preview"
+        },
+        "editor": {
+          "collapsed": false
+        }
+      },
+      "showingComment": true
+    },
+    "editor": {
+      "showParameters": true,
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "imports": {
+      "code": "# import the standard library\nimport core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
+      "size": {
+        "width": 0,
+        "height": 102
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "parameters": {
+      "parameters": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "variables": {
+      "variables": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    }
+  },
+  "steps": [
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.flatmap.datatable_72d56f5a-3568-4667-acee-91eebabca667",
+      "name": "Data Table",
+      "type": "com.twineworks.tweakstreet.library.steps.flatmap.datatable",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Data Table",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\neach value in the string is actually a key/value pair",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "items": {
+          "widgetType": "expression/data-grid",
+          "widgetData": {
+            "fields": [
+              {
+                "id": "name",
+                "name": "str"
+              }
+            ],
+            "gen": {
+              "as": "rows",
+              "of": "dict",
+              "meta": false
+            },
+            "table": {
+              "list": [
+                {
+                  "fields": {
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "300:Foo|400:Bar|500:Nar"
+                      },
+                      "code": "'300:Foo|400:Bar|500:Nar'"
+                    }
+                  }
+                },
+                {
+                  "fields": {
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "100:Yin|200:Yang"
+                      },
+                      "code": "'100:Yin|200:Yang'"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "code": "[{\n  :str '300:Foo|400:Bar|500:Nar'\n}, {\n  :str '100:Yin|200:Yang'\n}]"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "str",
+                "type": "string",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.row[:str]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.row[:str]"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 138,
+        "y": 234
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.calculator_7d1697aa-4a6b-4263-9c34-ab1281cf0f36",
+      "name": "variant 1",
+      "type": "com.twineworks.tweakstreet.library.steps.map.calculator",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "variant 1",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nuse strings split and map",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 91
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": [
+              {
+                "name": "split_to_entry_strings",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "(entries) -> strings.split(entries, \"|\")",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "(entries) -> strings.split(entries, \"|\")"
+                }
+              },
+              {
+                "name": "split_entry",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "(entry) -> strings.split(entry, \":\")",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "(entry) -> strings.split(entry, \":\")"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "entry_strings",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "vars.split_to_entry_strings(in.str)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "vars.split_to_entry_strings(in.str)"
+                }
+              },
+              {
+                "name": "entries",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "data.map(entry_strings, vars.split_entry)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "data.map(entry_strings, vars.split_entry)"
+                }
+              },
+              {
+                "name": "out",
+                "type": "dict",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "# list zu dict \n# see https://twineworks.github.io/tweakflow/reference.html#list\nentries",
+                    "size": {
+                      "width": 0,
+                      "height": 98
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "# list zu dict \n# see https://twineworks.github.io/tweakflow/reference.html#list\nentries"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": true,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 266,
+        "y": 138
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_aff4f716-41b2-43b7-98ae-633e6a90a423",
+      "name": "Dummy",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy"
+        },
+        "editor": {}
+      },
+      "pos": {
+        "x": 426,
+        "y": 138
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.calculator_64c8308f-6809-46c1-b346-55bec69b1f97",
+      "name": "variant 2",
+      "type": "com.twineworks.tweakstreet.library.steps.map.calculator",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "variant 2",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nuse regex splittinga and create slices",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 94
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": [
+              {
+                "name": "splitter",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "regex.splitting('[|:]')",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "regex.splitting('[|:]')"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "pieces",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "vars.splitter(in.str)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "vars.splitter(in.str)"
+                }
+              },
+              {
+                "name": "entries",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "data.slices(pieces, 2)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "data.slices(pieces, 2)"
+                }
+              },
+              {
+                "name": "out",
+                "type": "dict",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "# list zu dict \n# see https://twineworks.github.io/tweakflow/reference.html#list\nentries",
+                    "size": {
+                      "width": 0,
+                      "height": 98
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "# list zu dict \n# see https://twineworks.github.io/tweakflow/reference.html#list\nentries"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": true,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 266,
+        "y": 330
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_0b161293-7b02-409a-9359-0e756e6dac01",
+      "name": "Dummy",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy"
+        },
+        "editor": {}
+      },
+      "pos": {
+        "x": 426,
+        "y": 330
+      }
+    }
+  ],
+  "hops": [
+    {
+      "id": "a14fea83-b420-4a52-8a06-e42a713d60ab",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.flatmap.datatable_72d56f5a-3568-4667-acee-91eebabca667",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.calculator_7d1697aa-4a6b-4263-9c34-ab1281cf0f36",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "60c4e2b5-0348-48a7-81ae-69c3ebfc46bf",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.calculator_7d1697aa-4a6b-4263-9c34-ab1281cf0f36",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_aff4f716-41b2-43b7-98ae-633e6a90a423",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "b60e0d8c-7e6d-4124-9a6e-46e1c866b3c6",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.calculator_64c8308f-6809-46c1-b346-55bec69b1f97",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_0b161293-7b02-409a-9359-0e756e6dac01",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "6e6cb70e-a368-42c7-ab66-1c6dc0b99330",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.flatmap.datatable_72d56f5a-3568-4667-acee-91eebabca667",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.calculator_64c8308f-6809-46c1-b346-55bec69b1f97",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    }
+  ]
+}
