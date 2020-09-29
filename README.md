@@ -27,6 +27,7 @@ Below is the list of available samples, listing the name of the folder, the name
 | basic-02           | modules-03.dfl               | call function from a global module |
 | basic-03           | random-data-01.dfl           | generate random data using generators |
 | basic-03           | random-data-02.dfl           | generate random data using generators, merge results |
+| basic-03           | random-data-03.dfl           | generate random data using generators, merge results directly in random data step |
 
 Available modules:
 
@@ -37,4 +38,4 @@ Available modules:
 | random-data-lists.tsm        | various lists with random data. used with the "generate from list" generator |
 
 
-last update: 2020-09-27
+last update: 2020-09-29
