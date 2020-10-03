@@ -1,0 +1,635 @@
+{
+  "type": "data-flow",
+  "appVersion": "1.9.0",
+  "properties": {
+    "meta": {
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "##### Info\n\nShows how to use the list and dict generators to produce random data. The list has a dynamic number of entries and the dict has\n two keys with generated value.\n",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 123
+          },
+          "view": "preview"
+        },
+        "editor": {
+          "collapsed": false
+        }
+      },
+      "showingComment": true
+    },
+    "editor": {
+      "showParameters": true,
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "imports": {
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
+      "size": {
+        "width": 0,
+        "height": 102
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "parameters": {
+      "parameters": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "variables": {
+      "variables": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    }
+  },
+  "steps": [
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_c204b69c-6a66-4403-bf08-775966933582",
+      "name": "Dummy",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy",
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": ""
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "editor": {
+                "collapsed": true
+              }
+            }
+          },
+          "showingComment": true
+        },
+        "editor": {}
+      },
+      "pos": {
+        "x": 714,
+        "y": 138
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.randomdata_817c9328-846d-46d9-a822-ba99c0a66687",
+      "name": "Random Data",
+      "type": "com.twineworks.tweakstreet.library.steps.map.randomdata",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Random Data",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nGenerates a number between 1 and 4 which is used to get a dynamic number of words in variable 'list'.\nGenerates a person and then uses its given name value for the generated dict which has a given_name and an age key. The age is also generated.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 145
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "seed": {
+          "widgetType": "expression/number",
+          "widgetData": {
+            "text": ""
+          },
+          "code": "nil"
+        },
+        "generatorVariables": {
+          "generatorVars": {
+            "list": [
+              {
+                "type": "long",
+                "name": "number",
+                "generator": {
+                  "widgetType": "expression/generate-number",
+                  "widgetData": {
+                    "start": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "1"
+                      },
+                      "code": "1"
+                    },
+                    "end": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "5"
+                      },
+                      "code": "5"
+                    },
+                    "decimalPlaces": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "0"
+                      },
+                      "code": "0"
+                    },
+                    "distribution": {
+                      "widgetType": "expression/select",
+                      "widgetData": {
+                        "family": "expression/select/distribution",
+                        "value": "uniform"
+                      },
+                      "code": "'uniform'"
+                    },
+                    "nilChance": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "0"
+                      },
+                      "code": "0"
+                    },
+                    "editor": {
+                      "collapsed": true
+                    },
+                    "model": {}
+                  },
+                  "code": "let {\n  make_generator: (double start, double end, long decimalPlaces, any distribution, double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$number'};\n}\nmake_generator(1, 5, 0, 'uniform', 0)\n"
+                }
+              },
+              {
+                "type": "any",
+                "name": "person",
+                "generator": {
+                  "widgetType": "expression/generate-person",
+                  "widgetData": {
+                    "nilChance": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "0"
+                      },
+                      "code": "0"
+                    },
+                    "editor": {
+                      "collapsed": true
+                    },
+                    "model": {}
+                  },
+                  "code": "let {\n  make_generator: (double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$person'};\n}\nmake_generator(0)\n"
+                }
+              },
+              {
+                "type": "any",
+                "name": "list",
+                "generator": {
+                  "widgetType": "expression/generate-list",
+                  "widgetData": {
+                    "count": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "generated.number"
+                      },
+                      "code": "generated.number"
+                    },
+                    "generator": {
+                      "widgetType": "expression/generate-from-list",
+                      "widgetData": {
+                        "items": {
+                          "widgetType": "expression/list",
+                          "widgetData": {
+                            "table": {
+                              "list": [
+                                {
+                                  "value": {
+                                    "widgetType": "expression/string",
+                                    "widgetData": {
+                                      "interpolation": true,
+                                      "text": "me"
+                                    },
+                                    "code": "'me'"
+                                  }
+                                },
+                                {
+                                  "value": {
+                                    "widgetType": "expression/string",
+                                    "widgetData": {
+                                      "interpolation": true,
+                                      "text": "you"
+                                    },
+                                    "code": "'you'"
+                                  }
+                                },
+                                {
+                                  "value": {
+                                    "widgetType": "expression/string",
+                                    "widgetData": {
+                                      "interpolation": true,
+                                      "text": "he"
+                                    },
+                                    "code": "'he'"
+                                  }
+                                },
+                                {
+                                  "value": {
+                                    "widgetType": "expression/string",
+                                    "widgetData": {
+                                      "interpolation": true,
+                                      "text": "she"
+                                    },
+                                    "code": "'she'"
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "code": "['me', 'you', 'he', 'she']"
+                        },
+                        "distribution": {
+                          "widgetType": "expression/select",
+                          "widgetData": {
+                            "family": "expression/select/distribution",
+                            "value": "uniform"
+                          },
+                          "code": "'uniform'"
+                        },
+                        "nilChance": {
+                          "widgetType": "expression/number",
+                          "widgetData": {
+                            "text": "0"
+                          },
+                          "code": "0"
+                        },
+                        "editor": {
+                          "collapsed": false
+                        },
+                        "model": {}
+                      },
+                      "code": "let {\n  make_generator: (list items, any distribution, double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$pick_one'};\n}\nmake_generator(['me', 'you', 'he', 'she'], 'uniform', 0)\n"
+                    },
+                    "nilChance": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "0"
+                      },
+                      "code": "0"
+                    },
+                    "editor": {
+                      "collapsed": true
+                    },
+                    "model": {}
+                  },
+                  "code": "let {\n  make_generator: (long count, any generator, double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$list'};\n}\nmake_generator(generated.number, let {\n  make_generator: (list items, any distribution, double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$pick_one'};\n}\nmake_generator(['me', 'you', 'he', 'she'], 'uniform', 0)\n, 0)\n"
+                }
+              },
+              {
+                "type": "any",
+                "name": "dict",
+                "generator": {
+                  "widgetType": "expression/generate-dict",
+                  "widgetData": {
+                    "map": {
+                      "widgetType": "expression/dict",
+                      "widgetData": {
+                        "table": {
+                          "list": [
+                            {
+                              "key": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "given_name"
+                                },
+                                "code": "'given_name'"
+                              },
+                              "value": {
+                                "widgetType": "expression/code",
+                                "widgetData": {
+                                  "text": "generated.person[:given_name]",
+                                  "size": {
+                                    "width": 0,
+                                    "height": 46
+                                  },
+                                  "syntax": "tweakflow"
+                                },
+                                "code": "generated.person[:given_name]"
+                              }
+                            },
+                            {
+                              "key": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "age"
+                                },
+                                "code": "'age'"
+                              },
+                              "value": {
+                                "widgetType": "expression/generate-number",
+                                "widgetData": {
+                                  "start": {
+                                    "widgetType": "expression/number",
+                                    "widgetData": {
+                                      "text": "18"
+                                    },
+                                    "code": "18"
+                                  },
+                                  "end": {
+                                    "widgetType": "expression/number",
+                                    "widgetData": {
+                                      "text": "120"
+                                    },
+                                    "code": "120"
+                                  },
+                                  "decimalPlaces": {
+                                    "widgetType": "expression/number",
+                                    "widgetData": {
+                                      "text": "0"
+                                    },
+                                    "code": "0"
+                                  },
+                                  "distribution": {
+                                    "widgetType": "expression/select",
+                                    "widgetData": {
+                                      "family": "expression/select/distribution",
+                                      "value": "uniform"
+                                    },
+                                    "code": "'uniform'"
+                                  },
+                                  "nilChance": {
+                                    "widgetType": "expression/number",
+                                    "widgetData": {
+                                      "text": "0"
+                                    },
+                                    "code": "0"
+                                  },
+                                  "editor": {
+                                    "collapsed": true
+                                  },
+                                  "model": {}
+                                },
+                                "code": "let {\n  make_generator: (double start, double end, long decimalPlaces, any distribution, double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$number'};\n}\nmake_generator(18, 120, 0, 'uniform', 0)\n"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "code": "{\n  'given_name' generated.person[:given_name],\n  'age' let {\n  make_generator: (double start, double end, long decimalPlaces, any distribution, double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$number'};\n}\nmake_generator(18, 120, 0, 'uniform', 0)\n\n}"
+                    },
+                    "nilChance": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "0"
+                      },
+                      "code": "0"
+                    },
+                    "editor": {
+                      "collapsed": false
+                    },
+                    "model": {}
+                  },
+                  "code": "let {\n  make_generator: (dict map, double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$dict'};\n}\nmake_generator({\n  'given_name' generated.person[:given_name],\n  'age' let {\n  make_generator: (double start, double end, long decimalPlaces, any distribution, double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$number'};\n}\nmake_generator(18, 120, 0, 'uniform', 0)\n\n}, 0)\n"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "list",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.generated[:list]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.generated[:list]"
+                }
+              },
+              {
+                "name": "given_name",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.generated[:dict]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.generated[:dict]"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 458,
+        "y": 138
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.flatmap.generaterows_d6ae56aa-4b45-401e-a94b-8ef412e78284",
+      "name": "Generate Rows",
+      "type": "com.twineworks.tweakstreet.library.steps.flatmap.generaterows",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Generate Rows",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\ngenerate 25 rows, output only the generated row number",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 109
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "nrRows": {
+          "widgetType": "expression/number",
+          "widgetData": {
+            "text": "25"
+          },
+          "code": "25"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "row_nr",
+                "type": "long",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.row_nr"
+                  },
+                  "code": "::results.row_nr"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 234,
+        "y": 138
+      }
+    }
+  ],
+  "hops": [
+    {
+      "id": "b56e6062-87bf-4745-b164-e878c0e0e074",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.randomdata_817c9328-846d-46d9-a822-ba99c0a66687",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_c204b69c-6a66-4403-bf08-775966933582",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "c5d4720a-4b07-4d07-8ea0-b708c6a06cfc",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.flatmap.generaterows_d6ae56aa-4b45-401e-a94b-8ef412e78284",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.randomdata_817c9328-846d-46d9-a822-ba99c0a66687",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    }
+  ]
+}
