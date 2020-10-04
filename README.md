@@ -30,6 +30,7 @@ Below is the list of available samples, listing the name of the folder, the name
 | basic-03           | random-data-03.dfl           | generate random data using generators, merge results directly in random data step |
 | basic-03           | random-data-04.dfl           | generate random data using list and dict generators |
 | basic-04           | split-01.dfl                 | split a string of multiple key/value pairs into its components and create a dictionary |
+| basic-05           | diff-01.dfl                  | calculate the difference between a reference and a second data set |
 
 Available modules:
 
@@ -40,4 +41,4 @@ Available modules:
 | random-data-lists.tsm        | various lists with random data. used with the "generate from list" generator |
 
 
-last update: 2020-10-03
+last update: 2020-10-04

@@ -1,0 +1,781 @@
+{
+  "type": "data-flow",
+  "appVersion": "1.9.0",
+  "properties": {
+    "meta": {
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "##### Info\n\nShows how to use the diff on sorted keys step.\n\nTwo generators are used. Basically one is the copy of the other. They are the reference step and the input step. By defining the keys to use\nand the data fields to compare a diff between both are made.\n\nChange the values or the number of rows in the generators to provoke a difference in the result.",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 203
+          },
+          "view": "preview"
+        },
+        "editor": {
+          "collapsed": false
+        }
+      },
+      "showingComment": true
+    },
+    "editor": {
+      "showParameters": true,
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "imports": {
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
+      "size": {
+        "width": 0,
+        "height": 102
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "parameters": {
+      "parameters": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "variables": {
+      "variables": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    }
+  },
+  "steps": [
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.diff.sortedkeysdiff_2ba74e84-e9cd-4d9a-bf09-b17ee9a90bf2",
+      "name": "Diff on Sorted Keys",
+      "type": "com.twineworks.tweakstreet.library.steps.diff.sortedkeysdiff",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Diff on Sorted Keys",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nthe row numbers are used as the keys to compare. as the number of rows are the same and the\nnumbers are in ascending sequence, they are sorted - we do not need a step to sort them.\n\nAll data fields are used for the compare. The result - identical, changed, new or deleted is displayed\n as well as the reference the data was compared against and a dictionary of which fields\n  have a difference value (if any)",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 208
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "keyFields": {
+          "fieldPairs": {
+            "list": [
+              {
+                "left": {
+                  "value": {
+                    "gate": "in",
+                    "name": "row_nr"
+                  }
+                },
+                "right": {
+                  "value": {
+                    "gate": "reference",
+                    "name": "row_nr"
+                  }
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "dataFields": {
+          "fieldPairs": {
+            "list": [
+              {
+                "left": {
+                  "value": {
+                    "gate": "in",
+                    "name": "sayit"
+                  }
+                },
+                "right": {
+                  "value": {
+                    "gate": "reference",
+                    "name": "sayit"
+                  }
+                }
+              },
+              {
+                "left": {
+                  "value": {
+                    "gate": "in",
+                    "name": "thenumber"
+                  }
+                },
+                "right": {
+                  "value": {
+                    "gate": "reference",
+                    "name": "thenumber"
+                  }
+                }
+              },
+              {
+                "left": {
+                  "value": {
+                    "gate": "in",
+                    "name": "days"
+                  }
+                },
+                "right": {
+                  "value": {
+                    "gate": "reference",
+                    "name": "days"
+                  }
+                }
+              },
+              {
+                "left": {
+                  "value": {
+                    "gate": "in",
+                    "name": "months"
+                  }
+                },
+                "right": {
+                  "value": {
+                    "gate": "reference",
+                    "name": "months"
+                  }
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "diff",
+                "type": "string",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.diff"
+                  },
+                  "code": "::results.diff"
+                }
+              },
+              {
+                "name": "changes",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.changes"
+                  },
+                  "code": "::results.changes"
+                }
+              },
+              {
+                "name": "ref",
+                "type": "dict",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.ref"
+                  },
+                  "code": "::results.ref"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 746,
+        "y": 234
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.flatmap.generaterows_43e120b1-2293-4441-ba3d-bc856b0d97ba",
+      "name": "Generate Rows",
+      "type": "com.twineworks.tweakstreet.library.steps.flatmap.generaterows",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Generate Rows",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nGenerate some data using different data types",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 104
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "nrRows": {
+          "widgetType": "expression/number",
+          "widgetData": {
+            "text": "10"
+          },
+          "code": "10"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "row_nr",
+                "type": "long",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.row_nr"
+                  },
+                  "code": "::results.row_nr"
+                }
+              },
+              {
+                "name": "sayit",
+                "type": "string",
+                "value": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "A beautiful day"
+                  },
+                  "code": "'A beautiful day'"
+                }
+              },
+              {
+                "name": "thenumber",
+                "type": "long",
+                "value": {
+                  "widgetType": "expression/number",
+                  "widgetData": {
+                    "text": "42"
+                  },
+                  "code": "42"
+                }
+              },
+              {
+                "name": "days",
+                "type": "list",
+                "value": {
+                  "widgetType": "expression/list",
+                  "widgetData": {
+                    "table": {
+                      "list": [
+                        {
+                          "value": {
+                            "widgetType": "expression/string",
+                            "widgetData": {
+                              "interpolation": true,
+                              "text": "Monday"
+                            },
+                            "code": "'Monday'"
+                          }
+                        },
+                        {
+                          "value": {
+                            "widgetType": "expression/string",
+                            "widgetData": {
+                              "interpolation": true,
+                              "text": "Tuesday"
+                            },
+                            "code": "'Tuesday'"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "code": "['Monday', 'Tuesday']"
+                }
+              },
+              {
+                "name": "months",
+                "type": "dict",
+                "value": {
+                  "widgetType": "expression/dict",
+                  "widgetData": {
+                    "table": {
+                      "list": [
+                        {
+                          "key": {
+                            "widgetType": "expression/string",
+                            "widgetData": {
+                              "interpolation": true,
+                              "text": "1"
+                            },
+                            "code": "'1'"
+                          },
+                          "value": {
+                            "widgetType": "expression/string",
+                            "widgetData": {
+                              "interpolation": true,
+                              "text": "January"
+                            },
+                            "code": "'January'"
+                          }
+                        },
+                        {
+                          "key": {
+                            "widgetType": "expression/string",
+                            "widgetData": {
+                              "interpolation": true,
+                              "text": "2"
+                            },
+                            "code": "'2'"
+                          },
+                          "value": {
+                            "widgetType": "expression/string",
+                            "widgetData": {
+                              "interpolation": true,
+                              "text": "February"
+                            },
+                            "code": "'February'"
+                          }
+                        },
+                        {
+                          "key": {
+                            "widgetType": "expression/string",
+                            "widgetData": {
+                              "interpolation": true,
+                              "text": "12"
+                            },
+                            "code": "'12'"
+                          },
+                          "value": {
+                            "widgetType": "expression/string",
+                            "widgetData": {
+                              "interpolation": true,
+                              "text": "December"
+                            },
+                            "code": "'December'"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "code": "{\n  '1' 'January',\n  '2' 'February',\n  '12' 'December'\n}"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 490,
+        "y": 138
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.flatmap.generaterows_6776180f-a5a8-41be-8a6c-fc5bc918ffe4",
+      "name": "Generate Reference Rows",
+      "type": "com.twineworks.tweakstreet.library.steps.flatmap.generaterows",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Generate Reference Rows",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nGenerate some data using different data types",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "nrRows": {
+          "widgetType": "expression/number",
+          "widgetData": {
+            "text": "10"
+          },
+          "code": "10"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "row_nr",
+                "type": "long",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.row_nr"
+                  },
+                  "code": "::results.row_nr"
+                }
+              },
+              {
+                "name": "sayit",
+                "type": "string",
+                "value": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "A beautiful day"
+                  },
+                  "code": "'A beautiful day'"
+                }
+              },
+              {
+                "name": "thenumber",
+                "type": "long",
+                "value": {
+                  "widgetType": "expression/number",
+                  "widgetData": {
+                    "text": "42"
+                  },
+                  "code": "42"
+                }
+              },
+              {
+                "name": "days",
+                "type": "list",
+                "value": {
+                  "widgetType": "expression/list",
+                  "widgetData": {
+                    "table": {
+                      "list": [
+                        {
+                          "value": {
+                            "widgetType": "expression/string",
+                            "widgetData": {
+                              "interpolation": true,
+                              "text": "Monday"
+                            },
+                            "code": "'Monday'"
+                          }
+                        },
+                        {
+                          "value": {
+                            "widgetType": "expression/string",
+                            "widgetData": {
+                              "interpolation": true,
+                              "text": "Tuesday"
+                            },
+                            "code": "'Tuesday'"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "code": "['Monday', 'Tuesday']"
+                }
+              },
+              {
+                "name": "months",
+                "type": "dict",
+                "value": {
+                  "widgetType": "expression/dict",
+                  "widgetData": {
+                    "table": {
+                      "list": [
+                        {
+                          "key": {
+                            "widgetType": "expression/string",
+                            "widgetData": {
+                              "interpolation": true,
+                              "text": "1"
+                            },
+                            "code": "'1'"
+                          },
+                          "value": {
+                            "widgetType": "expression/string",
+                            "widgetData": {
+                              "interpolation": true,
+                              "text": "January"
+                            },
+                            "code": "'January'"
+                          }
+                        },
+                        {
+                          "key": {
+                            "widgetType": "expression/string",
+                            "widgetData": {
+                              "interpolation": true,
+                              "text": "2"
+                            },
+                            "code": "'2'"
+                          },
+                          "value": {
+                            "widgetType": "expression/string",
+                            "widgetData": {
+                              "interpolation": true,
+                              "text": "February"
+                            },
+                            "code": "'February'"
+                          }
+                        },
+                        {
+                          "key": {
+                            "widgetType": "expression/string",
+                            "widgetData": {
+                              "interpolation": true,
+                              "text": "12"
+                            },
+                            "code": "'12'"
+                          },
+                          "value": {
+                            "widgetType": "expression/string",
+                            "widgetData": {
+                              "interpolation": true,
+                              "text": "December"
+                            },
+                            "code": "'December'"
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  "code": "{\n  '1' 'January',\n  '2' 'February',\n  '12' 'December'\n}"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 490,
+        "y": 330
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_d86d6a42-060b-4914-8668-f44e9e9b2ab6",
+      "name": "Dummy",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy",
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": ""
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "editor": {
+                "collapsed": true
+              }
+            }
+          },
+          "showingComment": true
+        },
+        "editor": {}
+      },
+      "pos": {
+        "x": 1002,
+        "y": 234
+      }
+    }
+  ],
+  "hops": [
+    {
+      "id": "4f68f60f-19cf-4ba9-aecb-0fc1d0bd329a",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.flatmap.generaterows_43e120b1-2293-4441-ba3d-bc856b0d97ba",
+      "toStep": "com.twineworks.tweakstreet.library.steps.diff.sortedkeysdiff_2ba74e84-e9cd-4d9a-bf09-b17ee9a90bf2",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "1bd6f633-c6c4-46f2-946c-59ee29171164",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.flatmap.generaterows_6776180f-a5a8-41be-8a6c-fc5bc918ffe4",
+      "toStep": "com.twineworks.tweakstreet.library.steps.diff.sortedkeysdiff_2ba74e84-e9cd-4d9a-bf09-b17ee9a90bf2",
+      "fromGate": "out",
+      "toGate": "reference",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "0416623d-997b-44fd-906f-ddd767361f08",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.diff.sortedkeysdiff_2ba74e84-e9cd-4d9a-bf09-b17ee9a90bf2",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_d86d6a42-060b-4914-8668-f44e9e9b2ab6",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    }
+  ]
+}
