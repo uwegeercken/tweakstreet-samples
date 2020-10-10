@@ -31,6 +31,7 @@ Below is the list of available samples, listing the name of the folder, the name
 | basic-03           | random-data-04.dfl           | generate random data using list and dict generators |
 | basic-04           | split-01.dfl                 | split a string of multiple key/value pairs into its components and create a dictionary |
 | basic-05           | diff-01.dfl                  | calculate the difference between a reference and a second data set |
+| basic-05           | diff-02.dfl                  | calculate the difference between a reference and a second data set. use a decision step to route output |
 | basic-06           | misc-01.dfl                  | retrieve system information and do some date calculations using the time library |
 
 Available modules:

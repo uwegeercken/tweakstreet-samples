@@ -6,7 +6,7 @@
       "comment": {
         "markdown": {
           "text": {
-            "text": "##### Info\n\nShows how to use the diff on sorted keys step.\n\nTwo generators are used. Basically one is the copy of the other. They are the reference step and the input step. By defining the keys to use\nand the data fields to compare a diff between both are made.\n\nChange the values or the number of rows in the generators to provoke a difference in the result.",
+            "text": "##### Info\n\nShows how to use the diff on sorted keys step.\n\nTwo generators are used. Basically one is the copy of the other. They are the reference step and the input step. By defining the keys to use\nand the data fields to compare a diff between both are made. Finally a decision step is used to route the results to different output\ngates.\n\nChange the values or the number of rows in the generators to provoke a difference in the result.",
             "syntax": "markdown",
             "size": {
               "width": "100%",
@@ -17,7 +17,7 @@
             "width": null,
             "height": 203
           },
-          "view": "preview"
+          "view": "edit"
         },
         "editor": {
           "collapsed": false
@@ -695,7 +695,7 @@
     },
     {
       "id": "com.twineworks.tweakstreet.library.steps.map.dummy_d86d6a42-060b-4914-8668-f44e9e9b2ab6",
-      "name": "Dummy",
+      "name": "Dummy: deleted",
       "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
       "instanceCount": {
         "widgetType": "expression/number",
@@ -706,28 +706,251 @@
       },
       "data": {
         "meta": {
-          "name": "Dummy",
+          "name": "Dummy: deleted",
+          "showingComment": true,
           "comment": {
             "markdown": {
               "text": {
-                "text": ""
+                "text": "",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
               },
               "size": {
                 "width": null,
                 "height": 160
               },
-              "editor": {
-                "collapsed": true
-              }
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": true
             }
-          },
-          "showingComment": true
+          }
         },
-        "editor": {}
+        "editor": {},
+        "model": {}
       },
       "pos": {
-        "x": 1002,
+        "x": 1130,
+        "y": 74
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.decision.decision_09ab7966-06c5-42df-80ea-f11e2d194ecb",
+      "name": "Decision",
+      "type": "com.twineworks.tweakstreet.library.steps.decision.decision",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Decision",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\ncreate 4 output gates according to the 4 different conditions the diff step detects",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 104
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputGates": {
+          "outputGates": {
+            "list": [
+              {
+                "name": "deleted"
+              },
+              {
+                "name": "new"
+              },
+              {
+                "name": "changed"
+              },
+              {
+                "name": "identical"
+              }
+            ]
+          }
+        },
+        "gate": {
+          "widgetType": "expression/code",
+          "widgetData": {
+            "text": "# the output gate is according to the value in the diff step diff field\nin.diff",
+            "size": {
+              "width": 0,
+              "height": 79
+            },
+            "syntax": "tweakflow"
+          },
+          "code": "# the output gate is according to the value in the diff step diff field\nin.diff\n"
+        },
+        "editor": {
+          "showEntryVariables": false
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 970,
         "y": 234
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_d84a064d-f2c3-4527-aa8d-05e1f51a3e5c",
+      "name": "Dummy: new",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy: new",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": true
+            }
+          }
+        },
+        "editor": {},
+        "model": {}
+      },
+      "pos": {
+        "x": 1226,
+        "y": 170
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_9223a7a6-b643-4e12-a707-84f181504dcc",
+      "name": "Dummy: changed",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy: changed",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": true
+            }
+          }
+        },
+        "editor": {},
+        "model": {}
+      },
+      "pos": {
+        "x": 1226,
+        "y": 298
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_a1e74ac6-22bd-4099-95f3-86f9cb2ae2b6",
+      "name": "Dummy: identical",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy: identical",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": true
+            }
+          }
+        },
+        "editor": {},
+        "model": {}
+      },
+      "pos": {
+        "x": 1130,
+        "y": 394
       }
     }
   ],
@@ -763,10 +986,70 @@
       }
     },
     {
-      "id": "0416623d-997b-44fd-906f-ddd767361f08",
+      "id": "5ffe5599-3fb6-4760-90c0-1dd0752dcce5",
       "fromStep": "com.twineworks.tweakstreet.library.steps.diff.sortedkeysdiff_2ba74e84-e9cd-4d9a-bf09-b17ee9a90bf2",
-      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_d86d6a42-060b-4914-8668-f44e9e9b2ab6",
+      "toStep": "com.twineworks.tweakstreet.library.steps.decision.decision_09ab7966-06c5-42df-80ea-f11e2d194ecb",
       "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "161c2006-ec51-4cbc-99f1-c3e6e8600f6e",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.decision.decision_09ab7966-06c5-42df-80ea-f11e2d194ecb",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_d86d6a42-060b-4914-8668-f44e9e9b2ab6",
+      "fromGate": "deleted",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "f6d8c153-379a-4fbb-8dd6-b1548325b459",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.decision.decision_09ab7966-06c5-42df-80ea-f11e2d194ecb",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_d84a064d-f2c3-4527-aa8d-05e1f51a3e5c",
+      "fromGate": "new",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "b56980ba-fc41-4167-a9f6-7c885b27c428",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.decision.decision_09ab7966-06c5-42df-80ea-f11e2d194ecb",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_9223a7a6-b643-4e12-a707-84f181504dcc",
+      "fromGate": "changed",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "115bb423-4cd3-4835-820e-538edf41162a",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.decision.decision_09ab7966-06c5-42df-80ea-f11e2d194ecb",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_a1e74ac6-22bd-4099-95f3-86f9cb2ae2b6",
+      "fromGate": "identical",
       "toGate": "in",
       "disabled": false,
       "partitioner": {
