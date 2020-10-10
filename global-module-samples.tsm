@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "appVersion": "1.8.1",
+  "appVersion": "1.9.1",
   "properties": {
     "meta": {
       "showingComment": true,
@@ -81,7 +81,7 @@
                 },
                 "syntax": "tweakflow"
               },
-              "code": "# convert feet to meters. using 0.0 as the default.\n(double x=0.0) -> x/3.028"
+              "code": "# convert feet to meters. using 0.0 as the default.\n(double x=0.0) -> x/3.028\n"
             }
           },
           {
@@ -97,7 +97,7 @@
                 },
                 "syntax": "tweakflow"
               },
-              "code": "# given 'a' and 'b', returns 'c' \n# from the Pythagorean theorem: a*a + b*b = c*c\n(a, b) -> (a*a + b*b)**0.5"
+              "code": "# given 'a' and 'b', returns 'c' \n# from the Pythagorean theorem: a*a + b*b = c*c\n(a, b) -> (a*a + b*b)**0.5\n"
             }
           },
           {
@@ -109,6 +109,17 @@
                 "text": "['Windows','Linux','Mac OS']"
               },
               "code": "['Windows','Linux','Mac OS']"
+            }
+          },
+          {
+            "name": "weekdays",
+            "type": "list",
+            "value": {
+              "widgetType": "expression/number",
+              "widgetData": {
+                "text": "['monday','tuesday','wednesday','thursday','friday','saturday','sunday']"
+              },
+              "code": "['monday','tuesday','wednesday','thursday','friday','saturday','sunday']"
             }
           },
           {

@@ -1,0 +1,509 @@
+{
+  "type": "data-flow",
+  "appVersion": "1.9.1",
+  "properties": {
+    "meta": {
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "##### Info\n\nSimple example to retrieve system information and do some date calculations using the time library",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 103
+          },
+          "view": "preview"
+        },
+        "editor": {
+          "collapsed": false
+        }
+      },
+      "showingComment": true
+    },
+    "editor": {
+      "showParameters": true,
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "imports": {
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\nimport time, data from 'std';\n\n# import vars from a global module\nimport vars as general from '../global-module-samples.tsm';",
+      "size": {
+        "width": 0,
+        "height": 147
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "parameters": {
+      "parameters": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "variables": {
+      "variables": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    }
+  },
+  "steps": [
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.clock_46816c50-c992-4499-90c2-da63b0019e0e",
+      "name": "Clock",
+      "type": "com.twineworks.tweakstreet.library.steps.map.clock",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Clock",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nGet local datetime and determine some details. Shows basic date calculations using\nthe time library",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 106
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": [
+              {
+                "name": "dateformat",
+                "type": "function",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "# function to format the datetime value\ntime.formatter(\"yyyy-MM-dd\")",
+                    "size": {
+                      "width": 0,
+                      "height": 62
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "# function to format the datetime value\ntime.formatter(\"yyyy-MM-dd\")\n"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "localtime",
+                "type": "datetime",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.local"
+                  },
+                  "code": "::results.local"
+                }
+              },
+              {
+                "name": "today",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "# format the given date\nvars.dateformat(localtime)",
+                    "size": {
+                      "width": 0,
+                      "height": 65
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "# format the given date\nvars.dateformat(localtime)\n"
+                }
+              },
+              {
+                "name": "yesterday",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "# substract a day and format the given date\nvars.dateformat(time.add_period(localtime, 0, 0, -1))",
+                    "size": {
+                      "width": 0,
+                      "height": 63
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "# substract a day and format the given date\nvars.dateformat(time.add_period(localtime, 0, 0, -1))\n"
+                }
+              },
+              {
+                "name": "days_between",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "# get the difference in days\ntime.days_between(yesterday, localtime)",
+                    "size": {
+                      "width": 0,
+                      "height": 58
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "# get the difference in days\ntime.days_between(yesterday, localtime)\n"
+                }
+              },
+              {
+                "name": "today_year",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "time.year(localtime)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "time.year(localtime)"
+                }
+              },
+              {
+                "name": "today_month",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "time.month(localtime)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "time.month(localtime)"
+                }
+              },
+              {
+                "name": "today_day",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "time.day_of_month(localtime)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "time.day_of_month(localtime)"
+                }
+              },
+              {
+                "name": "today_weekday",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "# 1\tMonday, 2 Tuesday\n# 3\tWednesday, 4 Thursday\n# 5\tFriday, # 6 Saturday\n# 7\tSunday\ntime.day_of_week(localtime)",
+                    "size": {
+                      "width": 0,
+                      "height": 129
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "# 1\tMonday, 2 Tuesday\n# 3\tWednesday, 4 Thursday\n# 5\tFriday, # 6 Saturday\n# 7\tSunday\ntime.day_of_week(localtime)\n"
+                }
+              },
+              {
+                "name": "today_weekdayname",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "# from the global module which is \n# imported in this flow\ngeneral.weekdays[today_weekday-1]",
+                    "size": {
+                      "width": 0,
+                      "height": 98
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "# from the global module which is \n# imported in this flow\ngeneral.weekdays[today_weekday-1]\n"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": true,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 714,
+        "y": 298
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.features.core.steps.systeminfo_c4da6ee3-9816-4e3e-8dfc-1b1e740648b6",
+      "name": "System Info",
+      "type": "com.twineworks.tweakstreet.features.core.steps.systeminfo",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "System Info",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nget some basic system information",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "hostname",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.hostname"
+                  },
+                  "code": "::results.hostname"
+                }
+              },
+              {
+                "name": "platform",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.platform"
+                  },
+                  "code": "::results.platform"
+                }
+              },
+              {
+                "name": "cpu",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.logical_cpus"
+                  },
+                  "code": "::results.logical_cpus"
+                }
+              },
+              {
+                "name": "memory",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.memory"
+                  },
+                  "code": "::results.memory"
+                }
+              },
+              {
+                "name": "sys_env",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.environment"
+                  },
+                  "code": "::results.environment"
+                }
+              },
+              {
+                "name": "sys_properties",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.properties"
+                  },
+                  "code": "::results.properties"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showWriteFields": true,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 394,
+        "y": 298
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_370dc659-20e1-4af6-86e4-65c4b7411db9",
+      "name": "Dummy",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy",
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": ""
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "editor": {
+                "collapsed": true
+              }
+            }
+          },
+          "showingComment": false
+        },
+        "editor": {}
+      },
+      "pos": {
+        "x": 1034,
+        "y": 298
+      }
+    }
+  ],
+  "hops": [
+    {
+      "id": "34952118-e51b-4473-adf9-4fb3c3e5256e",
+      "fromStep": "com.twineworks.tweakstreet.features.core.steps.systeminfo_c4da6ee3-9816-4e3e-8dfc-1b1e740648b6",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.clock_46816c50-c992-4499-90c2-da63b0019e0e",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "fb1e5164-6cf8-4ce0-b836-3740ad347edc",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.clock_46816c50-c992-4499-90c2-da63b0019e0e",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_370dc659-20e1-4af6-86e4-65c4b7411db9",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    }
+  ]
+}
