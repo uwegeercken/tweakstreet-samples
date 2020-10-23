@@ -35,6 +35,7 @@ Below is the list of available samples, listing the name of the folder, the name
 | basic-06           | misc-01.dfl                  | retrieve system information and do some date calculations using the time library |
 | basic-06           | serialize-01.dfl             | serialize data to a file |
 | basic-06           | deserialize-01.dfl           | deserialize data to the file produced in the serialize-01 data flow |
+| basic-07           | partitioning-01.dfl          | partition data to process in parallel |
 
 Available modules:
 
@@ -45,4 +46,4 @@ Available modules:
 | random-data-lists.tsm        | various lists with random data. used with the "generate from list" generator |
 
 
-last update: 2020-10-10
+last update: 2020-10-23

@@ -1,0 +1,925 @@
+{
+  "type": "data-flow",
+  "appVersion": "1.10.1",
+  "properties": {
+    "meta": {
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "##### Info\n\nThe flow shows how to use basic partitioning of data. the idea is to process the data using multiple instances of\nthe steps. a partitioning key is used to distribute the data. E.g. by using a modulo operator of 4 and 4 instances of the steps, \nthe rows are evenly distributed.\n\nAs long as following steps have the same number of instances, the partitioned data is distributed in so called swim-lanes, \nwhere the data stays in these lanes.\n\nNote: the partition key is specified on the hop between the random data step and the calculator step (right-click the\nhop and select \"Partitioning\")",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 246
+          },
+          "view": "preview"
+        },
+        "editor": {
+          "collapsed": false
+        }
+      },
+      "showingComment": true
+    },
+    "editor": {
+      "showParameters": true,
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "imports": {
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
+      "size": {
+        "width": 0,
+        "height": 75
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "parameters": {
+      "parameters": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "variables": {
+      "variables": {
+        "list": [
+          {
+            "name": "modulo_value",
+            "type": "long",
+            "value": {
+              "widgetType": "expression/number",
+              "widgetData": {
+                "text": "4"
+              },
+              "code": "4"
+            }
+          }
+        ]
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    }
+  },
+  "steps": [
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.flatmap.generaterows_b8fc556a-1f6d-429f-994c-a701f88f8ce6",
+      "name": "Generate Rows",
+      "type": "com.twineworks.tweakstreet.library.steps.flatmap.generaterows",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Generate Rows",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\ngenerate some rows",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 106
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "nrRows": {
+          "widgetType": "expression/number",
+          "widgetData": {
+            "text": "100"
+          },
+          "code": "100"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 138,
+        "y": 202
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.randomdata_ddd7c957-b386-46f9-90cb-c654f342c361",
+      "name": "Random Data",
+      "type": "com.twineworks.tweakstreet.library.steps.map.randomdata",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Random Data",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\ngenerates an id (number) and a person. from the person only the email field is used.\n\nFrom the id the remainder is calculated using the module operator. the value of modulo is defined as a flow variable",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "seed": {
+          "widgetType": "expression/number",
+          "widgetData": {
+            "text": ""
+          },
+          "code": "nil"
+        },
+        "generatorVariables": {
+          "generatorVars": {
+            "list": [
+              {
+                "type": "long",
+                "name": "id",
+                "generator": {
+                  "widgetType": "expression/generate-number",
+                  "widgetData": {
+                    "start": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "1"
+                      },
+                      "code": "1"
+                    },
+                    "end": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "10001"
+                      },
+                      "code": "10001"
+                    },
+                    "decimalPlaces": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": ""
+                      },
+                      "code": "nil"
+                    },
+                    "distribution": {
+                      "widgetType": "expression/select",
+                      "widgetData": {
+                        "family": "expression/select/distribution",
+                        "value": "uniform"
+                      },
+                      "code": "'uniform'"
+                    },
+                    "nilChance": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "0"
+                      },
+                      "code": "0"
+                    },
+                    "editor": {
+                      "collapsed": true
+                    },
+                    "model": {}
+                  },
+                  "code": "let {\n  make_generator: (double start, double end, long decimalPlaces, any distribution, double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$number'};\n}\nmake_generator(1, 10001, nil, 'uniform', 0)\n"
+                }
+              },
+              {
+                "type": "any",
+                "name": "person",
+                "generator": {
+                  "widgetType": "expression/generate-person",
+                  "widgetData": {
+                    "nilChance": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "0"
+                      },
+                      "code": "0"
+                    },
+                    "editor": {
+                      "collapsed": true
+                    },
+                    "model": {}
+                  },
+                  "code": "let {\n  make_generator: (double nilChance) -> via {:class 'com.twineworks.tweakstreet.library.generate.Generators$person'};\n}\nmake_generator(0)\n"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "id",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.generated[:id]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.generated[:id]"
+                }
+              },
+              {
+                "name": "id_remainder",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "# calculate the remainder\nresults.generated[:id] % flow.vars.modulo_value",
+                    "size": {
+                      "width": 0,
+                      "height": 59
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "# calculate the remainder\nresults.generated[:id] % flow.vars.modulo_value\n"
+                }
+              },
+              {
+                "name": "email",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "# use the email field of the person\nresults.generated[:person][:email]",
+                    "size": {
+                      "width": 0,
+                      "height": 64
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "# use the email field of the person\nresults.generated[:person][:email]\n"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 330,
+        "y": 202
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_e8f05a6e-f173-4f6a-983d-48e331cc5e51",
+      "name": "Dummy: instance 0",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy: instance 0",
+          "showingComment": false,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": true
+            }
+          }
+        },
+        "editor": {},
+        "model": {}
+      },
+      "pos": {
+        "x": 1098,
+        "y": 106
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.calculator_2054f0d6-c90f-4cc2-aa6e-9a935b07fc47",
+      "name": "Calculator",
+      "type": "com.twineworks.tweakstreet.library.steps.map.calculator",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "4"
+        },
+        "code": "4"
+      },
+      "data": {
+        "meta": {
+          "name": "Calculator",
+          "showingComment": false,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": true
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "instance_index",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "# simply add the index of the instance as a number\ninstance.index",
+                    "size": {
+                      "width": 0,
+                      "height": 61
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "# simply add the index of the instance as a number\ninstance.index\n"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": true,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 522,
+        "y": 202
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.decision.decision_a526ed58-1040-49e6-b67d-d8a77defe0e2",
+      "name": "Decision",
+      "type": "com.twineworks.tweakstreet.library.steps.decision.decision",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "4"
+        },
+        "code": "4"
+      },
+      "data": {
+        "meta": {
+          "name": "Decision",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\ndistribute the rows instance per instance",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 98
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputGates": {
+          "outputGates": {
+            "list": [
+              {
+                "name": "0"
+              },
+              {
+                "name": "1"
+              },
+              {
+                "name": "2"
+              },
+              {
+                "name": "3"
+              }
+            ]
+          }
+        },
+        "gate": {
+          "widgetType": "expression/code",
+          "widgetData": {
+            "text": "# distribute by the index number of the instance\ninstance.index",
+            "size": {
+              "width": 0,
+              "height": 68
+            },
+            "syntax": "tweakflow"
+          },
+          "code": "# distribute by the index number of the instance\ninstance.index\n"
+        },
+        "editor": {
+          "showEntryVariables": false
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 906,
+        "y": 202
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_8cf6446b-a35c-4555-ac16-b5985f6247ce",
+      "name": "Dummy: instance 1",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy: instance 1",
+          "showingComment": false,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": true
+            }
+          }
+        },
+        "editor": {},
+        "model": {}
+      },
+      "pos": {
+        "x": 1194,
+        "y": 234
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_c846fb3a-eb6d-4f73-9342-5bac7568541d",
+      "name": "Dummy: instance 3",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy: instance 3",
+          "showingComment": false,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": true
+            }
+          }
+        },
+        "editor": {},
+        "model": {}
+      },
+      "pos": {
+        "x": 1034,
+        "y": 426
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_e5952360-67c3-487d-a966-5662918952f3",
+      "name": "Dummy: instance 2",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy: instance 2",
+          "showingComment": false,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": true
+            }
+          }
+        },
+        "editor": {},
+        "model": {}
+      },
+      "pos": {
+        "x": 1194,
+        "y": 362
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.pickfields_f5dc2064-6682-46f7-a768-c866d330ddaa",
+      "name": "Pick Fields",
+      "type": "com.twineworks.tweakstreet.library.steps.map.pickfields",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "4"
+        },
+        "code": "4"
+      },
+      "data": {
+        "meta": {
+          "name": "Pick Fields",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 72
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "mode": {
+          "value": "whitelist"
+        },
+        "fieldRefs": {
+          "fieldRefs": {
+            "list": [
+              {
+                "field": {
+                  "value": {
+                    "gate": "in",
+                    "name": "id"
+                  }
+                }
+              },
+              {
+                "field": {
+                  "value": {
+                    "gate": "in",
+                    "name": "id_remainder"
+                  }
+                }
+              },
+              {
+                "field": {
+                  "value": {
+                    "gate": "in",
+                    "name": "email"
+                  }
+                }
+              },
+              {
+                "field": {
+                  "value": {
+                    "gate": "in",
+                    "name": "instance_index"
+                  }
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {},
+        "model": {}
+      },
+      "pos": {
+        "x": 714,
+        "y": 202
+      }
+    }
+  ],
+  "hops": [
+    {
+      "id": "6adebaef-baf6-4889-8f6c-9f8fa4035386",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.flatmap.generaterows_b8fc556a-1f6d-429f-994c-a701f88f8ce6",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.randomdata_ddd7c957-b386-46f9-90cb-c654f342c361",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "c41ad0a6-f0a5-466c-b8cc-05f07e3dd84a",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.randomdata_ddd7c957-b386-46f9-90cb-c654f342c361",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.calculator_2054f0d6-c90f-4cc2-aa6e-9a935b07fc47",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": "(row) -> row[:id_remainder] ",
+          "size": {
+            "width": 0,
+            "height": 36
+          },
+          "syntax": "tweakflow"
+        },
+        "code": "(row) -> row[:id_remainder]"
+      }
+    },
+    {
+      "id": "1c141adb-6e3e-4c54-9969-31d854610f34",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.decision.decision_a526ed58-1040-49e6-b67d-d8a77defe0e2",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_e8f05a6e-f173-4f6a-983d-48e331cc5e51",
+      "fromGate": "0",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "6bdd2c2f-e7c6-4ec7-a7b2-14e94b4646e2",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.decision.decision_a526ed58-1040-49e6-b67d-d8a77defe0e2",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_8cf6446b-a35c-4555-ac16-b5985f6247ce",
+      "fromGate": "1",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "bdff208d-b6aa-4df4-a9a7-600bb13f5a74",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.decision.decision_a526ed58-1040-49e6-b67d-d8a77defe0e2",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_e5952360-67c3-487d-a966-5662918952f3",
+      "fromGate": "2",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "14616bb9-a5d6-481d-b6f8-b48a8a200251",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.decision.decision_a526ed58-1040-49e6-b67d-d8a77defe0e2",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_c846fb3a-eb6d-4f73-9342-5bac7568541d",
+      "fromGate": "3",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "7f472497-5b16-4e89-9e66-365a5ae7949c",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.calculator_2054f0d6-c90f-4cc2-aa6e-9a935b07fc47",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.pickfields_f5dc2064-6682-46f7-a768-c866d330ddaa",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "b06e5a53-cbc8-4f9c-968a-7f5d1f80f9a0",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.pickfields_f5dc2064-6682-46f7-a768-c866d330ddaa",
+      "toStep": "com.twineworks.tweakstreet.library.steps.decision.decision_a526ed58-1040-49e6-b67d-d8a77defe0e2",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    }
+  ]
+}
