@@ -6,7 +6,7 @@ The base components of the Tweakstreet GUI application are: control flows, data 
 
 Except for the database related examples, the samples in this repository are self contained. You do not need anything else except of the Tweakstreet application which can be downloaded from the above site. The repository also contains a folder: _data_. The data files in this folder are used for the samples. For each sample there is also a screenshot available.
 
-For the samples with the Sqlite database you need to download the JDBC driver from https://github.com/xerial/sqlite-jdbc. Put the JDBC driver jar file into the folder HOME/.tweakstreet/drivers.
+For the samples with the SQLite database you need to download the JDBC driver from https://github.com/xerial/sqlite-jdbc. Put the JDBC driver jar file into the folder HOME/.tweakstreet/drivers.
 
 I recommend to also check the Tweakstreet forum at: https://forum.tweakstreet.io/ which contains tutorials, data challenges and more.
 
@@ -14,7 +14,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 
 **Attention**: After starting Tweakstreet, select the folder of the cloned repository as your workspace folder ('File' menu). And then please make sure that you use the config module: 'conf-module-samples.tsm'. It contains some variables which the samples rely on: in the sidebar on the left which shows the file and directory tree (Strg+B to activate it if you don't see it), click on the file 'conf-module-samples.tsm' to open it. Then right-click on the tab which carries the name of the file and select 'Set as config module'. Alternatively right-click on '$none' in the blue toolbar at the bottom, select 'Choose config module' and navigate to this file and select it.
 
-Below is the list of available samples, listing the name of the folder, the name of the flow file and a short description what the flow does.
+**Flows**: Below is the list of available samples, listing the name of the folder, the name of the flow file and a short description what the flow does.
 
 | Folder             | Filename                     | Description                      |
 | :--                | :--                          | :--                              |
@@ -38,9 +38,9 @@ Below is the list of available samples, listing the name of the folder, the name
 | basic-06           | serialize-01.dfl             | serialize data to a file |
 | basic-06           | deserialize-01.dfl           | deserialize data to the file produced in the serialize-01 data flow |
 | basic-07           | partitioning-01.dfl          | partition data to process in parallel |
-| basic-08           | database-01.dfl              | read from a local database |
+| basic-08           | database-01.dfl              | read data from a local SQLite database |
 
-Available modules:
+**Available modules**:
 
 | Filename                     | Description                      |
 | :--                          | :--  
@@ -48,7 +48,7 @@ Available modules:
 | global-module-samples.tsm    | global module with variables for re-use across flows |
 | random-data-lists.tsm        | various lists with random data. used with the "generate from list" generator |
 
-Data Files:
+**Data Files**:
 
 | Folder            | Filename                     | Description
 | :--               | :--                          | :-- 
