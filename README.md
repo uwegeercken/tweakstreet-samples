@@ -37,6 +37,7 @@ Below is the list of available samples, listing the name of the folder, the name
 | basic-06           | serialize-01.dfl             | serialize data to a file |
 | basic-06           | deserialize-01.dfl           | deserialize data to the file produced in the serialize-01 data flow |
 | basic-07           | partitioning-01.dfl          | partition data to process in parallel |
+| basic-08           | database-01.dfl              | read from a local database |
 
 Available modules:
 
@@ -45,6 +46,16 @@ Available modules:
 | conf-module-samples.tsm      | config module with variables for the data files                            |
 | global-module-samples.tsm    | global module with variables for re-use across flows |
 | random-data-lists.tsm        | various lists with random data. used with the "generate from list" generator |
+
+Data Files:
+
+| Folder            | Filename                     | Description
+| :--               | :--                          | :-- 
+| data              | airports.csv                 | 7733 airports with name, codes, coordinates, elevation |
+| data              | countries.csv                | 241 countries with name and code |
+| data              | country_continent_lookup.csv | country to continent lookup data |
+| data              | continent_names_lookup.csv   | continent names lookup data
+| data/sqlite       | airports.db                  | 7733 airports in a Sqlite database file with name, codes, coordinates, elevation |
 
 
 last update: 2020-11-01

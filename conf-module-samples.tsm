@@ -7,7 +7,7 @@
       "comment": {
         "markdown": {
           "text": {
-            "text": "##### Info\nThis module contains configuration valid for all sample flows.\n\nAdd this file as a config module to the Tweakstreet UI by selecting: _File >> Choose Config Module..._ from the menu. Or right-click in the lower right hand corner of the UI, which displays: _$none_\n\nFor the samples with the Sqlite database you need to download the JDBC driver from https://github.com/xerial/sqlite-jdbc. Copy this jar file to your .tweekstreet/drivers folder.",
+            "text": "##### Info\nThis module contains configuration valid for all sample flows.\n\nAdd this file as a config module to the Tweakstreet UI by selecting: _File >> Choose Config Module..._ from the menu. Or right-click in the lower right hand corner of the UI, which displays: _$none_\n\nFor the samples with the Sqlite database you need to download the JDBC driver from https://github.com/xerial/sqlite-jdbc. Put the JDBC driver jar file into the folder HOME/.tweakstreet/drivers.",
             "syntax": "markdown",
             "size": {
               "width": "100%",
