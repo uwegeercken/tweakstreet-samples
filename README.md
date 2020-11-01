@@ -42,6 +42,9 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | basic-08           | database-02.dfl              | read airport data and lookup country data from a local SQLite database using a "SQL Input" step |
 | basic-08           | database-03.dfl              | read airport data and join country data using a "Join on Condition" step |
 | basic-08           | database-04.dfl              | read airport data and join country data using a "SQL Script" step |
+| basic-08           | database-05.dfl              | read airport and country data and output the results including JSON field |
+| basic-08           | database-06.dfl              | read data stored in the database-05.dfl flow and restore the dictionary with the country data |
+| basic-08           | database-07.dfl              | read data stored in the database-05.dfl flow and restore the dictionary data already in the SQL query |
 
 
 **Available modules**:
