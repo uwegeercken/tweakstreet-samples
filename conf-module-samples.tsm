@@ -1,13 +1,13 @@
 {
   "type": "module",
-  "appVersion": "1.7.1",
+  "appVersion": "1.11.0",
   "properties": {
     "meta": {
       "showingComment": true,
       "comment": {
         "markdown": {
           "text": {
-            "text": "##### Info\nThis module contains configuration valid for all sample flows.\n\nAdd this file as a config module to the Tweakstreet UI by selecting: _File >> Choose Config Module..._ from the menu. Or right-click in the lower right hand corner of the UI, which displays: _$none_",
+            "text": "##### Info\nThis module contains configuration valid for all sample flows.\n\nAdd this file as a config module to the Tweakstreet UI by selecting: _File >> Choose Config Module..._ from the menu. Or right-click in the lower right hand corner of the UI, which displays: _$none_\n\nFor the samples with the Sqlite database you need to download the JDBC driver from https://github.com/xerial/sqlite-jdbc. Copy this jar file to your .tweekstreet/drivers folder.",
             "syntax": "markdown",
             "size": {
               "width": "100%",
@@ -16,7 +16,7 @@
           },
           "size": {
             "width": null,
-            "height": 168
+            "height": 223
           },
           "view": "preview"
         },
@@ -39,6 +39,22 @@
                 "text": "../data"
               },
               "code": "'../data'"
+            }
+          },
+          {
+            "name": "sqlite_database_folder",
+            "type": "string",
+            "value": {
+              "widgetType": "expression/code",
+              "widgetData": {
+                "text": "# get the absolute path where this module resides\nmodules.__dir() .. \"/data/sqlite\"",
+                "size": {
+                  "width": 0,
+                  "height": 56
+                },
+                "syntax": "tweakflow"
+              },
+              "code": "# get the absolute path where this module resides\nmodules.__dir() .. \"/data/sqlite\"\n"
             }
           },
           {
@@ -97,17 +113,81 @@
     },
     "services": {
       "services": {
-        "list": []
+        "list": [
+          {
+            "name": "sqlitedb01",
+            "type": "any",
+            "category": "jdbc",
+            "value": {
+              "widgetType": "expression/database",
+              "widgetData": {
+                "type": "com.twineworks.tweakstreet.library.jdbc.generic",
+                "db": {
+                  "driverClass": {
+                    "widgetType": "expression/string",
+                    "widgetData": {
+                      "interpolation": true,
+                      "text": "org.sqlite.JDBC"
+                    },
+                    "code": "'org.sqlite.JDBC'"
+                  },
+                  "jdbcUrl": {
+                    "widgetType": "expression/string",
+                    "widgetData": {
+                      "interpolation": true,
+                      "text": "jdbc:sqlite:${vars.sqlite_database_folder}/airports.db"
+                    },
+                    "code": "let {\n  string literal_0: 'jdbc:sqlite:';\n  string interpolation_1: vars.sqlite_database_folder;\n  string literal_2: '/airports.db';\n}\nliteral_0 .. interpolation_1 .. literal_2"
+                  },
+                  "properties": {
+                    "widgetType": "expression/dict",
+                    "widgetData": {
+                      "table": {
+                        "list": []
+                      }
+                    },
+                    "code": "{}"
+                  },
+                  "defaultTz": {
+                    "widgetType": "expression/timezone",
+                    "widgetData": {
+                      "value": "Europe/Zurich"
+                    },
+                    "code": "'Europe/Zurich'"
+                  },
+                  "connectSql": {
+                    "widgetType": "expression/text",
+                    "widgetData": {
+                      "text": "",
+                      "size": {
+                        "width": 0,
+                        "height": 60
+                      },
+                      "syntax": "sql",
+                      "lineSeparator": "\n",
+                      "interpolation": false
+                    },
+                    "code": "''"
+                  },
+                  "editor": {},
+                  "model": {}
+                },
+                "summary": true
+              },
+              "code": "{\n  :type 'com.twineworks.tweakstreet.library.jdbc.generic',\n  :db {\n    :driverClass 'org.sqlite.JDBC',\n    :jdbcUrl let {\n  string literal_0: 'jdbc:sqlite:';\n  string interpolation_1: vars.sqlite_database_folder;\n  string literal_2: '/airports.db';\n}\nliteral_0 .. interpolation_1 .. literal_2,\n    :properties {},\n    :defaultTz 'Europe/Zurich',\n    :connectSql ''\n  }\n}"
+            }
+          }
+        ]
       },
       "editor": {
         "collapsed": false
       }
     },
     "imports": {
-      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n\n# this module allows us to detect the absolute path\nimport modules from 'tweakstreet/modules';",
       "size": {
         "width": 0,
-        "height": 102
+        "height": 124
       },
       "editor": {
         "collapsed": false

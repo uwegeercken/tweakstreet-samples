@@ -4,7 +4,8 @@ Various examples for the Tweakstreet Data Integration Tool. The idea is to provi
 
 The base components of the Tweakstreet GUI application are: control flows, data flows, steps, hops and modules. Control flows allow serial processing of tasks; they typically contain - amongst other components - one or multiple data flows. Data flows execute certain processing tasks in parallel. The core components in a data flow are steps - which encapsulate certain functionality - and the hops which connect steps to each other. Modules allow to define variables or additional functionality (functions) in a file and config modules can be used to define configuration e.g. for development and production environments. Besides handling flat records, Tweakstreet represents all data natively as nestable data structures.
 
-The samples in this repository are self contained. You do not need anything else except of the Tweakstreet application which can be downloaded from the above site. The repository also contains a folder: _data_. The data files in this folder are used for the samples. For each sample there is also a screenshot available.
+Except for the database related examples, the samples in this repository are self contained. You do not need anything else except of the Tweakstreet application which can be downloaded from the above site. The repository also contains a folder: _data_. The data files in this folder are used for the samples. For each sample there is also a screenshot available.
+For the samples with the Sqlite database you need to download the JDBC driver from https://github.com/xerial/sqlite-jdbc. Put the JDBC driver jar file into the folder HOME/.tweakstreet/drivers.
 
 I recommend to also check the Tweakstreet forum at: https://forum.tweakstreet.io/ which contains tutorials, data challenges and more.
 
@@ -46,4 +47,4 @@ Available modules:
 | random-data-lists.tsm        | various lists with random data. used with the "generate from list" generator |
 
 
-last update: 2020-10-23
+last update: 2020-11-01
