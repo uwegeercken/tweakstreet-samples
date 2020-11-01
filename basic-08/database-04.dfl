@@ -6,7 +6,7 @@
       "comment": {
         "markdown": {
           "text": {
-            "text": "##### Info\n\nFlow demonstrates reading data from a SQLite database:\n* joining airport and country data from a SQLite database file using a SQL Script step\n* output to a dummy step (do nothing)\n\nThe result is one row with a list of meta data and returned rows.\n\nFlow uses variables and the database connection from the global module: _conf-module-samples.tsm_\n",
+            "text": "##### Info\n\nFlow demonstrates reading data from a SQLite database:\n* joining airport and country data from a SQLite database file using a SQL Script step\n* convert the resulting list of valus to rows\n* output to a dummy step (do nothing)\n\nThe result is one row with a list of meta data and returned rows. We then convert this list to the relevant rows.\n\nFlow uses variables and the database connection from the global module: _conf-module-samples.tsm_\n",
             "syntax": "markdown",
             "size": {
               "width": "100%",
@@ -17,7 +17,7 @@
             "width": null,
             "height": 240
           },
-          "view": "preview"
+          "view": "edit"
         },
         "editor": {
           "collapsed": false
@@ -119,7 +119,7 @@
       },
       "pos": {
         "x": 586,
-        "y": 170
+        "y": 138
       }
     },
     {
@@ -140,7 +140,7 @@
           "comment": {
             "markdown": {
               "text": {
-                "text": "##### INFO\n\nQueries the database using a join and an additional where condition on the elevation.\n\nThe result is one row (for each input row) with a list of values for the rows. Additionally\na function is ued to count the number of elements in the list.",
+                "text": "##### INFO\n\nQueries the database using a join and an additional where condition on the elevation.\n\nThe result is one row (for each input row) with a list of values for the rows. Additionally\na function is used to count the total number of elements in the list.",
                 "syntax": "markdown",
                 "size": {
                   "width": "100%",
@@ -176,7 +176,7 @@
         "sql": {
           "widgetType": "expression/text",
           "widgetData": {
-            "text": "select\n        airports.name as airport_name,\n        countries.name as country_name\nfrom\n        airports, countries\nwhere\n        airports.country_id = countries.id and\n        airports.elevation >= ?\n        ",
+            "text": "select\n        airports.name as airport_name,\n        airports.elevation as airport_elevation,\n        countries.name as country_name\nfrom\n        airports, countries\nwhere\n        airports.country_id = countries.id and\n        airports.elevation >= ?\n        ",
             "size": {
               "width": 0,
               "height": 203
@@ -185,7 +185,7 @@
             "lineSeparator": "\n",
             "interpolation": false
           },
-          "code": "'select\n        airports.name as airport_name,\n        countries.name as country_name\nfrom\n        airports, countries\nwhere\n        airports.country_id = countries.id and\n        airports.elevation >= ?\n        '"
+          "code": "'select\n        airports.name as airport_name,\n        airports.elevation as airport_elevation,\n        countries.name as country_name\nfrom\n        airports, countries\nwhere\n        airports.country_id = countries.id and\n        airports.elevation >= ?\n        '"
         },
         "jdbcParams": {
           "widgetType": "expression/list",
@@ -244,7 +244,7 @@
                 }
               },
               {
-                "name": "count",
+                "name": "number_of_elements",
                 "type": "any",
                 "value": {
                   "widgetType": "expression/code",
@@ -273,16 +273,175 @@
         "model": {}
       },
       "pos": {
-        "x": 298,
-        "y": 170
+        "x": 170,
+        "y": 138
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.flatmap.getitems_f7b6660e-7278-4319-8cbc-0e0c8de77d50",
+      "name": "List to Rows",
+      "type": "com.twineworks.tweakstreet.library.steps.flatmap.getitems",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "List to Rows",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### INFO\n\nThe SQL Script step returns a single row with a list of results from the SQL query.\n\nHere we convert the list to rows and extract the desired fields.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "items": {
+          "widgetType": "expression/code",
+          "widgetData": {
+            "text": "in.result[0][:rows]",
+            "size": {
+              "width": 0,
+              "height": 36
+            },
+            "syntax": "tweakflow"
+          },
+          "code": "in.result[0][:rows]"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "query_item",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.item"
+                  },
+                  "code": "::results.item"
+                }
+              },
+              {
+                "name": "airport_elevation",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.item[:airport_elevation]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.item[:airport_elevation]"
+                }
+              },
+              {
+                "name": "country_name",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.item[:country_name]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.item[:country_name]"
+                }
+              },
+              {
+                "name": "airport_name",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.item[:airport_name]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.item[:airport_name]"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 394,
+        "y": 138
       }
     }
   ],
   "hops": [
     {
-      "id": "cf6e9f87-3895-4ec6-b6ea-4f1c00624344",
-      "fromStep": "com.twineworks.tweakstreet.library.steps.map.sqlscript_39a27cb7-fd67-4dba-954f-0d40aeed00e4",
+      "id": "720a4a66-1f89-4521-8468-86b8f617b1a0",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.flatmap.getitems_f7b6660e-7278-4319-8cbc-0e0c8de77d50",
       "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_28be0f41-b9ac-4682-aa5d-0c13c631a6b8",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "d0aef454-f358-4605-9b96-4f5a530c7bfd",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.sqlscript_39a27cb7-fd67-4dba-954f-0d40aeed00e4",
+      "toStep": "com.twineworks.tweakstreet.library.steps.flatmap.getitems_f7b6660e-7278-4319-8cbc-0e0c8de77d50",
       "fromGate": "out",
       "toGate": "in",
       "disabled": false,
