@@ -1,0 +1,298 @@
+{
+  "type": "data-flow",
+  "appVersion": "1.11.0",
+  "properties": {
+    "meta": {
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "##### Info\n\nFlow demonstrates reading data from a SQLite database:\n* joining airport and country data from a SQLite database file using a SQL Script step\n* output to a dummy step (do nothing)\n\nThe result is one row with a list of meta data and returned rows.\n\nFlow uses variables and the database connection from the global module: _conf-module-samples.tsm_\n",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 240
+          },
+          "view": "preview"
+        },
+        "editor": {
+          "collapsed": false
+        }
+      },
+      "showingComment": true
+    },
+    "editor": {
+      "showParameters": true,
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "imports": {
+      "code": "# import the standard library\nimport core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
+      "size": {
+        "width": 0,
+        "height": 102
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "parameters": {
+      "parameters": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "variables": {
+      "variables": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": [
+          {
+            "name": "sqlite-airports",
+            "type": "any",
+            "category": "jdbc",
+            "value": {
+              "widgetType": "expression/code",
+              "widgetData": {
+                "text": "$config.services.`sqlite-airports`",
+                "size": {
+                  "width": 0,
+                  "height": 36
+                },
+                "syntax": "tweakflow"
+              },
+              "code": "$config.services.`sqlite-airports`"
+            }
+          }
+        ]
+      },
+      "editor": {
+        "collapsed": false
+      }
+    }
+  },
+  "steps": [
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_28be0f41-b9ac-4682-aa5d-0c13c631a6b8",
+      "name": "Dummy",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy",
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": ""
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "editor": {
+                "collapsed": true
+              }
+            }
+          },
+          "showingComment": false
+        },
+        "editor": {}
+      },
+      "pos": {
+        "x": 586,
+        "y": 170
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.sqlscript_39a27cb7-fd67-4dba-954f-0d40aeed00e4",
+      "name": "SQL Script",
+      "type": "com.twineworks.tweakstreet.library.steps.map.sqlscript",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "SQL Script",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### INFO\n\nQueries the database using a join and an additional where condition on the elevation.\n\nThe result is one row (for each input row) with a list of values for the rows. Additionally\na function is ued to count the number of elements in the list.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "connection": {
+          "widgetType": "expression/database-ref",
+          "widgetData": {
+            "name": "sqlite-airports"
+          },
+          "code": "::flow.services.`sqlite-airports`"
+        },
+        "sql": {
+          "widgetType": "expression/text",
+          "widgetData": {
+            "text": "select\n        airports.name as airport_name,\n        countries.name as country_name\nfrom\n        airports, countries\nwhere\n        airports.country_id = countries.id and\n        airports.elevation >= ?\n        ",
+            "size": {
+              "width": 0,
+              "height": 203
+            },
+            "syntax": "sql",
+            "lineSeparator": "\n",
+            "interpolation": false
+          },
+          "code": "'select\n        airports.name as airport_name,\n        countries.name as country_name\nfrom\n        airports, countries\nwhere\n        airports.country_id = countries.id and\n        airports.elevation >= ?\n        '"
+        },
+        "jdbcParams": {
+          "widgetType": "expression/list",
+          "widgetData": {
+            "table": {
+              "list": [
+                {
+                  "value": {
+                    "widgetType": "expression/number",
+                    "widgetData": {
+                      "text": "7000"
+                    },
+                    "code": "7000"
+                  }
+                }
+              ]
+            }
+          },
+          "code": "[7000]"
+        },
+        "getGeneratedKeys": {
+          "widgetType": "expression/checkbox-boolean",
+          "widgetData": {
+            "value": false
+          },
+          "code": "false"
+        },
+        "onSqlErrors": {
+          "widgetType": "expression/select",
+          "widgetData": {
+            "family": "com.twineworks.tweakstreet.library.steps.map.sqlscript/onSqlErrors",
+            "value": "error"
+          },
+          "code": "'error'"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "result",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.data"
+                  },
+                  "code": "::results.data"
+                }
+              },
+              {
+                "name": "count",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "# return the number of elements in the list\ndata.size(result[0][:rows])",
+                    "size": {
+                      "width": 0,
+                      "height": 65
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "# return the number of elements in the list\ndata.size(result[0][:rows])\n"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 298,
+        "y": 170
+      }
+    }
+  ],
+  "hops": [
+    {
+      "id": "cf6e9f87-3895-4ec6-b6ea-4f1c00624344",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.sqlscript_39a27cb7-fd67-4dba-954f-0d40aeed00e4",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_28be0f41-b9ac-4682-aa5d-0c13c631a6b8",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    }
+  ]
+}

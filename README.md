@@ -39,8 +39,9 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | basic-06           | deserialize-01.dfl           | deserialize data to the file produced in the serialize-01 data flow |
 | basic-07           | partitioning-01.dfl          | partition data to process in parallel |
 | basic-08           | database-01.dfl              | read airport data from a local SQLite database |
-| basic-08           | database-02.dfl              | read airport data and lookup country data from a local SQLite database |
-| basic-08           | database-03.dfl              | read airport data and join country data using a "Join on Condition" step from a local SQLite database |
+| basic-08           | database-02.dfl              | read airport data and lookup country data from a local SQLite database using a "SQL Input" step |
+| basic-08           | database-03.dfl              | read airport data and join country data using a "Join on Condition" step |
+| basic-08           | database-04.dfl              | read airport data and join country data using a "SQL Script" step |
 
 
 **Available modules**:
