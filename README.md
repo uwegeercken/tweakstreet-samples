@@ -38,7 +38,10 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | basic-06           | serialize-01.dfl             | serialize data to a file |
 | basic-06           | deserialize-01.dfl           | deserialize data to the file produced in the serialize-01 data flow |
 | basic-07           | partitioning-01.dfl          | partition data to process in parallel |
-| basic-08           | database-01.dfl              | read data from a local SQLite database |
+| basic-08           | database-01.dfl              | read airport data from a local SQLite database |
+| basic-08           | database-02.dfl              | read airport data and lookup country data from a local SQLite database |
+| basic-08           | database-03.dfl              | read airport data and join country data using a "Join on Condition" step from a local SQLite database |
+
 
 **Available modules**:
 
@@ -48,6 +51,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | global-module-samples.tsm    | global module with variables for re-use across flows |
 | random-data-lists.tsm        | various lists with random data. used with the "generate from list" generator |
 
+
 **Data Files**:
 
 | Folder            | Filename                     | Description
@@ -56,7 +60,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | data              | countries.csv                | 241 countries with name and code |
 | data              | country_continent_lookup.csv | country to continent lookup data |
 | data              | continent_names_lookup.csv   | continent names lookup data |
-| data/sqlite       | airports.db                  | 7733 airports in a Sqlite database file with name, codes, coordinates, elevation |
+| data/sqlite       | airports.db                  | airports and countries in a Sqlite database file |
 
 
 last update: 2020-11-01

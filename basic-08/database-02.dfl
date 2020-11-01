@@ -6,7 +6,7 @@
       "comment": {
         "markdown": {
           "text": {
-            "text": "##### Info\n\nFlow demonstrates reading data from a SQLite database:\n* reading airport data\n* output to a dummy step (do nothing)\n\nFlow uses variables and the database connection from the global module: _conf-module-samples.tsm_\n",
+            "text": "##### Info\n\nFlow demonstrates reading data from a SQLite database:\n* reading airport data from a SQLite database file\n* lookup of the country information from the countries table\n* output to a dummy step (do nothing)\n\nFlow uses variables and the database connection from the global module: _conf-module-samples.tsm_\n",
             "syntax": "markdown",
             "size": {
               "width": "100%",
@@ -15,7 +15,7 @@
           },
           "size": {
             "width": null,
-            "height": 160
+            "height": 228
           },
           "view": "preview"
         },
@@ -87,7 +87,7 @@
   "steps": [
     {
       "id": "com.twineworks.tweakstreet.library.steps.input.sqlinput_666f697a-8d88-4076-986a-69e67b225965",
-      "name": "SQL Input",
+      "name": "SQL Input: airports",
       "type": "com.twineworks.tweakstreet.library.steps.input.sqlinput",
       "instanceCount": {
         "widgetType": "expression/number",
@@ -98,7 +98,7 @@
       },
       "data": {
         "meta": {
-          "name": "SQL Input",
+          "name": "SQL Input: airports",
           "showingComment": true,
           "comment": {
             "markdown": {
@@ -112,7 +112,7 @@
               },
               "size": {
                 "width": null,
-                "height": 130
+                "height": 129
               },
               "view": "preview"
             },
@@ -395,6 +395,243 @@
         "editor": {}
       },
       "pos": {
+        "x": 746,
+        "y": 170
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.sqllookup_8b8e43ab-2053-4186-afcf-05660b05a56f",
+      "name": "SQL Lookup: countries",
+      "type": "com.twineworks.tweakstreet.library.steps.map.sqllookup",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "SQL Lookup: countries",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nLookup the country iata code and name from the countries table. The keys for the lookup are\nthe country_id in the airports table and the id in the countries table.\n\nThe country details are returned as a dictionary of key/values. Click on \"Fetch Lookup Fields\"\nat the bottom, if you want to output individual fields instead or additionally.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 192
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "connection": {
+          "widgetType": "expression/database-ref",
+          "widgetData": {
+            "name": "sqlite-airports"
+          },
+          "code": "::flow.services.`sqlite-airports`"
+        },
+        "schema": {
+          "widgetType": "expression/string",
+          "widgetData": {
+            "interpolation": true,
+            "text": ""
+          },
+          "code": "''"
+        },
+        "table": {
+          "widgetType": "expression/string",
+          "widgetData": {
+            "interpolation": true,
+            "text": "countries"
+          },
+          "code": "'countries'"
+        },
+        "tabs": {},
+        "writeFields": {
+          "writeFields": {
+            "list": [
+              {
+                "name": "id",
+                "type": "long",
+                "value": {
+                  "widgetType": "expression/field-value-ref",
+                  "widgetData": {
+                    "fieldSelect": {
+                      "value": {
+                        "gate": "in",
+                        "name": "country_id"
+                      }
+                    }
+                  },
+                  "code": "::in.country_id"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "dataFields": {
+          "readFields": {
+            "list": [
+              {
+                "name": "iata_code",
+                "type": "string",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "iata_code"
+                  },
+                  "code": "'iata_code'"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "name"
+                  },
+                  "code": "'name'"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "useCache": {
+          "widgetType": "expression/checkbox-boolean",
+          "widgetData": {
+            "value": true
+          },
+          "code": "true"
+        },
+        "cacheSize": {
+          "widgetType": "expression/number",
+          "widgetData": {
+            "text": "100000"
+          },
+          "code": "100000"
+        },
+        "preloadCache": {
+          "widgetType": "expression/checkbox-boolean",
+          "widgetData": {
+            "value": false
+          },
+          "code": "false"
+        },
+        "preloadCachePredicate": {
+          "widgetType": "expression/text",
+          "widgetData": {
+            "text": "",
+            "size": {
+              "width": 0,
+              "height": 120
+            },
+            "syntax": "sql",
+            "lineSeparator": "\n",
+            "interpolation": true
+          },
+          "code": "''"
+        },
+        "preloadCacheParams": {
+          "widgetType": "expression/list",
+          "widgetData": {
+            "table": {
+              "list": []
+            }
+          },
+          "code": "[]"
+        },
+        "useBloomFilter": {
+          "widgetType": "expression/checkbox-boolean",
+          "widgetData": {
+            "value": false
+          },
+          "code": "false"
+        },
+        "bloomFilterSize": {
+          "widgetType": "expression/number",
+          "widgetData": {
+            "text": "10_000_000"
+          },
+          "code": "10_000_000"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "country_details",
+                "type": "dict",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.lookup"
+                  },
+                  "code": "::results.lookup"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "fetchFields": {
+          "value": "lookup_"
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
         "x": 490,
         "y": 170
       }
@@ -402,8 +639,23 @@
   ],
   "hops": [
     {
-      "id": "2e862949-960e-4256-80e4-593415aa8181",
+      "id": "d816b888-2a64-4631-95f6-9b6d45882c63",
       "fromStep": "com.twineworks.tweakstreet.library.steps.input.sqlinput_666f697a-8d88-4076-986a-69e67b225965",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.sqllookup_8b8e43ab-2053-4186-afcf-05660b05a56f",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "5b68d61e-d44c-465f-b966-c7e6270fe5cd",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.sqllookup_8b8e43ab-2053-4186-afcf-05660b05a56f",
       "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_28be0f41-b9ac-4682-aa5d-0c13c631a6b8",
       "fromGate": "out",
       "toGate": "in",

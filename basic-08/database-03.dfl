@@ -6,7 +6,7 @@
       "comment": {
         "markdown": {
           "text": {
-            "text": "##### Info\n\nFlow demonstrates reading data from a SQLite database:\n* reading airport data\n* output to a dummy step (do nothing)\n\nFlow uses variables and the database connection from the global module: _conf-module-samples.tsm_\n",
+            "text": "##### Info\n\nFlow demonstrates reading data from a SQLite database:\n* reading airport data \n* join the airport data with the data from the countries table\n* output to a dummy step (do nothing)\n\nFlow uses variables and the database connection from the global module: _conf-module-samples.tsm_\n",
             "syntax": "markdown",
             "size": {
               "width": "100%",
@@ -15,7 +15,7 @@
           },
           "size": {
             "width": null,
-            "height": 160
+            "height": 224
           },
           "view": "preview"
         },
@@ -87,7 +87,7 @@
   "steps": [
     {
       "id": "com.twineworks.tweakstreet.library.steps.input.sqlinput_666f697a-8d88-4076-986a-69e67b225965",
-      "name": "SQL Input",
+      "name": "SQL Input: airports",
       "type": "com.twineworks.tweakstreet.library.steps.input.sqlinput",
       "instanceCount": {
         "widgetType": "expression/number",
@@ -98,12 +98,12 @@
       },
       "data": {
         "meta": {
-          "name": "SQL Input",
+          "name": "SQL Input: airports",
           "showingComment": true,
           "comment": {
             "markdown": {
               "text": {
-                "text": "##### Info\n\nQuerying the data from the SQLite database.\n\nNote: Country code 16 is Germany",
+                "text": "##### Info\n\nQuerying the data from the SQLite database for all airports at or above\na certain elevation.\n",
                 "syntax": "markdown",
                 "size": {
                   "width": "100%",
@@ -112,7 +112,7 @@
               },
               "size": {
                 "width": null,
-                "height": 130
+                "height": 97
               },
               "view": "preview"
             },
@@ -152,16 +152,16 @@
         "query": {
           "widgetType": "expression/text",
           "widgetData": {
-            "text": "SELECT \n        * \nfrom \n        airports\nwhere\n        country_id=16\n        \n       ",
+            "text": "SELECT \n        * \nfrom \n        airports\nwhere\n        elevation > 5000\n\n       ",
             "size": {
               "width": 0,
-              "height": 200
+              "height": 145
             },
             "syntax": "sql",
             "lineSeparator": "\n",
             "interpolation": false
           },
-          "code": "'SELECT \n        * \nfrom \n        airports\nwhere\n        country_id=16\n        \n       '"
+          "code": "'SELECT \n        * \nfrom \n        airports\nwhere\n        elevation > 5000\n\n       '"
         },
         "jdbcParams": {
           "widgetType": "expression/list",
@@ -359,7 +359,7 @@
       },
       "pos": {
         "x": 234,
-        "y": 170
+        "y": 138
       }
     },
     {
@@ -395,18 +395,349 @@
         "editor": {}
       },
       "pos": {
+        "x": 746,
+        "y": 234
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.join.conditionjoin_3bd2368d-6a42-4b46-a51e-b67eafdb3611",
+      "name": "Join on Condition",
+      "type": "com.twineworks.tweakstreet.library.steps.join.conditionjoin",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Join on Condition",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### INFO\n\njoining the data on the country id. The \"Output\" tab defines the order of the fields\n(left vs right) and the prefixes of the fields.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "tabs": {},
+        "method": {
+          "widgetType": "expression/select",
+          "widgetData": {
+            "family": "expression/select/joinMethod",
+            "value": "stream_left"
+          },
+          "code": "'stream_left'"
+        },
+        "inMemoryCapacity": {
+          "widgetType": "expression/number",
+          "widgetData": {
+            "text": "1_000_000"
+          },
+          "code": "1_000_000"
+        },
+        "tmpFolder": {
+          "widgetType": "expression/local-file",
+          "widgetData": {
+            "interpolation": true,
+            "text": "",
+            "dialogIntent": "openFolder"
+          },
+          "code": "''"
+        },
+        "condition": {
+          "widgetType": "expression/code",
+          "widgetData": {
+            "text": "left.country_id == right.id",
+            "size": {
+              "width": 0,
+              "height": 98
+            },
+            "syntax": "tweakflow"
+          },
+          "code": "left.country_id == right.id"
+        },
+        "mode": {
+          "widgetType": "expression/select",
+          "widgetData": {
+            "family": "expression/select/joinMode",
+            "value": "left_outer"
+          },
+          "code": "'left_outer'"
+        },
+        "resultRowMode": {
+          "value": "left_right"
+        },
+        "leftFieldsPrefix": {
+          "value": "airport_"
+        },
+        "rightFieldsPrefix": {
+          "value": "country_"
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": false
+        },
+        "model": {}
+      },
+      "pos": {
         "x": 490,
-        "y": 170
+        "y": 234
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.input.sqlinput_d3db47af-ca68-448e-9690-4b2968ecb0fb",
+      "name": "SQL Input: countries",
+      "type": "com.twineworks.tweakstreet.library.steps.input.sqlinput",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "SQL Input: countries",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nQuerying the countries data from the SQLite database.\n\n",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 129
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "tabs": {},
+        "connection": {
+          "widgetType": "expression/database-ref",
+          "widgetData": {
+            "name": "sqlite-airports"
+          },
+          "code": "::flow.services.`sqlite-airports`"
+        },
+        "fetchSize": {
+          "widgetType": "expression/number",
+          "widgetData": {
+            "text": "10000"
+          },
+          "code": "10000"
+        },
+        "rowLimit": {
+          "widgetType": "expression/nil",
+          "widgetData": {},
+          "code": "nil"
+        },
+        "query": {
+          "widgetType": "expression/text",
+          "widgetData": {
+            "text": "SELECT \n        * \nfrom \n        countries\n\n        \n       ",
+            "size": {
+              "width": 0,
+              "height": 200
+            },
+            "syntax": "sql",
+            "lineSeparator": "\n",
+            "interpolation": false
+          },
+          "code": "'SELECT \n        * \nfrom \n        countries\n\n        \n       '"
+        },
+        "jdbcParams": {
+          "widgetType": "expression/list",
+          "widgetData": {
+            "table": {
+              "list": []
+            }
+          },
+          "code": "[]"
+        },
+        "readFields": {
+          "readFields": {
+            "list": [
+              {
+                "name": "id",
+                "type": "long",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "id"
+                  },
+                  "code": "'id'"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              },
+              {
+                "name": "iata_code",
+                "type": "string",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "iata_code"
+                  },
+                  "code": "'iata_code'"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "name"
+                  },
+                  "code": "'name'"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": false
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 234,
+        "y": 362
       }
     }
   ],
   "hops": [
     {
-      "id": "2e862949-960e-4256-80e4-593415aa8181",
+      "id": "c3233c7b-ee91-4796-8a0d-afbb465102bc",
       "fromStep": "com.twineworks.tweakstreet.library.steps.input.sqlinput_666f697a-8d88-4076-986a-69e67b225965",
+      "toStep": "com.twineworks.tweakstreet.library.steps.join.conditionjoin_3bd2368d-6a42-4b46-a51e-b67eafdb3611",
+      "fromGate": "out",
+      "toGate": "left",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "9c80bc12-9cf4-40f5-b9b1-78615e6d0b54",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.join.conditionjoin_3bd2368d-6a42-4b46-a51e-b67eafdb3611",
       "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_28be0f41-b9ac-4682-aa5d-0c13c631a6b8",
       "fromGate": "out",
       "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "8f5960bc-ce4a-44aa-885e-d06a6b31858f",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.input.sqlinput_d3db47af-ca68-448e-9690-4b2968ecb0fb",
+      "toStep": "com.twineworks.tweakstreet.library.steps.join.conditionjoin_3bd2368d-6a42-4b46-a51e-b67eafdb3611",
+      "fromGate": "out",
+      "toGate": "right",
       "disabled": false,
       "partitioner": {
         "widgetType": "expression/code",
