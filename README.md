@@ -5,6 +5,7 @@ Various examples for the Tweakstreet Data Integration Tool. The idea is to provi
 The base components of the Tweakstreet GUI application are: control flows, data flows, steps, hops and modules. Control flows allow serial processing of tasks; they typically contain - amongst other components - one or multiple data flows. Data flows execute certain processing tasks in parallel. The core components in a data flow are steps - which encapsulate certain functionality - and the hops which connect steps to each other. Modules allow to define variables or additional functionality (functions) in a file and config modules can be used to define configuration e.g. for development and production environments. Besides handling flat records, Tweakstreet represents all data natively as nestable data structures.
 
 Except for the database related examples, the samples in this repository are self contained. You do not need anything else except of the Tweakstreet application which can be downloaded from the above site. The repository also contains a folder: _data_. The data files in this folder are used for the samples. For each sample there is also a screenshot available.
+
 For the samples with the Sqlite database you need to download the JDBC driver from https://github.com/xerial/sqlite-jdbc. Put the JDBC driver jar file into the folder HOME/.tweakstreet/drivers.
 
 I recommend to also check the Tweakstreet forum at: https://forum.tweakstreet.io/ which contains tutorials, data challenges and more.
@@ -54,7 +55,7 @@ Data Files:
 | data              | airports.csv                 | 7733 airports with name, codes, coordinates, elevation |
 | data              | countries.csv                | 241 countries with name and code |
 | data              | country_continent_lookup.csv | country to continent lookup data |
-| data              | continent_names_lookup.csv   | continent names lookup data
+| data              | continent_names_lookup.csv   | continent names lookup data |
 | data/sqlite       | airports.db                  | 7733 airports in a Sqlite database file with name, codes, coordinates, elevation |
 
 
