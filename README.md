@@ -24,6 +24,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | basic-01           | read-csv-04.dfl              | read CSV file, add a calculated list field, convert elevationto meters and write to log |
 | basic-01           | read-csv-05.dfl              | read CSV file, group by country and sort by highest number of airports |
 | basic-01           | read-csv-06.dfl              | read CSV file, lookup country details, group by country and sort by highest number of airports |
+| basic-01           | read-csv-07.dfl              | read fixed-length ASCII file file and split each row into its individual fields |
 | basic-02           | modules-01.dfl               | simply output variables from a config module to the log |
 | basic-02           | modules-02.dfl               | import config variables to the data flow |
 | basic-02           | modules-03.dfl               | call function from a global module |
@@ -61,10 +62,11 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | Folder            | Filename                     | Description
 | :--               | :--                          | :-- 
 | data              | airports.csv                 | 7733 airports with name, codes, coordinates, elevation |
+| data              | airports_fixed_length.csv    | 7733 airports with name, codes, coordinates, elevation. fields have fixed start/end positions |
 | data              | countries.csv                | 241 countries with name and code |
 | data              | country_continent_lookup.csv | country to continent lookup data |
 | data              | continent_names_lookup.csv   | continent names lookup data |
 | data/sqlite       | airports.db                  | airports and countries in a Sqlite database file |
 
 
-last update: 2020-11-01
+last update: 2021-01-23

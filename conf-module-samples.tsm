@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "appVersion": "1.11.0",
+  "appVersion": "1.14.1",
   "properties": {
     "meta": {
       "showingComment": true,
@@ -67,6 +67,18 @@
                 "text": "${folder_data}/airports.csv"
               },
               "code": "let {\n  string interpolation_0: folder_data;\n  string literal_1: '/airports.csv';\n}\ninterpolation_0 .. literal_1"
+            }
+          },
+          {
+            "name": "filename_airports_fixed_length",
+            "type": "string",
+            "value": {
+              "widgetType": "expression/string",
+              "widgetData": {
+                "interpolation": true,
+                "text": "${folder_data}/airports_fixed_length.csv"
+              },
+              "code": "let {\n  string interpolation_0: folder_data;\n  string literal_1: '/airports_fixed_length.csv';\n}\ninterpolation_0 .. literal_1"
             }
           },
           {

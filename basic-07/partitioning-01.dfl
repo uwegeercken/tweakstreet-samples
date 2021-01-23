@@ -71,7 +71,171 @@
     },
     "services": {
       "services": {
-        "list": []
+        "list": [
+          {
+            "name": "database",
+            "type": "any",
+            "category": "jdbc",
+            "value": {
+              "widgetType": "expression/database",
+              "widgetData": {
+                "type": "com.twineworks.tweakstreet.library.jdbc.generic",
+                "db": {
+                  "driverClass": {
+                    "widgetType": "expression/string",
+                    "widgetData": {
+                      "interpolation": true,
+                      "text": "com.db.Driver"
+                    },
+                    "code": "'com.db.Driver'"
+                  },
+                  "jdbcUrl": {
+                    "widgetType": "expression/string",
+                    "widgetData": {
+                      "interpolation": true,
+                      "text": "jdbc:db://localhost:port/database"
+                    },
+                    "code": "'jdbc:db://localhost:port/database'"
+                  },
+                  "properties": {
+                    "widgetType": "expression/dict",
+                    "widgetData": {
+                      "table": {
+                        "list": [
+                          {
+                            "key": {
+                              "widgetType": "expression/string",
+                              "widgetData": {
+                                "interpolation": true,
+                                "text": "user"
+                              },
+                              "code": "'user'"
+                            },
+                            "value": {
+                              "widgetType": "expression/string",
+                              "widgetData": {
+                                "interpolation": true,
+                                "text": "admin"
+                              },
+                              "code": "'admin'"
+                            }
+                          },
+                          {
+                            "key": {
+                              "widgetType": "expression/string",
+                              "widgetData": {
+                                "interpolation": true,
+                                "text": "password"
+                              },
+                              "code": "'password'"
+                            },
+                            "value": {
+                              "widgetType": "expression/password",
+                              "widgetData": {
+                                "text": "secret",
+                                "encrypted": false
+                              },
+                              "code": "'secret'"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "code": "{\n  'user' 'admin',\n  'password' 'secret'\n}"
+                  },
+                  "defaultTz": {
+                    "widgetType": "expression/timezone",
+                    "widgetData": {
+                      "value": "Europe/Berlin"
+                    },
+                    "code": "'Europe/Berlin'"
+                  },
+                  "connectSql": {
+                    "widgetType": "expression/text",
+                    "widgetData": {
+                      "text": "",
+                      "size": {
+                        "width": 0,
+                        "height": 60
+                      },
+                      "syntax": "sql",
+                      "lineSeparator": "\n",
+                      "interpolation": false
+                    },
+                    "code": "''"
+                  },
+                  "editor": {},
+                  "model": {}
+                },
+                "summary": true
+              },
+              "code": "{\n  :type 'com.twineworks.tweakstreet.library.jdbc.generic',\n  :db {\n    :driverClass 'com.db.Driver',\n    :jdbcUrl 'jdbc:db://localhost:port/database',\n    :properties {\n      'user' 'admin',\n      'password' 'secret'\n    },\n    :defaultTz 'Europe/Berlin',\n    :connectSql ''\n  }\n}"
+            }
+          },
+          {
+            "name": "drill",
+            "type": "any",
+            "category": "jdbc",
+            "value": {
+              "widgetType": "expression/database",
+              "widgetData": {
+                "type": "com.twineworks.tweakstreet.library.jdbc.generic",
+                "db": {
+                  "driverClass": {
+                    "widgetType": "expression/string",
+                    "widgetData": {
+                      "interpolation": true,
+                      "text": "org.apache.drill.jdbc.Driver"
+                    },
+                    "code": "'org.apache.drill.jdbc.Driver'"
+                  },
+                  "jdbcUrl": {
+                    "widgetType": "expression/string",
+                    "widgetData": {
+                      "interpolation": true,
+                      "text": "jdbc:drill:drillbit=localhost"
+                    },
+                    "code": "'jdbc:drill:drillbit=localhost'"
+                  },
+                  "properties": {
+                    "widgetType": "expression/dict",
+                    "widgetData": {
+                      "table": {
+                        "list": []
+                      }
+                    },
+                    "code": "{}"
+                  },
+                  "defaultTz": {
+                    "widgetType": "expression/timezone",
+                    "widgetData": {
+                      "value": "Europe/Berlin"
+                    },
+                    "code": "'Europe/Berlin'"
+                  },
+                  "connectSql": {
+                    "widgetType": "expression/text",
+                    "widgetData": {
+                      "text": "",
+                      "size": {
+                        "width": 0,
+                        "height": 60
+                      },
+                      "syntax": "sql",
+                      "lineSeparator": "\n",
+                      "interpolation": false
+                    },
+                    "code": "''"
+                  },
+                  "editor": {},
+                  "model": {}
+                },
+                "summary": true
+              },
+              "code": "{\n  :type 'com.twineworks.tweakstreet.library.jdbc.generic',\n  :db {\n    :driverClass 'org.apache.drill.jdbc.Driver',\n    :jdbcUrl 'jdbc:drill:drillbit=localhost',\n    :properties {},\n    :defaultTz 'Europe/Berlin',\n    :connectSql ''\n  }\n}"
+            }
+          }
+        ]
       },
       "editor": {
         "collapsed": false

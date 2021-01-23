@@ -1,0 +1,528 @@
+{
+  "type": "data-flow",
+  "appVersion": "1.14.1",
+  "properties": {
+    "meta": {
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "##### Info\n\nFlow demonstrates:\n* reading data from a fixed-length ASCII file where each field has a defined start and end position\n\nFlow uses variables from the global module: _conf-module-samples.tsm_\n",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 290
+          },
+          "view": "edit"
+        },
+        "editor": {
+          "collapsed": false
+        }
+      },
+      "showingComment": true
+    },
+    "editor": {
+      "showParameters": true,
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "imports": {
+      "code": "# import the standard library\nimport core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
+      "size": {
+        "width": 0,
+        "height": 102
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "parameters": {
+      "parameters": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "variables": {
+      "variables": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    }
+  },
+  "steps": [
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.input.csvinput_369f9e75-488c-4f88-b759-d5567ad83ff4",
+      "name": "CSV Input",
+      "type": "com.twineworks.tweakstreet.library.steps.input.csvinput",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "CSV Input",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nthe variable `$config.vars.filename_airports_fixed_length` for the _File_ comes from the config module.\n\nMake sure you use a separator that is **NOT** used in the file! This way the complete row is made available as a single field - field 0.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 185
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "tabs": {},
+        "fs": {
+          "widgetType": "expression/storage-ref",
+          "widgetData": {
+            "name": ""
+          },
+          "code": "nil"
+        },
+        "file": {
+          "widgetType": "expression/code",
+          "widgetData": {
+            "text": "$config.vars.filename_airports_fixed_length",
+            "size": {
+              "width": 0,
+              "height": 36
+            },
+            "syntax": "tweakflow"
+          },
+          "code": "$config.vars.filename_airports_fixed_length"
+        },
+        "compression": {
+          "widgetType": "expression/select",
+          "widgetData": {
+            "family": "expression/select/compression",
+            "value": "none"
+          },
+          "code": "'none'"
+        },
+        "charset": {
+          "widgetType": "expression/charset",
+          "widgetData": {
+            "value": "UTF-8"
+          },
+          "code": "'UTF-8'"
+        },
+        "textFileContent": {
+          "text": "",
+          "fetchButton": {
+            "value": "100"
+          },
+          "size": {
+            "width": 0,
+            "height": 180
+          },
+          "editor": {
+            "collapsed": true
+          }
+        },
+        "skipLines": {
+          "widgetType": "expression/number",
+          "widgetData": {
+            "text": "0"
+          },
+          "code": "0"
+        },
+        "rowLimit": {
+          "widgetType": "expression/nil",
+          "widgetData": {},
+          "code": "nil"
+        },
+        "fieldSeparator": {
+          "widgetType": "expression/separator",
+          "widgetData": {
+            "value": "semicolon"
+          },
+          "code": "\";\""
+        },
+        "fieldEncloser": {
+          "widgetType": "expression/string",
+          "widgetData": {
+            "interpolation": true,
+            "text": ""
+          },
+          "code": "''"
+        },
+        "hasHeaderLine": {
+          "widgetType": "expression/checkbox-boolean",
+          "widgetData": {
+            "value": true
+          },
+          "code": "true"
+        },
+        "readFields": {
+          "readFields": {
+            "list": [
+              {
+                "name": "complete_row",
+                "type": "any",
+                "mapping": {
+                  "widgetType": "expression/number",
+                  "widgetData": {
+                    "text": "0"
+                  },
+                  "code": "0"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": false,
+          "dialogWidth": "normal"
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 433,
+        "y": 235
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_14ea0375-67d3-4024-9426-5adc3803afb0",
+      "name": "Dummy",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy",
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": ""
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "editor": {
+                "collapsed": true
+              }
+            }
+          },
+          "showingComment": false
+        },
+        "editor": {}
+      },
+      "pos": {
+        "x": 890,
+        "y": 234
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.calculator_99e6683f-9656-4299-acf8-6316565ff200",
+      "name": "Calculator",
+      "type": "com.twineworks.tweakstreet.library.steps.map.calculator",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Calculator",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nThe incomming rows are split into the individual fields, by using the substring function.\n\nBy adjusting the type - for some fields - an automatic casting is done.\n",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "id",
+                "type": "long",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "strings.trim(strings.substring(in.complete_row,0,5))",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "strings.trim(strings.substring(in.complete_row,0,5))"
+                }
+              },
+              {
+                "name": "name",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "strings.substring(in.complete_row,5,63)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "strings.substring(in.complete_row,5,63)"
+                }
+              },
+              {
+                "name": "description",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "strings.substring(in.complete_row,63,98)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "strings.substring(in.complete_row,63,98)"
+                }
+              },
+              {
+                "name": "country_id",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "strings.substring(in.complete_row,98,107)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "strings.substring(in.complete_row,98,107)"
+                }
+              },
+              {
+                "name": "iata_code",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "strings.substring(in.complete_row,107,116)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "strings.substring(in.complete_row,107,116)"
+                }
+              },
+              {
+                "name": "icao_code",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "strings.substring(in.complete_row,116,125)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "strings.substring(in.complete_row,116,125)"
+                }
+              },
+              {
+                "name": "latitude",
+                "type": "double",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "strings.substring(in.complete_row,125,134)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "strings.substring(in.complete_row,125,134)"
+                }
+              },
+              {
+                "name": "longitude",
+                "type": "double",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "strings.substring(in.complete_row,134,144)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "strings.substring(in.complete_row,134,144)"
+                }
+              },
+              {
+                "name": "elevation",
+                "type": "long",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "strings.substring(in.complete_row,144)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "strings.substring(in.complete_row,144)"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": true,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 650,
+        "y": 234
+      }
+    }
+  ],
+  "hops": [
+    {
+      "id": "6646f717-e7d0-4dff-810b-9f6564196969",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.input.csvinput_369f9e75-488c-4f88-b759-d5567ad83ff4",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.calculator_99e6683f-9656-4299-acf8-6316565ff200",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "96749b14-6fd8-476d-9556-95c477f46a1b",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.calculator_99e6683f-9656-4299-acf8-6316565ff200",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_14ea0375-67d3-4024-9426-5adc3803afb0",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    }
+  ]
+}
