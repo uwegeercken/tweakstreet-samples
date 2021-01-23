@@ -243,8 +243,8 @@
         "model": {}
       },
       "pos": {
-        "x": 433,
-        "y": 235
+        "x": 394,
+        "y": 234
       }
     },
     {
@@ -280,13 +280,13 @@
         "editor": {}
       },
       "pos": {
-        "x": 890,
+        "x": 1114,
         "y": 234
       }
     },
     {
       "id": "com.twineworks.tweakstreet.library.steps.map.calculator_99e6683f-9656-4299-acf8-6316565ff200",
-      "name": "Calculator",
+      "name": "Calculator: split fields",
       "type": "com.twineworks.tweakstreet.library.steps.map.calculator",
       "instanceCount": {
         "widgetType": "expression/number",
@@ -297,7 +297,7 @@
       },
       "data": {
         "meta": {
-          "name": "Calculator",
+          "name": "Calculator: split fields",
           "showingComment": true,
           "comment": {
             "markdown": {
@@ -313,7 +313,7 @@
                 "width": null,
                 "height": 160
               },
-              "view": "edit"
+              "view": "preview"
             },
             "editor": {
               "collapsed": false
@@ -488,7 +488,103 @@
         "model": {}
       },
       "pos": {
-        "x": 650,
+        "x": 634,
+        "y": 234
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.calculator_ee9561a8-0ae7-4331-9380-6664d14c6325",
+      "name": "Calculator: range and position",
+      "type": "com.twineworks.tweakstreet.library.steps.map.calculator",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Calculator: range and position",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nHere a function is used to devide the elevation of the airport into bands (ranges) of 'low', 'medium' and 'high'.\n\nThe latitude and longitude values are put together in a dictionary.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 163
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "elevation_range",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "if in.elevation < 3000 'low'\nif in.elevation >= 3000 and in.elevation < 10000 'medium'\nif in.elevation >= 10000 'high'\nelse 'undefined'",
+                    "size": {
+                      "width": 0,
+                      "height": 172
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "if in.elevation < 3000 'low'\nif in.elevation >= 3000 and in.elevation < 10000 'medium'\nif in.elevation >= 10000 'high'\nelse 'undefined'"
+                }
+              },
+              {
+                "name": "position",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "{\n  :latitude in.latitude,\n  :longitude in.longitude\n}",
+                    "size": {
+                      "width": 0,
+                      "height": 177
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "{\n  :latitude in.latitude,\n  :longitude in.longitude\n}"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": true,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 890,
         "y": 234
       }
     }
@@ -510,8 +606,23 @@
       }
     },
     {
-      "id": "96749b14-6fd8-476d-9556-95c477f46a1b",
+      "id": "bf401608-7178-4431-906e-34490a00ddb6",
       "fromStep": "com.twineworks.tweakstreet.library.steps.map.calculator_99e6683f-9656-4299-acf8-6316565ff200",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.calculator_ee9561a8-0ae7-4331-9380-6664d14c6325",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "3650ce14-b864-4e19-ab84-ff6f87d53aea",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.calculator_ee9561a8-0ae7-4331-9380-6664d14c6325",
       "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_14ea0375-67d3-4024-9426-5adc3803afb0",
       "fromGate": "out",
       "toGate": "in",
