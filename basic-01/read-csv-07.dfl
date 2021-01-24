@@ -243,7 +243,7 @@
         "model": {}
       },
       "pos": {
-        "x": 394,
+        "x": 266,
         "y": 234
       }
     },
@@ -280,7 +280,7 @@
         "editor": {}
       },
       "pos": {
-        "x": 1114,
+        "x": 1066,
         "y": 234
       }
     },
@@ -488,7 +488,7 @@
         "model": {}
       },
       "pos": {
-        "x": 634,
+        "x": 506,
         "y": 234
       }
     },
@@ -530,7 +530,56 @@
         },
         "entryVariables": {
           "variables": {
-            "list": []
+            "list": [
+              {
+                "name": "elevation_ranges",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "[\n  {:key 'low', :min -99999, :max 2999},\n  {:key 'medium', :min 3000, :max 9999},\n  {:key 'high', :min 10000, :max 99999}\n]",
+                    "size": {
+                      "width": 0,
+                      "height": 114
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "[\n  {:key 'low', :min -99999, :max 2999},\n  {:key 'medium', :min 3000, :max 9999},\n  {:key 'high', :min 10000, :max 99999}\n]"
+                }
+              },
+              {
+                "name": "find_range",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "(ranges,value) -> data.find(ranges, \n  (range) -> value >= range[:min] and value <= range[:max])",
+                    "size": {
+                      "width": 0,
+                      "height": 61
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "(ranges,value) -> data.find(ranges, \n  (range) -> value >= range[:min] and value <= range[:max])"
+                }
+              },
+              {
+                "name": "range",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "find_range(elevation_ranges,in.elevation)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "find_range(elevation_ranges,in.elevation)"
+                }
+              }
+            ]
           },
           "editor": {
             "collapsed": false
@@ -545,14 +594,14 @@
                 "value": {
                   "widgetType": "expression/code",
                   "widgetData": {
-                    "text": "if in.elevation < 3000 'low'\nif in.elevation >= 3000 and in.elevation < 10000 'medium'\nif in.elevation >= 10000 'high'\nelse 'undefined'",
+                    "text": "vars.range[:key]",
                     "size": {
                       "width": 0,
-                      "height": 172
+                      "height": 36
                     },
                     "syntax": "tweakflow"
                   },
-                  "code": "if in.elevation < 3000 'low'\nif in.elevation >= 3000 and in.elevation < 10000 'medium'\nif in.elevation >= 10000 'high'\nelse 'undefined'"
+                  "code": "vars.range[:key]"
                 }
               },
               {
@@ -579,12 +628,13 @@
         },
         "editor": {
           "showEntryVariables": true,
-          "showOutputFields": true
+          "showOutputFields": true,
+          "dialogWidth": "stretch"
         },
         "model": {}
       },
       "pos": {
-        "x": 890,
+        "x": 794,
         "y": 234
       }
     }
@@ -621,7 +671,7 @@
       }
     },
     {
-      "id": "3650ce14-b864-4e19-ab84-ff6f87d53aea",
+      "id": "2fa37601-b424-46fb-82dc-146f19621d22",
       "fromStep": "com.twineworks.tweakstreet.library.steps.map.calculator_ee9561a8-0ae7-4331-9380-6664d14c6325",
       "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_14ea0375-67d3-4024-9426-5adc3803afb0",
       "fromGate": "out",
