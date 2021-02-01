@@ -1,0 +1,582 @@
+{
+  "type": "data-flow",
+  "appVersion": "1.14.1",
+  "properties": {
+    "meta": {
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "##### Info\n\nSimple example which determines the distinct combinations of two field.",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 97
+          },
+          "view": "preview"
+        },
+        "editor": {
+          "collapsed": false
+        }
+      },
+      "showingComment": true
+    },
+    "editor": {
+      "showParameters": true,
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "imports": {
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
+      "size": {
+        "width": 0,
+        "height": 102
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "parameters": {
+      "parameters": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "variables": {
+      "variables": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    }
+  },
+  "steps": [
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.group.distinct_23806c2f-00b1-4685-815a-6a13c2b16afc",
+      "name": "Distinct",
+      "type": "com.twineworks.tweakstreet.library.steps.group.distinct",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Distinct",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nGrouping by name and state to determine the distinct values.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 105
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "groupFields": {
+          "groupFields": {
+            "list": [
+              {
+                "name": "name",
+                "type": "string",
+                "value": {
+                  "widgetType": "expression/field-value-ref",
+                  "widgetData": {
+                    "fieldSelect": {
+                      "value": {
+                        "gate": "in",
+                        "name": "name"
+                      }
+                    }
+                  },
+                  "code": "::in.name"
+                }
+              },
+              {
+                "name": "state",
+                "type": "string",
+                "value": {
+                  "widgetType": "expression/field-value-ref",
+                  "widgetData": {
+                    "fieldSelect": {
+                      "value": {
+                        "gate": "in",
+                        "name": "state"
+                      }
+                    }
+                  },
+                  "code": "::in.state"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "collatedGroups": {
+          "widgetType": "expression/checkbox-boolean",
+          "widgetData": {
+            "value": false
+          },
+          "code": "false"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 554,
+        "y": 202
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_1519634a-642f-4801-8b8a-c4b5c1f0a6b9",
+      "name": "Dummy",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": true
+            }
+          }
+        },
+        "editor": {},
+        "model": {}
+      },
+      "pos": {
+        "x": 810,
+        "y": 202
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.flatmap.datatable_3293d6a6-29d2-49e0-9cb3-3cb16dcf7579",
+      "name": "Data Table",
+      "type": "com.twineworks.tweakstreet.library.steps.flatmap.datatable",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Data Table",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nA few records for processing  the distinct values of the fields name and state.\n\nNotice that values \"Hamburg\" and \"Frankfurt\" are duplicated.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 133
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "items": {
+          "widgetType": "expression/data-grid",
+          "widgetData": {
+            "fields": [
+              {
+                "id": "id",
+                "name": "id"
+              },
+              {
+                "id": "name",
+                "name": "name"
+              },
+              {
+                "id": "date_of_birth",
+                "name": "state"
+              }
+            ],
+            "gen": {
+              "as": "rows",
+              "of": "dict",
+              "meta": false
+            },
+            "table": {
+              "list": [
+                {
+                  "fields": {
+                    "id": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "1"
+                      },
+                      "code": "1"
+                    },
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Hamburg"
+                      },
+                      "code": "'Hamburg'"
+                    },
+                    "date_of_birth": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Hamburg"
+                      },
+                      "code": "'Hamburg'"
+                    }
+                  }
+                },
+                {
+                  "fields": {
+                    "id": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "2"
+                      },
+                      "code": "2"
+                    },
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Berlin"
+                      },
+                      "code": "'Berlin'"
+                    },
+                    "date_of_birth": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Berlin"
+                      },
+                      "code": "'Berlin'"
+                    }
+                  }
+                },
+                {
+                  "fields": {
+                    "id": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "3"
+                      },
+                      "code": "3"
+                    },
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Kiel"
+                      },
+                      "code": "'Kiel'"
+                    },
+                    "date_of_birth": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Schleswig-Holstein"
+                      },
+                      "code": "'Schleswig-Holstein'"
+                    }
+                  }
+                },
+                {
+                  "fields": {
+                    "id": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "4"
+                      },
+                      "code": "'4'"
+                    },
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Hamburg"
+                      },
+                      "code": "'Hamburg'"
+                    },
+                    "date_of_birth": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Hamburg"
+                      },
+                      "code": "'Hamburg'"
+                    }
+                  }
+                },
+                {
+                  "fields": {
+                    "id": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "5"
+                      },
+                      "code": "'5'"
+                    },
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Frankfurt"
+                      },
+                      "code": "'Frankfurt'"
+                    },
+                    "date_of_birth": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Hessen"
+                      },
+                      "code": "'Hessen'"
+                    }
+                  }
+                },
+                {
+                  "fields": {
+                    "id": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "6"
+                      },
+                      "code": "'6'"
+                    },
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Frankfurt"
+                      },
+                      "code": "'Frankfurt'"
+                    },
+                    "date_of_birth": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Hessen"
+                      },
+                      "code": "'Hessen'"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "code": "[{\n  :id 1,\n  :name 'Hamburg',\n  :state 'Hamburg'\n}, {\n  :id 2,\n  :name 'Berlin',\n  :state 'Berlin'\n}, {\n  :id 3,\n  :name 'Kiel',\n  :state 'Schleswig-Holstein'\n}, {\n  :id '4',\n  :name 'Hamburg',\n  :state 'Hamburg'\n}, {\n  :id '5',\n  :name 'Frankfurt',\n  :state 'Hessen'\n}, {\n  :id '6',\n  :name 'Frankfurt',\n  :state 'Hessen'\n}]"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "id",
+                "type": "long",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.row[:id]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.row[:id]"
+                }
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.row[:name]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.row[:name]"
+                }
+              },
+              {
+                "name": "state",
+                "type": "string",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.row[:state]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.row[:state]"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 298,
+        "y": 202
+      }
+    }
+  ],
+  "hops": [
+    {
+      "id": "306970a9-8e7e-43aa-80d8-36c59a5d3c5e",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.group.distinct_23806c2f-00b1-4685-815a-6a13c2b16afc",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_1519634a-642f-4801-8b8a-c4b5c1f0a6b9",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "cffb895b-6af1-4df2-8b33-e3a7e7b164f7",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.flatmap.datatable_3293d6a6-29d2-49e0-9cb3-3cb16dcf7579",
+      "toStep": "com.twineworks.tweakstreet.library.steps.group.distinct_23806c2f-00b1-4685-815a-6a13c2b16afc",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    }
+  ]
+}

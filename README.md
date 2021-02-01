@@ -38,6 +38,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | basic-06           | misc-01.dfl                  | retrieve system information and do some date calculations using the time library |
 | basic-06           | serialize-01.dfl             | serialize data to a file |
 | basic-06           | deserialize-01.dfl           | deserialize data to the file produced in the serialize-01 data flow |
+| basic-06           | distinct-01.dfl              | determine the distinct values over a group of fields |
 | basic-07           | partitioning-01.dfl          | partition data to process in parallel |
 | basic-08           | database-01.dfl              | read airport data from a local SQLite database |
 | basic-08           | database-02.dfl              | read airport data and lookup country data from a local SQLite database using a "SQL Input" step |
@@ -83,7 +84,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | Stream Lookup		| read-csv-06.dfl |
 | Generate Rows		| random-data-01.dfl, random-data-02.dfl, random-da,ta-03.dfl, random-data-04.dfl, diff-01.dfl, diff-02.dfl, serialize-01.dfl, partitioning-01.dfl |
 | Random Data		| random-data-01.dfl, random-data-02.dfl, random-data-03.dfl, random-data-04.dfl, serialize-01.dfl, partitioning-01.dfl |
-| Data Table		| split-01.dfl, stateful-01.dfl |
+| Data Table		| split-01.dfl, stateful-01.dfl, distinct-01.dfl |
 | Diff on sorted Keys	| diff-01.dfl, diff-02.dfl |
 | Decision		| diff-02.dfl, partitioning-01.dfl |
 | Deserialize		| deserialize-01.dfl  |
@@ -97,6 +98,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | List to Rows		| database-04.dfl |
 | SQL Insert		| database-05.dfl |
 | Stateful Calculator	| stateful-01.dfl |
+| Distinct		| distinct-01.dfl |
 
 
 last update: 2021-02-01
