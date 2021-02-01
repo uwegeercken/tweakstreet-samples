@@ -1,0 +1,529 @@
+{
+  "type": "data-flow",
+  "appVersion": "1.14.1",
+  "properties": {
+    "meta": {
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 160
+          },
+          "view": "edit"
+        },
+        "editor": {
+          "collapsed": true
+        }
+      },
+      "showingComment": true
+    },
+    "editor": {
+      "showParameters": true,
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "imports": {
+      "code": "# import the standard library\n import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
+      "size": {
+        "width": 0,
+        "height": 102
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "parameters": {
+      "parameters": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "variables": {
+      "variables": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    }
+  },
+  "steps": [
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.freemarker_586f6062-2b5e-46bf-b1b4-768621d40d63",
+      "name": "Freemarker",
+      "type": "com.twineworks.tweakstreet.library.steps.map.freemarker",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Freemarker",
+          "showingComment": false,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": true
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "templateDir": {
+          "widgetType": "expression/local-file",
+          "widgetData": {
+            "interpolation": true,
+            "text": "./",
+            "dialogIntent": "openFolder"
+          },
+          "code": "'./'"
+        },
+        "templateName": {
+          "widgetType": "expression/string",
+          "widgetData": {
+            "interpolation": true,
+            "text": "template.txt"
+          },
+          "code": "'template.txt'"
+        },
+        "templateData": {
+          "widgetType": "expression/code",
+          "widgetData": {
+            "text": "row",
+            "size": {
+              "width": 0,
+              "height": 36
+            },
+            "syntax": "tweakflow"
+          },
+          "code": "row"
+        },
+        "provideDatesAs": {
+          "widgetType": "expression/select",
+          "widgetData": {
+            "family": "com.twineworks.tweakstreet.library.steps.map.freemarker/provideDatesAs",
+            "value": "STRING"
+          },
+          "code": "'STRING'"
+        },
+        "freemarkerCompatibility": {
+          "widgetType": "expression/select",
+          "widgetData": {
+            "family": "com.twineworks.tweakstreet.library.steps.map.freemarker/freemarkerCompatibility",
+            "value": "VERSION_2_3_30"
+          },
+          "code": "'VERSION_2_3_30'"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "rendered",
+                "type": "string",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.rendered"
+                  },
+                  "code": "::results.rendered"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 426,
+        "y": 138
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.flatmap.datatable_0a69ca01-2186-436e-b82c-cce20755abf9",
+      "name": "Data Table",
+      "type": "com.twineworks.tweakstreet.library.steps.flatmap.datatable",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Data Table",
+          "showingComment": false,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": true
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "items": {
+          "widgetType": "expression/data-grid",
+          "widgetData": {
+            "fields": [
+              {
+                "id": "name",
+                "name": "name"
+              },
+              {
+                "id": "id",
+                "name": "numbers"
+              },
+              {
+                "id": "date_of_birth",
+                "name": "preferences"
+              }
+            ],
+            "gen": {
+              "as": "rows",
+              "of": "dict",
+              "meta": false
+            },
+            "table": {
+              "list": [
+                {
+                  "fields": {
+                    "id": {
+                      "widgetType": "expression/list",
+                      "widgetData": {
+                        "table": {
+                          "list": [
+                            {
+                              "value": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "100"
+                                },
+                                "code": "'100'"
+                              }
+                            },
+                            {
+                              "value": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "101"
+                                },
+                                "code": "'101'"
+                              }
+                            },
+                            {
+                              "value": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "102"
+                                },
+                                "code": "'102'"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "code": "['100', '101', '102']"
+                    },
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Sherlock Holmes"
+                      },
+                      "code": "'Sherlock Holmes'"
+                    },
+                    "date_of_birth": {
+                      "widgetType": "expression/dict",
+                      "widgetData": {
+                        "table": {
+                          "list": [
+                            {
+                              "key": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "color"
+                                },
+                                "code": "'color'"
+                              },
+                              "value": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "blue"
+                                },
+                                "code": "'blue'"
+                              }
+                            },
+                            {
+                              "key": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "number"
+                                },
+                                "code": "'number'"
+                              },
+                              "value": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "4"
+                                },
+                                "code": "'4'"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "code": "{\n  'color' 'blue',\n  'number' '4'\n}"
+                    }
+                  }
+                },
+                {
+                  "fields": {
+                    "id": {
+                      "widgetType": "expression/list",
+                      "widgetData": {
+                        "table": {
+                          "list": [
+                            {
+                              "value": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "200"
+                                },
+                                "code": "'200'"
+                              }
+                            },
+                            {
+                              "value": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "201"
+                                },
+                                "code": "'201'"
+                              }
+                            },
+                            {
+                              "value": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "202"
+                                },
+                                "code": "'202'"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "code": "['200', '201', '202']"
+                    },
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "John Watson"
+                      },
+                      "code": "'John Watson'"
+                    },
+                    "date_of_birth": {
+                      "widgetType": "expression/code",
+                      "widgetData": {
+                        "text": "{\n  'color' 'red',\n  'number' '11'\n}",
+                        "size": {
+                          "width": 0,
+                          "height": 106
+                        },
+                        "syntax": "tweakflow"
+                      },
+                      "code": "{\n  'color' 'red',\n  'number' '11'\n}"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "code": "[{\n  :name 'Sherlock Holmes',\n  :numbers ['100', '101', '102'],\n  :preferences {\n    'color' 'blue',\n    'number' '4'\n  }\n}, {\n  :name 'John Watson',\n  :numbers ['200', '201', '202'],\n  :preferences {\n  'color' 'red',\n  'number' '11'\n}\n}]"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "numbers",
+                "type": "list",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.row[:numbers]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.row[:numbers]"
+                }
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.row[:name]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.row[:name]"
+                }
+              },
+              {
+                "name": "prefs",
+                "type": "dict",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.row[:preferences]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.row[:preferences]"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 202,
+        "y": 138
+      }
+    }
+  ],
+  "hops": [
+    {
+      "id": "15bb0512-be0c-438e-a330-63b2cacf46b6",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.flatmap.datatable_0a69ca01-2186-436e-b82c-cce20755abf9",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.freemarker_586f6062-2b5e-46bf-b1b4-768621d40d63",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    }
+  ]
+}
