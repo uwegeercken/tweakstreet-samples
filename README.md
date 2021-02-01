@@ -46,8 +46,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | basic-08           | database-05.dfl              | read airport and country data and output the results including JSON field |
 | basic-08           | database-06.dfl              | read data stored in the database-05.dfl flow and restore the dictionary with the country data |
 | basic-08           | database-07.dfl              | read data stored in the database-05.dfl flow and restore the dictionary data already in the SQL query |
-
-
+| basic-09           | stateful-01.dfl              | Generate a row count and calculate the running aerage age using the "Stateful Calculator" step |
 
 **Available modules**:
 
@@ -82,21 +81,22 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | Group By		| read-csv-05.dfl, read-csv-06.dfl |
 | Sort			| read-csv-05.dfl, read-csv-06.dfl |
 | Stream Lookup		| read-csv-06.dfl |
-| Generate Rows		| random-data-01.dfl, , random-data-02.dfl, random-da,ta-03.dfl, random-data-04.dfl, diff-01.dfl, diff-02.dfl, serialize-01.dfl, partitioning-01.dfl |
+| Generate Rows		| random-data-01.dfl, random-data-02.dfl, random-da,ta-03.dfl, random-data-04.dfl, diff-01.dfl, diff-02.dfl, serialize-01.dfl, partitioning-01.dfl |
 | Random Data		| random-data-01.dfl, random-data-02.dfl, random-data-03.dfl, random-data-04.dfl, serialize-01.dfl, partitioning-01.dfl |
-| Data Table		| split-01.dfl |
+| Data Table		| split-01.dfl, stateful-01.dfl |
 | Diff on sorted Keys	| diff-01.dfl, diff-02.dfl |
 | Decision		| diff-02.dfl, partitioning-01.dfl |
 | Deserialize		| deserialize-01.dfl  |
 | Serialize		| serialize-01.dfl |
 | System Info		| misc-01.dfl |
-| Clock			| misc-01.dfl |
+| Clock			| misc-01.dfl, stateful-01.dfl |
 | SQL Input		| database-01.dfl, database-02.dfl, database-03.dfl, database-05.dfl, database-06.dfl, database-07.dfl |
 | SQL Lookup		| database-02.dfl, database-05.dfl |
 | Join on Condition	| database-03.dfl |
 | SQL Script		| database-04.dfl |
 | List to Rows		| database-04.dfl |
 | SQL Insert		| database-05.dfl |
+| Stateful Calculator	| stateful-01.dfl |
 
 
 last update: 2021-02-01

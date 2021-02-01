@@ -1,0 +1,713 @@
+{
+  "type": "data-flow",
+  "appVersion": "1.14.1",
+  "properties": {
+    "meta": {
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "##### Info\n\nFlow demonstrates:\n* a few rows are provided through a data table\n* count rows and aggregate (sum) the value of the age field using the Stateful Calculator step\n* running average of the age is calculated\n",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 196
+          },
+          "view": "edit"
+        },
+        "editor": {
+          "collapsed": false
+        }
+      },
+      "showingComment": true
+    },
+    "editor": {
+      "showParameters": true,
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "imports": {
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\nimport time from 'std';",
+      "size": {
+        "width": 0,
+        "height": 81
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "parameters": {
+      "parameters": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "variables": {
+      "variables": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    }
+  },
+  "steps": [
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.statefulcalculator_38daa4d3-37cb-428b-96c4-f80fd6c0d49c",
+      "name": "Stateful Calculator",
+      "type": "com.twineworks.tweakstreet.library.steps.map.statefulcalculator",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Stateful Calculator",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nGenerates a row count and the running sum of the value of all age fields.\nFor the output calculates the running average age for each row.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 118
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "initialState": {
+          "widgetType": "expression/dict",
+          "widgetData": {
+            "table": {
+              "list": [
+                {
+                  "key": {
+                    "widgetType": "expression/string",
+                    "widgetData": {
+                      "interpolation": true,
+                      "text": "row_count"
+                    },
+                    "code": "'row_count'"
+                  },
+                  "value": {
+                    "widgetType": "expression/number",
+                    "widgetData": {
+                      "text": "0"
+                    },
+                    "code": "0"
+                  }
+                },
+                {
+                  "key": {
+                    "widgetType": "expression/string",
+                    "widgetData": {
+                      "interpolation": true,
+                      "text": "sum_age"
+                    },
+                    "code": "'sum_age'"
+                  },
+                  "value": {
+                    "widgetType": "expression/number",
+                    "widgetData": {
+                      "text": "0"
+                    },
+                    "code": "0"
+                  }
+                }
+              ]
+            }
+          },
+          "code": "{\n  'row_count' 0,\n  'sum_age' 0\n}"
+        },
+        "transform": {
+          "widgetType": "expression/code",
+          "widgetData": {
+            "text": "(any state, dict row) ->\n  {\n    :row_count state[:row_count] +1,\n    :sum_age state[:sum_age] +row[:age]\n  }",
+            "size": {
+              "width": 0,
+              "height": 121
+            },
+            "syntax": "tweakflow"
+          },
+          "code": "(any state, dict row) ->\n  {\n    :row_count state[:row_count] +1,\n    :sum_age state[:sum_age] +row[:age]\n  }"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "state",
+                "type": "dict",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.state"
+                  },
+                  "code": "::results.state"
+                }
+              },
+              {
+                "name": "row_count",
+                "type": "long",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.state[:row_count]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.state[:row_count]"
+                }
+              },
+              {
+                "name": "avg_age",
+                "type": "long",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "# calculate average age for each row\nresults.state[:sum_age] / results.state[:row_count]",
+                    "size": {
+                      "width": 0,
+                      "height": 58
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "# calculate average age for each row\nresults.state[:sum_age] / results.state[:row_count]\n"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 586,
+        "y": 202
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.flatmap.datatable_2a4e0b86-af46-4de0-a686-6985a43ca59f",
+      "name": "Data Table",
+      "type": "com.twineworks.tweakstreet.library.steps.flatmap.datatable",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Data Table",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nA few rows of data used by the calculations",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 89
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "items": {
+          "widgetType": "expression/data-grid",
+          "widgetData": {
+            "fields": [
+              {
+                "id": "id",
+                "name": "id"
+              },
+              {
+                "id": "name",
+                "name": "name"
+              },
+              {
+                "id": "date_of_birth",
+                "name": "date_of_birth"
+              }
+            ],
+            "gen": {
+              "as": "rows",
+              "of": "dict",
+              "meta": false
+            },
+            "table": {
+              "list": [
+                {
+                  "fields": {
+                    "id": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "221"
+                      },
+                      "code": "221"
+                    },
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Sherlock Holmes"
+                      },
+                      "code": "'Sherlock Holmes'"
+                    },
+                    "date_of_birth": {
+                      "widgetType": "expression/datetime",
+                      "widgetData": {
+                        "text": "1854-01-06T"
+                      },
+                      "code": "1854-01-06T"
+                    }
+                  }
+                },
+                {
+                  "fields": {
+                    "id": {
+                      "widgetType": "expression/number",
+                      "widgetData": {
+                        "text": "222"
+                      },
+                      "code": "222"
+                    },
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "John Watson"
+                      },
+                      "code": "'John Watson'"
+                    },
+                    "date_of_birth": {
+                      "widgetType": "expression/datetime",
+                      "widgetData": {
+                        "text": "1852-07-07T"
+                      },
+                      "code": "1852-07-07T"
+                    }
+                  }
+                },
+                {
+                  "fields": {
+                    "id": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "223"
+                      },
+                      "code": "'223'"
+                    },
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Peter Paulson"
+                      },
+                      "code": "'Peter Paulson'"
+                    },
+                    "date_of_birth": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "1900-03-07T"
+                      },
+                      "code": "'1900-03-07T'"
+                    }
+                  }
+                },
+                {
+                  "fields": {
+                    "id": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "224"
+                      },
+                      "code": "'224'"
+                    },
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Mary Popins"
+                      },
+                      "code": "'Mary Popins'"
+                    },
+                    "date_of_birth": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "1901-11-30T"
+                      },
+                      "code": "'1901-11-30T'"
+                    }
+                  }
+                },
+                {
+                  "fields": {
+                    "id": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "225"
+                      },
+                      "code": "'225'"
+                    },
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Richard Eberdine"
+                      },
+                      "code": "'Richard Eberdine'"
+                    },
+                    "date_of_birth": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "1906-02-14T"
+                      },
+                      "code": "'1906-02-14T'"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "code": "[{\n  :id 221,\n  :name 'Sherlock Holmes',\n  :date_of_birth 1854-01-06T\n}, {\n  :id 222,\n  :name 'John Watson',\n  :date_of_birth 1852-07-07T\n}, {\n  :id '223',\n  :name 'Peter Paulson',\n  :date_of_birth '1900-03-07T'\n}, {\n  :id '224',\n  :name 'Mary Popins',\n  :date_of_birth '1901-11-30T'\n}, {\n  :id '225',\n  :name 'Richard Eberdine',\n  :date_of_birth '1906-02-14T'\n}]"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "id",
+                "type": "long",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.row[:id]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.row[:id]"
+                }
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.row[:name]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.row[:name]"
+                }
+              },
+              {
+                "name": "date_of_birth",
+                "type": "datetime",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.row[:date_of_birth]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.row[:date_of_birth]"
+                }
+              },
+              {
+                "name": "age",
+                "type": "long",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "# calculate the age of each person\ntime.years_between(results.row[:date_of_birth],in.local_datetime)",
+                    "size": {
+                      "width": 0,
+                      "height": 58
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "# calculate the age of each person\ntime.years_between(results.row[:date_of_birth],in.local_datetime)\n"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 362,
+        "y": 202
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.clock_df9617e4-febf-46d3-903f-707c48ab62d6",
+      "name": "Clock",
+      "type": "com.twineworks.tweakstreet.library.steps.map.clock",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Clock",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nGet the current date and time",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 93
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "local_datetime",
+                "type": "datetime",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.local"
+                  },
+                  "code": "::results.local"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 170,
+        "y": 202
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_42a6c186-0e92-4669-b246-095eb115d6f1",
+      "name": "Dummy",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy",
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": ""
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "editor": {
+                "collapsed": true
+              }
+            }
+          },
+          "showingComment": false
+        },
+        "editor": {}
+      },
+      "pos": {
+        "x": 810,
+        "y": 202
+      }
+    }
+  ],
+  "hops": [
+    {
+      "id": "57860b6e-224a-4142-b966-afb776dd18b2",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.flatmap.datatable_2a4e0b86-af46-4de0-a686-6985a43ca59f",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.statefulcalculator_38daa4d3-37cb-428b-96c4-f80fd6c0d49c",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "e59df1c6-95b5-41e4-84b2-c0b647d1fc63",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.clock_df9617e4-febf-46d3-903f-707c48ab62d6",
+      "toStep": "com.twineworks.tweakstreet.library.steps.flatmap.datatable_2a4e0b86-af46-4de0-a686-6985a43ca59f",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "3cd6f6f2-efa0-49c5-89ac-663183522a81",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.statefulcalculator_38daa4d3-37cb-428b-96c4-f80fd6c0d49c",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_42a6c186-0e92-4669-b246-095eb115d6f1",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    }
+  ]
+}
