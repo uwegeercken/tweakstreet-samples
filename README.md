@@ -100,6 +100,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | SQL Insert		| database-05.dfl |
 | Stateful Calculator	| stateful-01.dfl |
 | Distinct		| distinct-01.dfl |
+| Freemarker  | templates-01.dfl |
 
 
-last update: 2021-02-01
+last update: 2021-02-03
