@@ -48,6 +48,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | basic-08           | database-06.dfl              | read data stored in the database-05.dfl flow and restore the dictionary with the country data |
 | basic-08           | database-07.dfl              | read data stored in the database-05.dfl flow and restore the dictionary data already in the SQL query |
 | basic-09           | stateful-01.dfl              | Generate a row count and calculate the running aerage age using the "Stateful Calculator" step |
+| basic-10           | templates-01.dfl             | Use sample data and merge it with a template using the Freemarker template engine |
 
 **Available modules**:
 

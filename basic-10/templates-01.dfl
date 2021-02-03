@@ -1,12 +1,12 @@
 {
   "type": "data-flow",
-  "appVersion": "1.14.1",
+  "appVersion": "1.14.2",
   "properties": {
     "meta": {
       "comment": {
         "markdown": {
           "text": {
-            "text": "",
+            "text": "##### Info\n\nFlow demonstrates transforming data using the Freemarker template engine:\n* setting up data in a data table step\n* merging the data with a template\n\nFlow uses variables from the config module: _conf-module-samples.tsm_\n",
             "syntax": "markdown",
             "size": {
               "width": "100%",
@@ -15,12 +15,12 @@
           },
           "size": {
             "width": null,
-            "height": 160
+            "height": 205
           },
-          "view": "edit"
+          "view": "preview"
         },
         "editor": {
-          "collapsed": true
+          "collapsed": false
         }
       },
       "showingComment": true
@@ -35,7 +35,7 @@
       "code": "# import the standard library\n import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
       "size": {
         "width": 0,
-        "height": 102
+        "height": 73
       },
       "editor": {
         "collapsed": false
@@ -81,11 +81,11 @@
       "data": {
         "meta": {
           "name": "Freemarker",
-          "showingComment": false,
+          "showingComment": true,
           "comment": {
             "markdown": {
               "text": {
-                "text": "",
+                "text": "##### Info\n\nThe folder where the template is stored is retrieved from the config module.\n\nThe data from the row is merged with the template and is available in the field \"rendered\"\nfor each row.",
                 "syntax": "markdown",
                 "size": {
                   "width": "100%",
@@ -96,10 +96,10 @@
                 "width": null,
                 "height": 160
               },
-              "view": "edit"
+              "view": "preview"
             },
             "editor": {
-              "collapsed": true
+              "collapsed": false
             }
           }
         },
@@ -112,21 +112,24 @@
           }
         },
         "templateDir": {
-          "widgetType": "expression/local-file",
+          "widgetType": "expression/code",
           "widgetData": {
-            "interpolation": true,
-            "text": "./",
-            "dialogIntent": "openFolder"
+            "text": "$config.vars.folder_templates",
+            "size": {
+              "width": 0,
+              "height": 36
+            },
+            "syntax": "tweakflow"
           },
-          "code": "'./'"
+          "code": "$config.vars.folder_templates"
         },
         "templateName": {
           "widgetType": "expression/string",
           "widgetData": {
             "interpolation": true,
-            "text": "template.txt"
+            "text": "template-01.txt"
           },
-          "code": "'template.txt'"
+          "code": "'template-01.txt'"
         },
         "templateData": {
           "widgetType": "expression/code",
@@ -192,7 +195,7 @@
         "model": {}
       },
       "pos": {
-        "x": 426,
+        "x": 650,
         "y": 138
       }
     },
@@ -210,11 +213,11 @@
       "data": {
         "meta": {
           "name": "Data Table",
-          "showingComment": false,
+          "showingComment": true,
           "comment": {
             "markdown": {
               "text": {
-                "text": "",
+                "text": "##### Info\n\nSome data to be used for merging with the template",
                 "syntax": "markdown",
                 "size": {
                   "width": "100%",
@@ -223,12 +226,12 @@
               },
               "size": {
                 "width": null,
-                "height": 160
+                "height": 104
               },
-              "view": "edit"
+              "view": "preview"
             },
             "editor": {
-              "collapsed": true
+              "collapsed": false
             }
           }
         },
@@ -347,18 +350,17 @@
                                 "code": "'number'"
                               },
                               "value": {
-                                "widgetType": "expression/string",
+                                "widgetType": "expression/number",
                                 "widgetData": {
-                                  "interpolation": true,
                                   "text": "4"
                                 },
-                                "code": "'4'"
+                                "code": "4"
                               }
                             }
                           ]
                         }
                       },
-                      "code": "{\n  'color' 'blue',\n  'number' '4'\n}"
+                      "code": "{\n  'color' 'blue',\n  'number' 4\n}"
                     }
                   }
                 },
@@ -413,23 +415,120 @@
                       "code": "'John Watson'"
                     },
                     "date_of_birth": {
+                      "widgetType": "expression/dict",
+                      "widgetData": {
+                        "table": {
+                          "list": [
+                            {
+                              "key": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "color"
+                                },
+                                "code": "'color'"
+                              },
+                              "value": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "red"
+                                },
+                                "code": "'red'"
+                              }
+                            },
+                            {
+                              "key": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "number"
+                                },
+                                "code": "'number'"
+                              },
+                              "value": {
+                                "widgetType": "expression/number",
+                                "widgetData": {
+                                  "text": "5"
+                                },
+                                "code": "5"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "code": "{\n  'color' 'red',\n  'number' 5\n}"
+                    }
+                  }
+                },
+                {
+                  "fields": {
+                    "id": {
+                      "widgetType": "expression/list",
+                      "widgetData": {
+                        "table": {
+                          "list": [
+                            {
+                              "value": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "300"
+                                },
+                                "code": "'300'"
+                              }
+                            },
+                            {
+                              "value": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "301"
+                                },
+                                "code": "'301'"
+                              }
+                            },
+                            {
+                              "value": {
+                                "widgetType": "expression/string",
+                                "widgetData": {
+                                  "interpolation": true,
+                                  "text": "302"
+                                },
+                                "code": "'302'"
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "code": "['300', '301', '302']"
+                    },
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "Mary Fletcher"
+                      },
+                      "code": "'Mary Fletcher'"
+                    },
+                    "date_of_birth": {
                       "widgetType": "expression/code",
                       "widgetData": {
-                        "text": "{\n  'color' 'red',\n  'number' '11'\n}",
+                        "text": "{\n  'color' 'green',\n  'number' 7\n}",
                         "size": {
                           "width": 0,
-                          "height": 106
+                          "height": 102
                         },
                         "syntax": "tweakflow"
                       },
-                      "code": "{\n  'color' 'red',\n  'number' '11'\n}"
+                      "code": "{\n  'color' 'green',\n  'number' 7\n}"
                     }
                   }
                 }
               ]
             }
           },
-          "code": "[{\n  :name 'Sherlock Holmes',\n  :numbers ['100', '101', '102'],\n  :preferences {\n    'color' 'blue',\n    'number' '4'\n  }\n}, {\n  :name 'John Watson',\n  :numbers ['200', '201', '202'],\n  :preferences {\n  'color' 'red',\n  'number' '11'\n}\n}]"
+          "code": "[{\n  :name 'Sherlock Holmes',\n  :numbers ['100', '101', '102'],\n  :preferences {\n    'color' 'blue',\n    'number' 4\n  }\n}, {\n  :name 'John Watson',\n  :numbers ['200', '201', '202'],\n  :preferences {\n    'color' 'red',\n    'number' 5\n  }\n}, {\n  :name 'Mary Fletcher',\n  :numbers ['300', '301', '302'],\n  :preferences {\n  'color' 'green',\n  'number' 7\n}\n}]"
         },
         "resultVariables": {
           "variables": {
@@ -475,7 +574,7 @@
                 }
               },
               {
-                "name": "prefs",
+                "name": "preferences",
                 "type": "dict",
                 "value": {
                   "widgetType": "expression/code",
@@ -504,15 +603,110 @@
         "model": {}
       },
       "pos": {
-        "x": 202,
+        "x": 170,
+        "y": 138
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.calculator_d62f14c8-4ac4-45a3-9606-0475a0a2b3be",
+      "name": "Calculator",
+      "type": "com.twineworks.tweakstreet.library.steps.map.calculator",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Calculator",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nThe square function is used in the template. So not only data can be used but also function calls.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 111
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "square",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "# calculate the square of a number\n(x) -> x * x",
+                    "size": {
+                      "width": 0,
+                      "height": 63
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "# calculate the square of a number\n(x) -> x * x\n"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": true,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 426,
         "y": 138
       }
     }
   ],
   "hops": [
     {
-      "id": "15bb0512-be0c-438e-a330-63b2cacf46b6",
+      "id": "299d4dc1-a81f-4eef-a8ef-6776bace3ca9",
       "fromStep": "com.twineworks.tweakstreet.library.steps.flatmap.datatable_0a69ca01-2186-436e-b82c-cce20755abf9",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.calculator_d62f14c8-4ac4-45a3-9606-0475a0a2b3be",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "e6720ce1-4d6a-4d50-acc4-76d770475660",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.calculator_d62f14c8-4ac4-45a3-9606-0475a0a2b3be",
       "toStep": "com.twineworks.tweakstreet.library.steps.map.freemarker_586f6062-2b5e-46bf-b1b4-768621d40d63",
       "fromGate": "out",
       "toGate": "in",

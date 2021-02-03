@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "appVersion": "1.14.1",
+  "appVersion": "1.14.2",
   "properties": {
     "meta": {
       "showingComment": true,
@@ -39,6 +39,18 @@
                 "text": "../data"
               },
               "code": "'../data'"
+            }
+          },
+          {
+            "name": "folder_templates",
+            "type": "string",
+            "value": {
+              "widgetType": "expression/string",
+              "widgetData": {
+                "interpolation": true,
+                "text": "../templates"
+              },
+              "code": "'../templates'"
             }
           },
           {

@@ -1,9 +1,0 @@
-Hello ${name} was here.
-
-
-
-My numbers are:
-<#list prefs as sth, oth>
-	  ${sth} ${oth} 
-</#list>
-

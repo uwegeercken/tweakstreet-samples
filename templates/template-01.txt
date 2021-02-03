@@ -1,0 +1,7 @@
+My name is: ${name}
+
+My preferences are:
+	color: ${preferences.color}
+	number: ${preferences.number}
+	
+The square of my number is: ${square(preferences.number)}
