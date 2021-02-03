@@ -78,14 +78,14 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | CSV Input		| read-csv-01.dfl, read-csv-02.dfl, read-csv-03.dfl, read-csv-04.dfl, read-csv-05.dfl, read-csv-06.dfl, read-csv-07.dfl |
 | Filter		| read-csv-02.dfl, read-csv-04.dfl |
 | Pick Fields		| read-csv-03.dfl, random-data-02.dfl, partitioning-01.dfl, database-05.dfl |
-| Calculator		| read-csv-04.dfl, read-csv-07.dfl, modules-03.dfl, random-data-02.dfl, split-01.dfl, partitioning-01.dfl, database-06.dfl |
+| Calculator		| read-csv-04.dfl, read-csv-07.dfl, modules-03.dfl, random-data-02.dfl, split-01.dfl, partitioning-01.dfl, database-06.dfl, templates-01.dfl |
 | Logger		| read-csv-04.dfl, modules-01.dfl, modules-02.dfl |
 | Group By		| read-csv-05.dfl, read-csv-06.dfl |
 | Sort			| read-csv-05.dfl, read-csv-06.dfl |
 | Stream Lookup		| read-csv-06.dfl |
 | Generate Rows		| random-data-01.dfl, random-data-02.dfl, random-da,ta-03.dfl, random-data-04.dfl, diff-01.dfl, diff-02.dfl, serialize-01.dfl, partitioning-01.dfl |
 | Random Data		| random-data-01.dfl, random-data-02.dfl, random-data-03.dfl, random-data-04.dfl, serialize-01.dfl, partitioning-01.dfl |
-| Data Table		| split-01.dfl, stateful-01.dfl, distinct-01.dfl |
+| Data Table		| split-01.dfl, stateful-01.dfl, distinct-01.dfl, templates-01.dfl |
 | Diff on sorted Keys	| diff-01.dfl, diff-02.dfl |
 | Decision		| diff-02.dfl, partitioning-01.dfl |
 | Deserialize		| deserialize-01.dfl  |
