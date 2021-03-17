@@ -41,6 +41,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | basic-06           | deserialize-01.dfl           | deserialize data to the file produced in the serialize-01 data flow |
 | basic-06           | distinct-01.dfl              | determine the distinct values over a group of fields |
 | basic-06           | rest-01.dfl                  | get data from a REST endpoint and split into individual rows |
+| basic-06           | rest-02.dfl                  | get data from the geonames REST endpoint, split the JSON response into rows and sum up population per continent |
 | basic-07           | partitioning-01.dfl          | partition data to process in parallel |
 | basic-08           | database-01.dfl              | read airport data from a local SQLite database |
 | basic-08           | database-02.dfl              | read airport data and lookup country data from a local SQLite database using a "SQL Input" step |
@@ -79,10 +80,10 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | :--                   | :-- |
 | CSV Input		| read-csv-01.dfl, read-csv-02.dfl, read-csv-03.dfl, read-csv-04.dfl, read-csv-05.dfl, read-csv-06.dfl, read-csv-07.dfl, random-data-05.dfl |
 | Filter		| read-csv-02.dfl, read-csv-04.dfl |
-| Pick Fields		| read-csv-03.dfl, random-data-02.dfl, partitioning-01.dfl, database-05.dfl, random-data-05.dfl |
+| Pick Fields		| read-csv-03.dfl, random-data-02.dfl, partitioning-01.dfl, database-05.dfl, random-data-05.dfl, rest-02.df |
 | Calculator		| read-csv-04.dfl, read-csv-07.dfl, modules-03.dfl, random-data-02.dfl, split-01.dfl, partitioning-01.dfl, database-06.dfl, templates-01.dfl |
 | Logger		| read-csv-04.dfl, modules-01.dfl, modules-02.dfl |
-| Group By		| read-csv-05.dfl, read-csv-06.dfl, random-data-05.dfl |
+| Group By		| read-csv-05.dfl, read-csv-06.dfl, random-data-05.dfl, rest-02.df |
 | Sort			| read-csv-05.dfl, read-csv-06.dfl |
 | Stream Lookup		| read-csv-06.dfl |
 | Generate Rows		| random-data-01.dfl, random-data-02.dfl, random-da,ta-03.dfl, random-data-04.dfl, diff-01.dfl, diff-02.dfl, serialize-01.dfl, partitioning-01.dfl, random-data-05.dfl |
@@ -98,12 +99,12 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | SQL Lookup		| database-02.dfl, database-05.dfl |
 | Join on Condition	| database-03.dfl |
 | SQL Script		| database-04.dfl |
-| List to Rows		| database-04.dfl, rest-01.dfl |
+| List to Rows		| database-04.dfl, rest-01.dfl, rest-02.df |
 | SQL Insert		| database-05.dfl |
 | Stateful Calculator	| stateful-01.dfl |
 | Distinct		| distinct-01.dfl |
 | Freemarker  | templates-01.dfl |
-| HTTP Request  | rest-01.dfl  |
+| HTTP Request  | rest-01.dfl, rest-02.dfl  |
 
 
 last update: 2021-03-17

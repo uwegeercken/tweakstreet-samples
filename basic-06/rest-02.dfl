@@ -1,0 +1,810 @@
+{
+  "type": "data-flow",
+  "appVersion": "1.14.4",
+  "properties": {
+    "meta": {
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "##### INFO\n\nGets data about countries from the geonames.org rest interface. The Json response is split into individual rows\nand then groupt by the continent name to get the total population of each continent.",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 124
+          },
+          "view": "preview"
+        },
+        "editor": {
+          "collapsed": false
+        }
+      },
+      "showingComment": true
+    },
+    "editor": {
+      "showParameters": true,
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "imports": {
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
+      "size": {
+        "width": 0,
+        "height": 102
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "parameters": {
+      "parameters": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "variables": {
+      "variables": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    }
+  },
+  "steps": [
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.httprequest_847531bf-a7d9-4bd6-a6bf-a5df0691c4a8",
+      "name": "Http Request",
+      "type": "com.twineworks.tweakstreet.library.steps.map.httprequest",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Http Request",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### INFO\n\nThe REST endpoint used here is from: http://api.geonames.org/countryInfoJSON\nwhich returns JSON data (country info).\n\nNote: you need an account at geonames.org (it's free)",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 163
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "tabs": {},
+        "method": {
+          "widgetType": "expression/select",
+          "widgetData": {
+            "family": "expression/select/httpMethod",
+            "value": "GET"
+          },
+          "code": "'GET'"
+        },
+        "url": {
+          "widgetType": "expression/string",
+          "widgetData": {
+            "interpolation": true,
+            "text": "http://api.geonames.org/countryInfoJSON"
+          },
+          "code": "'http://api.geonames.org/countryInfoJSON'"
+        },
+        "urlParameters": {
+          "widgetType": "expression/data-grid",
+          "widgetData": {
+            "fields": [
+              {
+                "id": "name",
+                "name": "name"
+              },
+              {
+                "id": "value",
+                "name": "value"
+              }
+            ],
+            "gen": {
+              "as": "rows",
+              "of": "dict",
+              "meta": false
+            },
+            "table": {
+              "list": [
+                {
+                  "fields": {
+                    "name": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "username"
+                      },
+                      "code": "'username'"
+                    },
+                    "value": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "[your geonames username]"
+                      },
+                      "code": "'[your geonames username]'"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "code": "[{\n  :name 'username',\n  :value '[your geonames username]'\n}]"
+        },
+        "authUser": {
+          "widgetType": "expression/string",
+          "widgetData": {
+            "interpolation": true,
+            "text": ""
+          },
+          "code": "''"
+        },
+        "authPassword": {
+          "widgetType": "expression/password",
+          "widgetData": {
+            "text": "",
+            "encrypted": false
+          },
+          "code": "''"
+        },
+        "oauth": {
+          "widgetType": "expression/oauth-ref",
+          "widgetData": {
+            "name": ""
+          },
+          "code": "nil"
+        },
+        "headers": {
+          "widgetType": "expression/data-grid",
+          "widgetData": {
+            "fields": [
+              {
+                "id": "name",
+                "name": "name"
+              },
+              {
+                "id": "value",
+                "name": "value"
+              }
+            ],
+            "gen": {
+              "as": "rows",
+              "of": "dict",
+              "meta": false
+            },
+            "table": {
+              "list": []
+            }
+          },
+          "code": "[]"
+        },
+        "cookies": {
+          "widgetType": "expression/field-value-ref",
+          "widgetData": {
+            "fieldSelect": {
+              "value": null
+            }
+          },
+          "code": "nil"
+        },
+        "contentType": {
+          "widgetType": "expression/select",
+          "widgetData": {
+            "family": "expression/select/httpContentType",
+            "value": "application/json"
+          },
+          "code": "'application/json'"
+        },
+        "bodyParameters": {
+          "widgetType": "expression/data-grid",
+          "widgetData": {
+            "fields": [
+              {
+                "id": "name",
+                "name": "name"
+              },
+              {
+                "id": "value",
+                "name": "value"
+              }
+            ],
+            "gen": {
+              "as": "rows",
+              "of": "dict",
+              "meta": false
+            },
+            "table": {
+              "list": []
+            }
+          },
+          "code": "[]"
+        },
+        "body": {
+          "widgetType": "expression/text",
+          "widgetData": {
+            "text": "",
+            "size": {
+              "width": 0,
+              "height": 120
+            },
+            "syntax": "javascript",
+            "lineSeparator": "\r\n",
+            "interpolation": true
+          },
+          "code": "''"
+        },
+        "followRedirects": {
+          "widgetType": "expression/checkbox-boolean",
+          "widgetData": {
+            "value": true
+          },
+          "code": "true"
+        },
+        "bodyCapture": {
+          "widgetType": "expression/select",
+          "widgetData": {
+            "family": "com.twineworks.tweakstreet.library.steps.map.httprequest/bodyCapture",
+            "value": "capture_string"
+          },
+          "code": "'capture_string'"
+        },
+        "saveAsFile": {
+          "widgetType": "expression/local-file",
+          "widgetData": {
+            "interpolation": true,
+            "text": "",
+            "dialogIntent": "saveFile"
+          },
+          "code": "''"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "status_code",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.status"
+                  },
+                  "code": "::results.status"
+                }
+              },
+              {
+                "name": "countries",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.response_json"
+                  },
+                  "code": "::results.response_json"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 234,
+        "y": 234
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.flatmap.getitems_9a3017c1-cff2-467a-a861-e173e434673b",
+      "name": "List to Rows",
+      "type": "com.twineworks.tweakstreet.library.steps.flatmap.getitems",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "List to Rows",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### INFO\n\nThe list of country infos in JSON format is split into individual rows.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 106
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "items": {
+          "widgetType": "expression/code",
+          "widgetData": {
+            "text": "in.countries[:geonames]",
+            "size": {
+              "width": 0,
+              "height": 36
+            },
+            "syntax": "tweakflow"
+          },
+          "code": "in.countries[:geonames]"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "continent_name",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.item[:continentName]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.item[:continentName]"
+                }
+              },
+              {
+                "name": "continent",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.item[:continent]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.item[:continent]"
+                }
+              },
+              {
+                "name": "population",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.item[:population] as long",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.item[:population] as long"
+                }
+              },
+              {
+                "name": "country_name",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.item[:countryName]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.item[:countryName]"
+                }
+              },
+              {
+                "name": "country_code",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.item[:countryCode]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.item[:countryCode]"
+                }
+              },
+              {
+                "name": "fips_code",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.item[:fipsCode]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.item[:fipsCode]"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 490,
+        "y": 234
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.group.groupby_99cb7990-cbc9-4329-b206-8293fd34fc56",
+      "name": "Group By",
+      "type": "com.twineworks.tweakstreet.library.steps.group.groupby",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Group By",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### INFO\n\nGroup the data by continent name and sum up the population.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 115
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "groupFields": {
+          "groupFields": {
+            "list": [
+              {
+                "name": "group_field",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/field-value-ref",
+                  "widgetData": {
+                    "fieldSelect": {
+                      "value": {
+                        "gate": "in",
+                        "name": "continent_name"
+                      }
+                    }
+                  },
+                  "code": "::in.continent_name"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "collatedGroups": {
+          "widgetType": "expression/checkbox-boolean",
+          "widgetData": {
+            "value": false
+          },
+          "code": "false"
+        },
+        "aggregationFields": {
+          "aggregationFields": {
+            "list": [
+              {
+                "name": "total_population",
+                "type": "any",
+                "aggregation": {
+                  "widgetType": "expression/aggregate-sum",
+                  "widgetData": {
+                    "nilHandling": {
+                      "widgetType": "expression/select",
+                      "widgetData": {
+                        "family": "expression/select/nilHandling",
+                        "value": "ignore"
+                      },
+                      "code": "'ignore'"
+                    },
+                    "nanHandling": {
+                      "widgetType": "expression/select",
+                      "widgetData": {
+                        "family": "expression/select/NaNHandling",
+                        "value": "ignore"
+                      },
+                      "code": "'ignore'"
+                    },
+                    "editor": {
+                      "collapsed": true
+                    },
+                    "model": {}
+                  },
+                  "code": "let {\n  make_aggregator: (string nilHandling, string nanHandling) -> via {:class 'com.twineworks.tweakstreet.library.aggregation.Aggregators$sum_aggregator'};\n}\nmake_aggregator('ignore', 'ignore')\n"
+                },
+                "subject": {
+                  "widgetType": "expression/field-value-ref",
+                  "widgetData": {
+                    "fieldSelect": {
+                      "value": {
+                        "gate": "in",
+                        "name": "population"
+                      }
+                    }
+                  },
+                  "code": "::in.population"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showGroupFields": true,
+          "showResultVariables": false,
+          "showOutputFields": false
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 1082,
+        "y": 234
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.pickfields_600604b2-64e2-46fb-a266-7161f7b2495f",
+      "name": "Pick Fields",
+      "type": "com.twineworks.tweakstreet.library.steps.map.pickfields",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Pick Fields",
+          "showingComment": false,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": true
+            }
+          }
+        },
+        "mode": {
+          "value": "whitelist"
+        },
+        "fieldRefs": {
+          "fieldRefs": {
+            "list": [
+              {
+                "field": {
+                  "value": {
+                    "gate": "in",
+                    "name": "continent_name"
+                  }
+                }
+              },
+              {
+                "field": {
+                  "value": {
+                    "gate": "in",
+                    "name": "population"
+                  }
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {},
+        "model": {}
+      },
+      "pos": {
+        "x": 778,
+        "y": 234
+      }
+    }
+  ],
+  "hops": [
+    {
+      "id": "88658df6-5950-44b7-b600-8f4564b6c62c",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.httprequest_847531bf-a7d9-4bd6-a6bf-a5df0691c4a8",
+      "toStep": "com.twineworks.tweakstreet.library.steps.flatmap.getitems_9a3017c1-cff2-467a-a861-e173e434673b",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "3ef99f66-62ed-44d9-8b7d-78e1102d76a5",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.flatmap.getitems_9a3017c1-cff2-467a-a861-e173e434673b",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.pickfields_600604b2-64e2-46fb-a266-7161f7b2495f",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "1075b479-b7c9-49bc-8b65-b11c26f96e28",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.pickfields_600604b2-64e2-46fb-a266-7161f7b2495f",
+      "toStep": "com.twineworks.tweakstreet.library.steps.group.groupby_99cb7990-cbc9-4329-b206-8293fd34fc56",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    }
+  ]
+}
