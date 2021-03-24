@@ -52,7 +52,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | basic-08           | database-07.dfl              | read data stored in the database-05.dfl flow and restore the dictionary data already in the SQL query |
 | basic-09           | stateful-01.dfl              | Generate a row count and calculate the running aerage age using the "Stateful Calculator" step |
 | basic-10           | templates-01.dfl             | Use sample data and merge it with a template using the Freemarker template engine |
-| medium-01          | cast-values-01.dfl           | Cast values of a list of doctionaries from string to long or double |
+| medium-01          | cast-values-01.dfl           | Cast selected values of a list of dictionaries from string to long or double |
 | medium-01          | functions-01.dfl             | Show the use of functions as a formular or using the widgets |
 
 **Available modules**:
@@ -71,7 +71,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | data              | airports.csv                 | 7733 airports with name, codes, coordinates, elevation |
 | data              | airports_fixed_length.csv    | 7733 airports with name, codes, coordinates, elevation. fields have fixed start/end positions |
 | data              | airports.json                | 7733 airports with name, codes, coordinates, elevation |
-| data              | airports_cleaned.json        | 7733 airports with name, codes, coordinates, elevation. with corrected long and double types |
+| data              | airports_cleaned.json        | 7733 airports with name, codes, coordinates, elevation. with corrected long and double data types |
 | data              | countries.csv                | 241 countries with name and code |
 | data              | country_continent_lookup.csv | country to continent lookup data |
 | data              | continent_names_lookup.csv   | continent names lookup data |
@@ -80,8 +80,8 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 
 **Steps**: Below is the list of steps and an indication in which dataflow they are used.
 
-| Step                  | Dataflow  |
-| :--                   | :-- |
+| Step          | Dataflow  |
+| :--           | :-- |
 | CSV Input		| read-csv-01.dfl, read-csv-02.dfl, read-csv-03.dfl, read-csv-04.dfl, read-csv-05.dfl, read-csv-06.dfl, read-csv-07.dfl, random-data-05.dfl |
 | Filter		| read-csv-02.dfl, read-csv-04.dfl |
 | Pick Fields	| read-csv-03.dfl, random-data-02.dfl, partitioning-01.dfl, database-05.dfl, random-data-05.dfl, rest-02.df |
