@@ -1,0 +1,464 @@
+{
+  "type": "data-flow",
+  "appVersion": "1.15.0",
+  "properties": {
+    "meta": {
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "##### Info\n\nThe input is a file containing json formatted data. All values are strings.\n\nFlow demonstrates:\n* reading data from the file and parse the content to json\n* converting list into rows\n* casting some of the values of each list to long or double\n\n\n",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 233
+          },
+          "view": "edit"
+        },
+        "editor": {
+          "collapsed": false
+        }
+      },
+      "showingComment": true
+    },
+    "editor": {
+      "showParameters": true,
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "imports": {
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\nimport json from 'tweakstreet/json';",
+      "size": {
+        "width": 0,
+        "height": 102
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "parameters": {
+      "parameters": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "variables": {
+      "variables": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    }
+  },
+  "steps": [
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.readfile_d26d7e67-c35b-428f-92c3-2a75f5d6be68",
+      "name": "Read File: Airports",
+      "type": "com.twineworks.tweakstreet.library.steps.map.readfile",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Read File: Airports",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nThe content of the file - containg information on airports - is read as a string.\nTo get the json representation, it needs to be parsed.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 123
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "fs": {
+          "widgetType": "expression/storage-ref",
+          "widgetData": {
+            "name": ""
+          },
+          "code": "nil"
+        },
+        "path": {
+          "widgetType": "expression/local-file",
+          "widgetData": {
+            "interpolation": true,
+            "text": "../data/airports.json",
+            "dialogIntent": "openFile"
+          },
+          "code": "'../data/airports.json'"
+        },
+        "compression": {
+          "widgetType": "expression/select",
+          "widgetData": {
+            "family": "expression/select/compression",
+            "value": "none"
+          },
+          "code": "'none'"
+        },
+        "charset": {
+          "widgetType": "expression/charset",
+          "widgetData": {
+            "value": "UTF-8"
+          },
+          "code": "'UTF-8'"
+        },
+        "textFileContent": {
+          "text": "",
+          "fetchButton": {
+            "value": "100"
+          },
+          "size": {
+            "width": 0,
+            "height": 180
+          },
+          "editor": {
+            "collapsed": true
+          }
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "content",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "json.parse(results.content)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "json.parse(results.content)"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 202,
+        "y": 186
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.calculator_6b01501e-1312-4250-8cbe-9a601dfe90c0",
+      "name": "Calculator: cast values",
+      "type": "com.twineworks.tweakstreet.library.steps.map.calculator",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Calculator: cast values",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nUsing the \"splat\" expression (three dots in front), the following key/values are\nmerged from left to right. Each value is converted here to either long or double.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 120
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "airport",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "{\n  ...in.airport,\n  :elevation in.airport[:elevation] as long,\n  :id in.airport[:id] as long,\n  :country_id in.airport[:country_id] as long,\n  :latitude in.airport[:latitude] as double,\n  :longitude in.airport[:longitude] as double\n}",
+                    "size": {
+                      "width": 0,
+                      "height": 188
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "{\n  ...in.airport,\n  :elevation in.airport[:elevation] as long,\n  :id in.airport[:id] as long,\n  :country_id in.airport[:country_id] as long,\n  :latitude in.airport[:latitude] as double,\n  :longitude in.airport[:longitude] as double\n}"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": true,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 634,
+        "y": 186
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.flatmap.getitems_b580acb6-228c-4cf4-b33f-a43b8fc73fb7",
+      "name": "List to Rows",
+      "type": "com.twineworks.tweakstreet.library.steps.flatmap.getitems",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "List to Rows",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nConvert the list of items into individual rows.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 103
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "items": {
+          "widgetType": "expression/code",
+          "widgetData": {
+            "text": "in.content",
+            "size": {
+              "width": 0,
+              "height": 36
+            },
+            "syntax": "tweakflow"
+          },
+          "code": "in.content"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "airport",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.item"
+                  },
+                  "code": "::results.item"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 426,
+        "y": 186
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_723ecbea-8518-4e2f-871b-a921cb6c4929",
+      "name": "Dummy",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy",
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": ""
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "editor": {
+                "collapsed": true
+              }
+            }
+          },
+          "showingComment": false
+        },
+        "editor": {}
+      },
+      "pos": {
+        "x": 858,
+        "y": 186
+      }
+    }
+  ],
+  "hops": [
+    {
+      "id": "79968c84-3f45-4786-b3c6-666d0aabbab4",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.readfile_d26d7e67-c35b-428f-92c3-2a75f5d6be68",
+      "toStep": "com.twineworks.tweakstreet.library.steps.flatmap.getitems_b580acb6-228c-4cf4-b33f-a43b8fc73fb7",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "d2aca6e6-65a3-49fa-b280-7416a8144edf",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.flatmap.getitems_b580acb6-228c-4cf4-b33f-a43b8fc73fb7",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.calculator_6b01501e-1312-4250-8cbe-9a601dfe90c0",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "f619c59e-6019-41e9-90d1-7c8ce1a7ec18",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.calculator_6b01501e-1312-4250-8cbe-9a601dfe90c0",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_723ecbea-8518-4e2f-871b-a921cb6c4929",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    }
+  ]
+}

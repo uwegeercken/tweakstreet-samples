@@ -52,6 +52,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | basic-08           | database-07.dfl              | read data stored in the database-05.dfl flow and restore the dictionary data already in the SQL query |
 | basic-09           | stateful-01.dfl              | Generate a row count and calculate the running aerage age using the "Stateful Calculator" step |
 | basic-10           | templates-01.dfl             | Use sample data and merge it with a template using the Freemarker template engine |
+| medium-01          | cast-values-01.dfl           | Cast values of a list of doctionaries from string to long or double |
 
 **Available modules**:
 
@@ -68,6 +69,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | :--               | :--                          | :--                                                    |
 | data              | airports.csv                 | 7733 airports with name, codes, coordinates, elevation |
 | data              | airports_fixed_length.csv    | 7733 airports with name, codes, coordinates, elevation. fields have fixed start/end positions |
+| data              | airports.json                | 7733 airports with name, codes, coordinates, elevation |
 | data              | countries.csv                | 241 countries with name and code |
 | data              | country_continent_lookup.csv | country to continent lookup data |
 | data              | continent_names_lookup.csv   | continent names lookup data |
@@ -81,7 +83,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | CSV Input		| read-csv-01.dfl, read-csv-02.dfl, read-csv-03.dfl, read-csv-04.dfl, read-csv-05.dfl, read-csv-06.dfl, read-csv-07.dfl, random-data-05.dfl |
 | Filter		| read-csv-02.dfl, read-csv-04.dfl |
 | Pick Fields		| read-csv-03.dfl, random-data-02.dfl, partitioning-01.dfl, database-05.dfl, random-data-05.dfl, rest-02.df |
-| Calculator		| read-csv-04.dfl, read-csv-07.dfl, modules-03.dfl, random-data-02.dfl, split-01.dfl, partitioning-01.dfl, database-06.dfl, templates-01.dfl |
+| Calculator		| read-csv-04.dfl, read-csv-07.dfl, modules-03.dfl, random-data-02.dfl, split-01.dfl, partitioning-01.dfl, database-06.dfl, templates-01.dfl, cast-values-01.dfl |
 | Logger		| read-csv-04.dfl, modules-01.dfl, modules-02.dfl |
 | Group By		| read-csv-05.dfl, read-csv-06.dfl, random-data-05.dfl, rest-02.df |
 | Sort			| read-csv-05.dfl, read-csv-06.dfl |
@@ -99,12 +101,13 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | SQL Lookup		| database-02.dfl, database-05.dfl |
 | Join on Condition	| database-03.dfl |
 | SQL Script		| database-04.dfl |
-| List to Rows		| database-04.dfl, rest-01.dfl, rest-02.df |
+| List to Rows		| database-04.dfl, rest-01.dfl, rest-02.df, cast-values-01.dfl |
 | SQL Insert		| database-05.dfl |
 | Stateful Calculator	| stateful-01.dfl |
 | Distinct		| distinct-01.dfl |
 | Freemarker  | templates-01.dfl |
 | HTTP Request  | rest-01.dfl, rest-02.dfl  |
+| Read File  | cast-values-01.dfl |
 
 
-last update: 2021-03-17
+last update: 2021-03-24
