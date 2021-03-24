@@ -1,0 +1,542 @@
+{
+  "type": "data-flow",
+  "appVersion": "1.15.0",
+  "properties": {
+    "meta": {
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "##### Info\n\nThe input is a file containing json formatted data. \n\nFlow demonstrates:\n* reading data from the file and parse the content to json",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 160
+          },
+          "view": "edit"
+        },
+        "editor": {
+          "collapsed": false
+        }
+      },
+      "showingComment": true
+    },
+    "editor": {
+      "showParameters": true,
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "imports": {
+      "code": "# import the standard library\nimport core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\nimport json from 'tweakstreet/json';",
+      "size": {
+        "width": 0,
+        "height": 102
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "parameters": {
+      "parameters": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "variables": {
+      "variables": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    }
+  },
+  "steps": [
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.readfile_fc938506-fde9-41e0-8058-592982df2118",
+      "name": "Read File",
+      "type": "com.twineworks.tweakstreet.library.steps.map.readfile",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Read File",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nUses the cleaned json file - which has the correct data types.\n\nThe content of the file is returned as a string, hwich is parsed to json.\n\n",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 135
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "fs": {
+          "widgetType": "expression/storage-ref",
+          "widgetData": {
+            "name": ""
+          },
+          "code": "nil"
+        },
+        "path": {
+          "widgetType": "expression/local-file",
+          "widgetData": {
+            "interpolation": true,
+            "text": "../data/airports_cleaned.json",
+            "dialogIntent": "openFile"
+          },
+          "code": "'../data/airports_cleaned.json'"
+        },
+        "compression": {
+          "widgetType": "expression/select",
+          "widgetData": {
+            "family": "expression/select/compression",
+            "value": "none"
+          },
+          "code": "'none'"
+        },
+        "charset": {
+          "widgetType": "expression/charset",
+          "widgetData": {
+            "value": "UTF-8"
+          },
+          "code": "'UTF-8'"
+        },
+        "textFileContent": {
+          "text": "",
+          "fetchButton": {
+            "value": "100"
+          },
+          "size": {
+            "width": 0,
+            "height": 180
+          },
+          "editor": {
+            "collapsed": true
+          }
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "airports",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "json.parse(results.content)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "json.parse(results.content)"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 266,
+        "y": 186
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.calculator_98aa3656-771b-436d-b06f-d3394e4ff3f7",
+      "name": "Calculator: widgets",
+      "type": "com.twineworks.tweakstreet.library.steps.map.calculator",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Calculator: widgets",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nVarious functions are available as widgets. Add a new row e.g. in the Output Fields,\nright-click in the Value colum and select \"Morph To\" >> \"computation\" and select one\nof the desired functions.\n\n* Filter function collects those items for which the result of the function is true\n* Reduce function loops over the list and sums the elevation of all airports\n\nNote that you can also use the functions without a widget by writing it in a formular\nfield.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 248
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": [
+              {
+                "name": "total_elevation",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/lib-data-reduce",
+                  "widgetData": {
+                    "xs": {
+                      "widgetType": "expression/code",
+                      "widgetData": {
+                        "text": "in.airports",
+                        "size": {
+                          "width": 0,
+                          "height": 36
+                        },
+                        "syntax": "tweakflow"
+                      },
+                      "code": "in.airports"
+                    },
+                    "init": {
+                      "widgetType": "expression/code",
+                      "widgetData": {
+                        "text": "0",
+                        "size": {
+                          "width": 0,
+                          "height": 36
+                        },
+                        "syntax": "tweakflow"
+                      },
+                      "code": "0"
+                    },
+                    "f": {
+                      "widgetType": "expression/code",
+                      "widgetData": {
+                        "text": "(a, x) -> a + x[:elevation]",
+                        "size": {
+                          "width": 0,
+                          "height": 36
+                        },
+                        "syntax": "tweakflow"
+                      },
+                      "code": "(a, x) -> a + x[:elevation]"
+                    },
+                    "editor": {
+                      "collapsed": false
+                    },
+                    "model": {
+                      "isCall": true,
+                      "applied": {
+                        "init": true,
+                        "f": true
+                      }
+                    }
+                  },
+                  "code": "((any xs, any init, function f) -> any via {:class 'com.twineworks.tweakstreet.library.data.Data$reduce'})(in.airports, 0, (a, x) -> a + x[:elevation])"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "airports13000+",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/lib-data-filter",
+                  "widgetData": {
+                    "xs": {
+                      "widgetType": "expression/code",
+                      "widgetData": {
+                        "text": "in.airports",
+                        "size": {
+                          "width": 0,
+                          "height": 36
+                        },
+                        "syntax": "tweakflow"
+                      },
+                      "code": "in.airports"
+                    },
+                    "p": {
+                      "widgetType": "expression/code",
+                      "widgetData": {
+                        "text": "(x) -> x[:elevation] >= 13000",
+                        "size": {
+                          "width": 0,
+                          "height": 36
+                        },
+                        "syntax": "tweakflow"
+                      },
+                      "code": "(x) -> x[:elevation] >= 13000"
+                    },
+                    "editor": {
+                      "collapsed": false
+                    },
+                    "model": {
+                      "isCall": true,
+                      "applied": {
+                        "p": true
+                      }
+                    }
+                  },
+                  "code": "((any xs, function p) -> any via {:class 'com.twineworks.tweakstreet.library.data.Data$filter'})(in.airports, (x) -> x[:elevation] >= 13000)"
+                }
+              },
+              {
+                "name": "average_elevation",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "entry_vars.total_elevation / data.size(in.airports)",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "entry_vars.total_elevation / data.size(in.airports)"
+                }
+              },
+              {
+                "name": "number_of_airports",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/lib-data-size",
+                  "widgetData": {
+                    "subject": {
+                      "widgetType": "expression/code",
+                      "widgetData": {
+                        "text": "in.airports",
+                        "size": {
+                          "width": 0,
+                          "height": 36
+                        },
+                        "syntax": "tweakflow"
+                      },
+                      "code": "in.airports"
+                    },
+                    "editor": {
+                      "collapsed": false
+                    },
+                    "model": {
+                      "isCall": true,
+                      "applied": {}
+                    }
+                  },
+                  "code": "((any subject) -> long via {:class 'com.twineworks.tweakstreet.library.data.Data$size'})(in.airports)"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": true,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 522,
+        "y": 186
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.calculator_2f5c7bcc-5d66-4d41-9dab-be4e9a30ee6d",
+      "name": "Calculator: for loop and unique",
+      "type": "com.twineworks.tweakstreet.library.steps.map.calculator",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Calculator: for loop and unique",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nUsing a for loop to collect all country ids for all rows. The unique function is\nused to get a list of unique country ids",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 121
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": [
+              {
+                "name": "country_ids",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "(airports) ->\n  for a <- airports,\n    a[:country_id]\n",
+                    "size": {
+                      "width": 0,
+                      "height": 87
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "((airports) ->\n  for a <- airports,\n    a[:country_id])"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "unique_country_ids",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "data.unique(entry_vars.country_ids(in.airports))",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "data.unique(entry_vars.country_ids(in.airports))"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": true,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 858,
+        "y": 186
+      }
+    }
+  ],
+  "hops": [
+    {
+      "id": "cd95531a-1c18-479e-9b49-46724a960016",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.readfile_fc938506-fde9-41e0-8058-592982df2118",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.calculator_98aa3656-771b-436d-b06f-d3394e4ff3f7",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "1d3f72be-0223-482a-afec-f02eb054b613",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.calculator_98aa3656-771b-436d-b06f-d3394e4ff3f7",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.calculator_2f5c7bcc-5d66-4d41-9dab-be4e9a30ee6d",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    }
+  ]
+}

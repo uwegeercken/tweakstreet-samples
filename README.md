@@ -53,6 +53,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | basic-09           | stateful-01.dfl              | Generate a row count and calculate the running aerage age using the "Stateful Calculator" step |
 | basic-10           | templates-01.dfl             | Use sample data and merge it with a template using the Freemarker template engine |
 | medium-01          | cast-values-01.dfl           | Cast values of a list of doctionaries from string to long or double |
+| medium-01          | functions-01.dfl             | Show the use of functions as a formular or using the widgets |
 
 **Available modules**:
 
@@ -70,6 +71,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | data              | airports.csv                 | 7733 airports with name, codes, coordinates, elevation |
 | data              | airports_fixed_length.csv    | 7733 airports with name, codes, coordinates, elevation. fields have fixed start/end positions |
 | data              | airports.json                | 7733 airports with name, codes, coordinates, elevation |
+| data              | airports_cleaned.json        | 7733 airports with name, codes, coordinates, elevation. with corrected long and double types |
 | data              | countries.csv                | 241 countries with name and code |
 | data              | country_continent_lookup.csv | country to continent lookup data |
 | data              | continent_names_lookup.csv   | continent names lookup data |
@@ -82,32 +84,32 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 | :--                   | :-- |
 | CSV Input		| read-csv-01.dfl, read-csv-02.dfl, read-csv-03.dfl, read-csv-04.dfl, read-csv-05.dfl, read-csv-06.dfl, read-csv-07.dfl, random-data-05.dfl |
 | Filter		| read-csv-02.dfl, read-csv-04.dfl |
-| Pick Fields		| read-csv-03.dfl, random-data-02.dfl, partitioning-01.dfl, database-05.dfl, random-data-05.dfl, rest-02.df |
-| Calculator		| read-csv-04.dfl, read-csv-07.dfl, modules-03.dfl, random-data-02.dfl, split-01.dfl, partitioning-01.dfl, database-06.dfl, templates-01.dfl, cast-values-01.dfl |
+| Pick Fields	| read-csv-03.dfl, random-data-02.dfl, partitioning-01.dfl, database-05.dfl, random-data-05.dfl, rest-02.df |
+| Calculator	| read-csv-04.dfl, read-csv-07.dfl, modules-03.dfl, random-data-02.dfl, split-01.dfl, partitioning-01.dfl, database-06.dfl, templates-01.dfl, cast-values-01.dfl, functions-01.dfl |
 | Logger		| read-csv-04.dfl, modules-01.dfl, modules-02.dfl |
 | Group By		| read-csv-05.dfl, read-csv-06.dfl, random-data-05.dfl, rest-02.df |
 | Sort			| read-csv-05.dfl, read-csv-06.dfl |
-| Stream Lookup		| read-csv-06.dfl |
-| Generate Rows		| random-data-01.dfl, random-data-02.dfl, random-da,ta-03.dfl, random-data-04.dfl, diff-01.dfl, diff-02.dfl, serialize-01.dfl, partitioning-01.dfl, random-data-05.dfl |
-| Random Data		| random-data-01.dfl, random-data-02.dfl, random-data-03.dfl, random-data-04.dfl, serialize-01.dfl, partitioning-01.dfl, random-data-05.dfl |
-| Data Table		| split-01.dfl, stateful-01.dfl, distinct-01.dfl, templates-01.dfl |
+| Stream Lookup	| read-csv-06.dfl |
+| Generate Rows	| random-data-01.dfl, random-data-02.dfl, random-da,ta-03.dfl, random-data-04.dfl, diff-01.dfl, diff-02.dfl, serialize-01.dfl, partitioning-01.dfl, random-data-05.dfl |
+| Random Data	| random-data-01.dfl, random-data-02.dfl, random-data-03.dfl, random-data-04.dfl, serialize-01.dfl, partitioning-01.dfl, random-data-05.dfl |
+| Data Table	| split-01.dfl, stateful-01.dfl, distinct-01.dfl, templates-01.dfl |
 | Diff on sorted Keys	| diff-01.dfl, diff-02.dfl |
 | Decision		| diff-02.dfl, partitioning-01.dfl |
-| Deserialize		| deserialize-01.dfl  |
+| Deserialize	| deserialize-01.dfl  |
 | Serialize		| serialize-01.dfl |
-| System Info		| misc-01.dfl |
+| System Info	| misc-01.dfl |
 | Clock			| misc-01.dfl, stateful-01.dfl |
 | SQL Input		| database-01.dfl, database-02.dfl, database-03.dfl, database-05.dfl, database-06.dfl, database-07.dfl |
-| SQL Lookup		| database-02.dfl, database-05.dfl |
+| SQL Lookup	| database-02.dfl, database-05.dfl |
 | Join on Condition	| database-03.dfl |
-| SQL Script		| database-04.dfl |
-| List to Rows		| database-04.dfl, rest-01.dfl, rest-02.df, cast-values-01.dfl |
-| SQL Insert		| database-05.dfl |
+| SQL Script	| database-04.dfl |
+| List to Rows	| database-04.dfl, rest-01.dfl, rest-02.df, cast-values-01.dfl |
+| SQL Insert	| database-05.dfl |
 | Stateful Calculator	| stateful-01.dfl |
 | Distinct		| distinct-01.dfl |
 | Freemarker  | templates-01.dfl |
 | HTTP Request  | rest-01.dfl, rest-02.dfl  |
-| Read File  | cast-values-01.dfl |
+| Read File  | cast-values-01.dfl, functions-01.dfl |
 
 
 last update: 2021-03-24
