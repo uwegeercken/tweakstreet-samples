@@ -14,7 +14,7 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 
 **Attention**: After starting Tweakstreet, select the folder of the cloned repository as your workspace folder ('File' menu). And then please make sure that you use the config module: 'conf-module-samples.tsm'. It contains some variables which the samples rely on: in the sidebar on the left which shows the file and directory tree (Strg+B to activate it if you don't see it), click on the file 'conf-module-samples.tsm' to open it. Then right-click on the tab which carries the name of the file and select 'Set as config module'. Alternatively right-click on '$none' in the blue toolbar at the bottom, select 'Choose config module' and navigate to this file and select it.
 
-Test [overview-neo4j-bloom.png]
+![Visualized in Neo4j](./overview-neo4j-bloom.png)
 
 **Flows**: Below is the list of available samples, listing the name of the folder, the name of the flow file and a short description what the flow does.
 
@@ -114,4 +114,4 @@ Test [overview-neo4j-bloom.png]
 | Read File  | cast-values-01.dfl, functions-01.dfl |
 
 
-last update: 2021-03-24
+last update: 2021-03-25
