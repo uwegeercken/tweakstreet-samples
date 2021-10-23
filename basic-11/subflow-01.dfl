@@ -2,24 +2,67 @@
   "type": "data-flow",
   "appVersion": "1.19.1",
   "properties": {
-    "meta": {},
-    "editor": {},
+    "meta": {
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "##### Info\n\nThe input and output interfaces defined which fields are expected on the incomming side and those that are passed back to the flow which runs the subflow.\n\nThe calculator step does a simple multiplication and the result and a few other fields are passed to the parent flow.",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 170
+          },
+          "view": "preview"
+        },
+        "editor": {
+          "collapsed": false
+        }
+      },
+      "showingComment": true
+    },
+    "editor": {
+      "showParameters": true,
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
     "imports": {
-      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n"
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
+      "size": {
+        "width": 0,
+        "height": 102
+      },
+      "editor": {
+        "collapsed": false
+      }
     },
     "parameters": {
       "parameters": {
         "list": []
+      },
+      "editor": {
+        "collapsed": false
       }
     },
     "variables": {
       "variables": {
         "list": []
+      },
+      "editor": {
+        "collapsed": false
       }
     },
     "services": {
       "services": {
         "list": []
+      },
+      "editor": {
+        "collapsed": false
       }
     }
   },

@@ -15,9 +15,9 @@
           },
           "size": {
             "width": null,
-            "height": 480
+            "height": 250
           },
-          "view": "edit"
+          "view": "preview"
         },
         "editor": {
           "collapsed": false
