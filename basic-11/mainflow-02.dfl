@@ -1,0 +1,816 @@
+{
+  "type": "data-flow",
+  "appVersion": "1.19.1",
+  "properties": {
+    "meta": {
+      "comment": {
+        "markdown": {
+          "text": {
+            "text": "##### Info\n\nFlow demonstrates doing lookups in subflows in two different ways:\n1) lookup country data from a SQLite database file\n2) lookup country data from a CSV file\n\nBoth subflows have the same input and output interfaces. So which subflow is used can be dynamically decided (changed) by using e.g. a parameter\nor variable. A use case would be to use a file in the development environment and use a database in the production environment. Here, a variable \"environment\" is stored in the configuration of the main dataflow which steers which subflow is executed.\n\nFlow uses variables and the database connection from the global module: _conf-module-samples.tsm_\n",
+            "syntax": "markdown",
+            "size": {
+              "width": "100%",
+              "height": "100%"
+            }
+          },
+          "size": {
+            "width": null,
+            "height": 330
+          },
+          "view": "preview"
+        },
+        "editor": {
+          "collapsed": false
+        }
+      },
+      "showingComment": true
+    },
+    "editor": {
+      "showParameters": true,
+      "showVariables": true,
+      "showServices": true,
+      "dialogWidth": "wide"
+    },
+    "imports": {
+      "code": "# import the standard library\n# import core, data, strings, time, math, fun, locale, regex, bin, decimals from 'std';\n",
+      "size": {
+        "width": 0,
+        "height": 102
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "parameters": {
+      "parameters": {
+        "list": []
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "variables": {
+      "variables": {
+        "list": [
+          {
+            "name": "environment",
+            "type": "string",
+            "value": {
+              "widgetType": "expression/string",
+              "widgetData": {
+                "interpolation": true,
+                "text": "development"
+              },
+              "code": "'development'"
+            }
+          }
+        ]
+      },
+      "editor": {
+        "collapsed": false
+      }
+    },
+    "services": {
+      "services": {
+        "list": [
+          {
+            "name": "sqlite-airports",
+            "type": "any",
+            "category": "jdbc",
+            "value": {
+              "widgetType": "expression/code",
+              "widgetData": {
+                "text": "$config.services.`sqlite-airports`",
+                "size": {
+                  "width": 0,
+                  "height": 36
+                },
+                "syntax": "tweakflow"
+              },
+              "code": "$config.services.`sqlite-airports`"
+            }
+          }
+        ]
+      },
+      "editor": {
+        "collapsed": false
+      }
+    }
+  },
+  "steps": [
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.input.sqlinput_85e21964-e200-4aab-beb6-6e6d003ffbeb",
+      "name": "SQL Input: airports",
+      "type": "com.twineworks.tweakstreet.library.steps.input.sqlinput",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "SQL Input: airports",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nQuerying the data from the SQLite database.\n\nNote: Country code 16 is Germany",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 129
+              },
+              "view": "edit"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "tabs": {},
+        "connection": {
+          "widgetType": "expression/database-ref",
+          "widgetData": {
+            "name": "sqlite-airports"
+          },
+          "code": "::flow.services.`sqlite-airports`"
+        },
+        "fetchSize": {
+          "widgetType": "expression/number",
+          "widgetData": {
+            "text": "10000"
+          },
+          "code": "10000"
+        },
+        "rowLimit": {
+          "widgetType": "expression/nil",
+          "widgetData": {},
+          "code": "nil"
+        },
+        "query": {
+          "widgetType": "expression/text",
+          "widgetData": {
+            "text": "SELECT \n        * \nfrom \n        airports\nwhere\n        country_id=16\n        \n       ",
+            "size": {
+              "width": 0,
+              "height": 200
+            },
+            "syntax": "sql",
+            "lineSeparator": "\n",
+            "interpolation": false
+          },
+          "code": "'SELECT \n        * \nfrom \n        airports\nwhere\n        country_id=16\n        \n       '"
+        },
+        "jdbcParams": {
+          "widgetType": "expression/list",
+          "widgetData": {
+            "table": {
+              "list": []
+            }
+          },
+          "code": "[]"
+        },
+        "readFields": {
+          "readFields": {
+            "list": [
+              {
+                "name": "id",
+                "type": "long",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "id"
+                  },
+                  "code": "'id'"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "name"
+                  },
+                  "code": "'name'"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              },
+              {
+                "name": "description",
+                "type": "string",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "description"
+                  },
+                  "code": "'description'"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              },
+              {
+                "name": "country_id",
+                "type": "long",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "country_id"
+                  },
+                  "code": "'country_id'"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              },
+              {
+                "name": "iata_code",
+                "type": "string",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "iata_code"
+                  },
+                  "code": "'iata_code'"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              },
+              {
+                "name": "icao_code",
+                "type": "string",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "icao_code"
+                  },
+                  "code": "'icao_code'"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              },
+              {
+                "name": "latitude",
+                "type": "decimal",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "latitude"
+                  },
+                  "code": "'latitude'"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              },
+              {
+                "name": "longitude",
+                "type": "decimal",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "longitude"
+                  },
+                  "code": "'longitude'"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              },
+              {
+                "name": "elevation",
+                "type": "long",
+                "mapping": {
+                  "widgetType": "expression/string",
+                  "widgetData": {
+                    "interpolation": true,
+                    "text": "elevation"
+                  },
+                  "code": "'elevation'"
+                },
+                "conversion": {
+                  "widgetType": "expression/nil",
+                  "widgetData": {},
+                  "code": "nil"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": false
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 298,
+        "y": 186
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.dummy_96c8b0fc-96c3-430a-a81e-25a2b66b67a4",
+      "name": "Dummy",
+      "type": "com.twineworks.tweakstreet.library.steps.map.dummy",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Dummy",
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": ""
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "editor": {
+                "collapsed": true
+              }
+            }
+          },
+          "showingComment": false
+        },
+        "editor": {}
+      },
+      "pos": {
+        "x": 1050,
+        "y": 186
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.turing.subflow_7b4b505a-87d8-4f4a-b066-9deec5a68f69",
+      "name": "Sub Flow: Country data from Database",
+      "type": "com.twineworks.tweakstreet.library.steps.turing.subflow",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Sub Flow: Country data from Database",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nThe subflow to execute is depending on the \"environment\" variable in the parent\nflow configuration. If the value is \"development\", then one subflow is executed and if it is \"production\"\nthe other subflow is executed.\n\nThe subflow returns the country details including the original incoming row, plus the lookup origin, which can be \"database\" or \"CSV file\".\n",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 221
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "flowPath": {
+          "widgetType": "expression/code",
+          "widgetData": {
+            "text": "in.subflow",
+            "size": {
+              "width": 0,
+              "height": 36
+            },
+            "syntax": "tweakflow"
+          },
+          "code": "in.subflow"
+        },
+        "params": {
+          "widgetType": "expression/dict",
+          "widgetData": {
+            "table": {
+              "list": []
+            }
+          },
+          "code": "{}"
+        },
+        "input": {
+          "widgetType": "expression/dict",
+          "widgetData": {
+            "table": {
+              "list": [
+                {
+                  "key": {
+                    "widgetType": "expression/string",
+                    "widgetData": {
+                      "interpolation": true,
+                      "text": "_"
+                    },
+                    "code": "'_'"
+                  },
+                  "value": {
+                    "widgetType": "expression/row",
+                    "widgetData": {},
+                    "code": "::row"
+                  }
+                },
+                {
+                  "key": {
+                    "widgetType": "expression/string",
+                    "widgetData": {
+                      "interpolation": true,
+                      "text": "country_id"
+                    },
+                    "code": "'country_id'"
+                  },
+                  "value": {
+                    "widgetType": "expression/field-value-ref",
+                    "widgetData": {
+                      "fieldSelect": {
+                        "value": {
+                          "gate": "in",
+                          "name": "country_id"
+                        }
+                      }
+                    },
+                    "code": "::in.country_id"
+                  }
+                }
+              ]
+            }
+          },
+          "code": "{\n  '_' ::row,\n  'country_id' ::in.country_id\n}"
+        },
+        "rowMappingMode": {
+          "value": "map_through_underscore"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "country_details",
+                "type": "dict",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.output[:country_details]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.output[:country_details]"
+                }
+              },
+              {
+                "name": "lookup_origin",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/code",
+                  "widgetData": {
+                    "text": "results.output[:lookup_origin]",
+                    "size": {
+                      "width": 0,
+                      "height": 36
+                    },
+                    "syntax": "tweakflow"
+                  },
+                  "code": "results.output[:lookup_origin]"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 778,
+        "y": 186
+      }
+    },
+    {
+      "id": "com.twineworks.tweakstreet.library.steps.map.mapper_4a4e2664-7217-4646-b9dc-5b365e628117",
+      "name": "Value Mapper",
+      "type": "com.twineworks.tweakstreet.library.steps.map.mapper",
+      "instanceCount": {
+        "widgetType": "expression/number",
+        "widgetData": {
+          "text": "1"
+        },
+        "code": "1"
+      },
+      "data": {
+        "meta": {
+          "name": "Value Mapper",
+          "showingComment": true,
+          "comment": {
+            "markdown": {
+              "text": {
+                "text": "##### Info\n\nThe \"environment\" variable is evaluated and mapped to the relevant subflow to execute.",
+                "syntax": "markdown",
+                "size": {
+                  "width": "100%",
+                  "height": "100%"
+                }
+              },
+              "size": {
+                "width": null,
+                "height": 160
+              },
+              "view": "preview"
+            },
+            "editor": {
+              "collapsed": false
+            }
+          }
+        },
+        "entryVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "input": {
+          "widgetType": "expression/code",
+          "widgetData": {
+            "text": "flow.vars.environment",
+            "size": {
+              "width": 0,
+              "height": 36
+            },
+            "syntax": "tweakflow"
+          },
+          "code": "flow.vars.environment"
+        },
+        "mapping": {
+          "widgetType": "expression/data-grid",
+          "widgetData": {
+            "fields": [
+              {
+                "id": "condition",
+                "name": "condition"
+              },
+              {
+                "id": "value",
+                "name": "value"
+              }
+            ],
+            "gen": {
+              "as": "rows",
+              "of": "dict",
+              "meta": false
+            },
+            "table": {
+              "list": [
+                {
+                  "fields": {
+                    "condition": {
+                      "widgetType": "expression/code",
+                      "widgetData": {
+                        "text": "(x) -> x=='development'",
+                        "size": {
+                          "width": 0,
+                          "height": 36
+                        },
+                        "syntax": "tweakflow"
+                      },
+                      "code": "(x) -> x=='development'"
+                    },
+                    "value": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "./mainflow-02_subflow-02.dfl"
+                      },
+                      "code": "'./mainflow-02_subflow-02.dfl'"
+                    }
+                  }
+                },
+                {
+                  "fields": {
+                    "condition": {
+                      "widgetType": "expression/code",
+                      "widgetData": {
+                        "text": "(x) -> x== 'production'",
+                        "size": {
+                          "width": 0,
+                          "height": 36
+                        },
+                        "syntax": "tweakflow"
+                      },
+                      "code": "(x) -> x== 'production'"
+                    },
+                    "value": {
+                      "widgetType": "expression/string",
+                      "widgetData": {
+                        "interpolation": true,
+                        "text": "./mainflow-02_subflow-01.dfl"
+                      },
+                      "code": "'./mainflow-02_subflow-01.dfl'"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "code": "[{\n  :condition (x) -> x=='development',\n  :value './mainflow-02_subflow-02.dfl'\n}, {\n  :condition (x) -> x== 'production',\n  :value './mainflow-02_subflow-01.dfl'\n}]"
+        },
+        "defaultValue": {
+          "widgetType": "expression/string",
+          "widgetData": {
+            "interpolation": true,
+            "text": "./mainflow-02_subflow-02.dfl"
+          },
+          "code": "'./mainflow-02_subflow-02.dfl'"
+        },
+        "resultVariables": {
+          "variables": {
+            "list": []
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "outputFields": {
+          "outputFields": {
+            "list": [
+              {
+                "name": "subflow",
+                "type": "any",
+                "value": {
+                  "widgetType": "expression/result-ref",
+                  "widgetData": {
+                    "value": "::results.mapped"
+                  },
+                  "code": "::results.mapped"
+                }
+              }
+            ]
+          },
+          "editor": {
+            "collapsed": false
+          }
+        },
+        "editor": {
+          "showEntryVariables": false,
+          "showResultVariables": false,
+          "showOutputFields": true
+        },
+        "model": {}
+      },
+      "pos": {
+        "x": 506,
+        "y": 186
+      }
+    }
+  ],
+  "hops": [
+    {
+      "id": "3036d483-a9d6-41e3-bf42-48658613f066",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.turing.subflow_7b4b505a-87d8-4f4a-b066-9deec5a68f69",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.dummy_96c8b0fc-96c3-430a-a81e-25a2b66b67a4",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "82aa6fb0-2eb1-4aac-b366-a72fcd7fa34f",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.input.sqlinput_85e21964-e200-4aab-beb6-6e6d003ffbeb",
+      "toStep": "com.twineworks.tweakstreet.library.steps.map.mapper_4a4e2664-7217-4646-b9dc-5b365e628117",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    },
+    {
+      "id": "6cf69cad-7e8c-4872-91b2-e2d64a6b76b8",
+      "fromStep": "com.twineworks.tweakstreet.library.steps.map.mapper_4a4e2664-7217-4646-b9dc-5b365e628117",
+      "toStep": "com.twineworks.tweakstreet.library.steps.turing.subflow_7b4b505a-87d8-4f4a-b066-9deec5a68f69",
+      "fromGate": "out",
+      "toGate": "in",
+      "disabled": false,
+      "partitioner": {
+        "widgetType": "expression/code",
+        "widgetData": {
+          "text": ""
+        },
+        "code": "nil"
+      }
+    }
+  ]
+}

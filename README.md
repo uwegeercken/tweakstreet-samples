@@ -55,16 +55,17 @@ I have constructed an ETL with Tweakstreet to parse a set of Tweakstreet flows a
 | basic-08           | database-05.dfl              | read airport and country data and output the results including JSON field |
 | basic-08           | database-06.dfl              | read data stored in the database-05.dfl flow and restore the dictionary with the country data |
 | basic-08           | database-07.dfl              | read data stored in the database-05.dfl flow and restore the dictionary data already in the SQL query |
-| basic-09           | stateful-01.dfl              | Generate a row count and calculate the running aerage age using the "Stateful Calculator" step |
+| basic-09           | stateful-01.dfl              | Generate a row count and calculate the running average age using the "Stateful Calculator" step |
 | basic-10           | templates-01.dfl             | Use sample data and merge it with a template using the Freemarker template engine |
-| basic-11           | mainflow-01.dfl              | usage of the subflow step |
+| basic-11           | mainflow-01.dfl, subflow-01.dfl | usage of the subflow step |
+| basic-11           | mainflow-02.dfl, mainflow-02_subflow-01, mainflow-02_subflow-02 | switching subflows depending on a variables value |
 | medium-01          | cast-values-01.dfl           | Cast selected values of a list of dictionaries from string to long or double |
 | medium-01          | functions-01.dfl             | Show the use of functions as a formular or using the widgets |
 
 **Available modules**:
 
 | Filename                     | Description                                                                  |
-| :--                          | :--                                                                          | 
+| :--                          | :--                                                                          |
 | conf-module-samples.tsm      | config module with variables for the data files                              |
 | global-module-samples.tsm    | global module with variables for re-use across flows                         |
 | random-data-lists.tsm        | various lists with random data. used with the "generate from list" generator |
@@ -105,8 +106,8 @@ I have constructed an ETL with Tweakstreet to parse a set of Tweakstreet flows a
 | Serialize		| serialize-01.dfl |
 | System Info	| misc-01.dfl |
 | Clock			| misc-01.dfl, stateful-01.dfl |
-| SQL Input		| database-01.dfl, database-02.dfl, database-03.dfl, database-05.dfl, database-06.dfl, database-07.dfl |
-| SQL Lookup	| database-02.dfl, database-05.dfl |
+| SQL Input		| database-01.dfl, database-02.dfl, database-03.dfl, database-05.dfl, database-06.dfl, database-07.dfl, mainflow-02.dfl |
+| SQL Lookup	| database-02.dfl, database-05.dfl |cont
 | Join on Condition	| database-03.dfl |
 | SQL Script	| database-04.dfl |
 | List to Rows	| database-04.dfl, rest-01.dfl, rest-02.df, cast-values-01.dfl |
@@ -116,9 +117,10 @@ I have constructed an ETL with Tweakstreet to parse a set of Tweakstreet flows a
 | Freemarker  | templates-01.dfl |
 | HTTP Request  | rest-01.dfl, rest-02.dfl  |
 | Read File  | cast-values-01.dfl, functions-01.dfl |
-| Sub Flow  | mainflow-01.dfl |
-| Interface Input | subflow-01.dfl |
-| Interface Output | subflow-01.dfl |
+| Sub Flow  | mainflow-01.dfl, mainflow-02.dfl |
+| Interface Input | subflow-01.dfl, mainflow-02_subflow-01, mainflow-02_subflow-02 |
+| Interface Output | subflow-01.dfl, mainflow-02_subflow-01, mainflow-02_subflow-02 |
+| Value Mapper | mainflow-02.dfl |
 
 
-last update: 2021-10-23
+last update: 2021-10-26
