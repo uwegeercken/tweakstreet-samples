@@ -14,11 +14,6 @@ Clone this repository, install the Tweakstreet Data Integration Tool and run it.
 
 **Attention**: After starting Tweakstreet, select the folder of the cloned repository as your workspace folder ('File' menu). And then please make sure that you use the config module: 'conf-module-samples.tsm'. It contains some variables which the samples rely on: in the sidebar on the left which shows the file and directory tree (Strg+B to activate it if you don't see it), click on the file 'conf-module-samples.tsm' to open it. Then right-click on the tab which carries the name of the file and select 'Set as config module'. Alternatively right-click on '$none' in the blue toolbar at the bottom, select 'Choose config module' and navigate to this file and select it.
 
-**Flowparser**:
-I have constructed an ETL with Tweakstreet to parse a set of Tweakstreet flows and send the results to Neo4j to visualize them. You can get it here: https://github.com/uwegeercken/tweakstreet-flowparser. It serves to find out which and how many steps are used in a set of flows. Below is a little sample what it looks like in Neo4j Bloom.
-
-![Visualized in Neo4j](./overview-neo4j-bloom.png)
-
 **Flows**: Below is the list of available samples, listing the name of the folder, the name of the flow file and a short description what the flow does.
 
 | Folder             | Filename                     | Description                      |
