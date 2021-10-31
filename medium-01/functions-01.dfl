@@ -1,6 +1,6 @@
 {
   "type": "data-flow",
-  "appVersion": "1.15.0",
+  "appVersion": "1.19.2",
   "properties": {
     "meta": {
       "comment": {
@@ -258,14 +258,9 @@
                       "code": "in.airports"
                     },
                     "init": {
-                      "widgetType": "expression/code",
+                      "widgetType": "expression/number",
                       "widgetData": {
-                        "text": "0",
-                        "size": {
-                          "width": 0,
-                          "height": 36
-                        },
-                        "syntax": "tweakflow"
+                        "text": "0"
                       },
                       "code": "0"
                     },
@@ -400,12 +395,13 @@
         },
         "editor": {
           "showEntryVariables": true,
-          "showOutputFields": true
+          "showOutputFields": true,
+          "dialogWidth": "normal"
         },
         "model": {}
       },
       "pos": {
-        "x": 522,
+        "x": 554,
         "y": 186
       }
     },
